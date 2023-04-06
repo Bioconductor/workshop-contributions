@@ -51,7 +51,7 @@ jobs:
             _AUTO-GENERATED RESPONSE_
             Your workshop has been successfully deployed to the [test instance](https://workshop.bioconductor.org). :sparkles:
             Please test your workshop on the development instance and notify us via comment when you deem it ready for public consumption on the production instance.
-        if: steps.reqtest.outcome=='success'
+        if: steps.deploy.outcome=='success'
 
       - name: Create comment
         uses: peter-evans/create-or-update-comment@v3
@@ -62,4 +62,4 @@ jobs:
             _AUTO-GENERATED RESPONSE_
             Your request has been received but is currently failing its deployment on test.
             If the corresponding `/request` command has passed with the same parameters, this is likely a bug.
-        if: steps.reqtest.outcome=='failure'
+        if: steps.deploy.outcome=='failure'
