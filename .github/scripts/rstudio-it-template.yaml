@@ -1,0 +1,26 @@
+<tool id="interactivetool_biocworkshop_##PLACEHOLDERID##" tool_type="interactive" name="##PLACEHOLDERNAME##" version="0.1">
+    <description>##PLACEHOLDERDESCRIPTION##. See source at ##PLACEHOLDERSOURCE##.</description>
+    <requirements>
+        <container type="docker">##PLACEHOLDERCONTAINER##</container>
+    </requirements>
+    <entry_points>
+        <entry_point name="##PLACEHOLDERID##" requires_domain="True">
+            <port>##PLACEHOLDERPORT##</port>
+        </entry_point>
+    </entry_points>
+    <environment_variables>
+        <environment_variable name="DISABLE_AUTH">true</environment_variable>
+        <environment_variable name="HISTORY_ID">$__history_id__</environment_variable>
+        <environment_variable name="REMOTE_HOST">$__galaxy_url__</environment_variable>
+        <environment_variable name="GALAXY_URL">$__galaxy_url__</environment_variable>
+        <environment_variable name="API_KEY" inject="api_key" />
+    </environment_variables>
+    <command detect_errors="aggressive">##PLACEHOLDERCOMMAND##</command>
+    <inputs>
+    </inputs>
+    <outputs>
+    </outputs>
+    <tests>
+    </tests>
+    <help></help>
+</tool>
