@@ -30,12 +30,14 @@ cat generated/workshop-values-$ID.yaml >> generated/workshop-values.yaml
 
 LINETOADD="<tool file=\"interactive/biocworkshop_$ID.xml\" />"
 
-if grep -qi "<label text=\"$SECTION" generated/workshop-toolconf-values.yaml; then
-  sed -i "\|<label text=\"$SECTION|a \ \ \ \ \ \ \ \ \ \ $LINETOADD"  generated/workshop-toolconf-values.yaml
-else
-  SECTIONTOADD="<label text=\"$SECTION\" id=\"$(echo $SECTION | sed 's/[^[:alnum:]]//g' | awk '{print tolower($0)}')\" />"
-  sed -i "\|</toolbox>|i \ \ \ \ \ \ \ \ $SECTIONTOADD"  generated/workshop-toolconf-values.yaml
-  sed -i "\|</toolbox>|i \ \ \ \ \ \ \ \ \ \ $LINETOADD"  generated/workshop-toolconf-values.yaml
+if ! grep -qi "$LINETOADD" generated/workshop-toolconf-values.yaml; then
+  if grep -qi "<label text=\"$SECTION" generated/workshop-toolconf-values.yaml; then
+    sed -i "\|<label text=\"$SECTION|a \ \ \ \ \ \ \ \ \ \ $LINETOADD"  generated/workshop-toolconf-values.yaml
+  else
+    SECTIONTOADD="<label text=\"$SECTION\" id=\"$(echo $SECTION | sed 's/[^[:alnum:]]//g' | awk '{print tolower($0)}')\" />"
+    sed -i "\|</toolbox>|i \ \ \ \ \ \ \ \ $SECTIONTOADD"  generated/workshop-toolconf-values.yaml
+    sed -i "\|</toolbox>|i \ \ \ \ \ \ \ \ \ \ $LINETOADD"  generated/workshop-toolconf-values.yaml
+  fi
 fi
 
 cat generated/workshop-toolconf-values.yaml
