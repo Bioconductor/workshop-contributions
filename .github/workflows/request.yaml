@@ -22,13 +22,14 @@ jobs:
           echo id=${{ github.event.client_payload.slash_command.args.named.id || 'error' }} >> $GITHUB_OUTPUT
           echo title=${{ github.event.client_payload.slash_command.args.named.title || 'No title' }} >> $GITHUB_OUTPUT
           echo description=${{ github.event.client_payload.slash_command.args.named.description || 'No description' }} >> $GITHUB_OUTPUT
+          echo section=${{ github.event.client_payload.slash_command.args.named.section || 'Others' }} >> $GITHUB_OUTPUT
           echo docker=${{ github.event.client_payload.slash_command.args.named.docker || 'ghcr.io/bioconductor/bioconductor:3.16' }} >> $GITHUB_OUTPUT
           echo port=${{ github.event.client_payload.slash_command.args.named.port || '8787' }} >> $GITHUB_OUTPUT
           echo command=${{ github.event.client_payload.slash_command.args.named.command || '/init' }} >> $GITHUB_OUTPUT
         
       - name: Test initial request
         id: reqtest
-        run: bash .github/scripts/request.sh '${{steps.defs.outputs.id}}' '${{steps.defs.outputs.title}}' '${{steps.defs.outputs.description}}' '${{steps.defs.outputs.source}}' '${{steps.defs.outputs.docker}}' '${{steps.defs.outputs.port}}' '${{steps.defs.outputs.command}}'
+        run: bash .github/scripts/request.sh '${{steps.defs.outputs.id}}' '${{steps.defs.outputs.title}}' '${{steps.defs.outputs.description}}' '${{steps.defs.outputs.section}}' '${{steps.defs.outputs.source}}' '${{steps.defs.outputs.docker}}' '${{steps.defs.outputs.port}}' '${{steps.defs.outputs.command}}'
         continue-on-error: true
 
       - name: Create comment
@@ -46,6 +47,7 @@ jobs:
             source='${{steps.defs.outputs.id}}'
             title='${{steps.defs.outputs.title}}'
             description='${{steps.defs.outputs.description}}'
+            section='${{steps.defs.outputs.section}}'
             source='${{steps.defs.outputs.source}}'
             docker='${{steps.defs.outputs.docker}}'
             port='${{steps.defs.outputs.port}}'
@@ -66,7 +68,7 @@ jobs:
             Your request has been received but is currently failinginitial screening.
             Please retry your request ensuring all parameters are passed in correctly. Eg:
             ```
-            /request id="myuniqueid2023" title="Short title for my workshop" description="A description for my workshop. Multiple sentences in the same line." docker="ghcr.io/bioconductor/bioconductor:3.16" port="8787" command="/init"
+            /request id="myuniqueid2023" title="Short title for my workshop" description="A description for my workshop. Multiple sentences in the same line." section="Bioc2022" docker="ghcr.io/bioconductor/bioconductor:3.16" port="8787" command="/init"
             ```
             Note that port and command can be ignored if your image is based on the Bioconductor RStudio image
         if: steps.reqtest.outcome=='failure'

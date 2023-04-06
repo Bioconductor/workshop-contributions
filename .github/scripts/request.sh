@@ -4,17 +4,18 @@ set -xe
 ID="$1"
 TITLE="$2"
 DESCRIPTION="$3"
-SOURCE="$4"
-CONTAINER="$5"
-PORT="$6"
-COMMAND="$7"
+SECTION="$4"
+SOURCE="$5"
+CONTAINER="$6"
+PORT="$7"
+COMMAND="$8"
 
 mkdir -p generated
 
 docker manifest inspect "$CONTAINER"
 
-cat << EOF >> "generated/workshop-values-$id.yaml"
-/galaxy/server/tools/interactive/biocworkshop_$id.xml:
+cat << EOF >> "generated/workshop-values-$ID.yaml"
+/galaxy/server/tools/interactive/biocworkshop_$ID.xml:
   useSecret: false
   applyToJob: true
   applyToSetupJob: true

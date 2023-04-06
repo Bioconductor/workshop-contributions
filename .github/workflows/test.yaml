@@ -1,0 +1,65 @@
+name: Test command workflow
+on:
+  repository_dispatch:
+    types: [test-command]
+jobs:
+  test:
+    name: Deploy values to test
+    runs-on: ubuntu-latest
+    env:
+      ISSUE_NUM: ${{ github.event.client_payload.github.payload.issue.number }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set defaults for all inputs
+        id: defs
+        run: |
+          SRCURL=${{ github.event.client_payload.slash_command.args.named.source || '' }}
+          if [ -z "$SRCURL" ]; then
+            SRCURL="https://github.com/${{github.repository}}/issues/$ISSUE_NUM"
+          fi
+          echo source=$SRCURL >> $GITHUB_OUTPUT
+          echo id=${{ github.event.client_payload.slash_command.args.named.id || 'error' }} >> $GITHUB_OUTPUT
+          echo title=${{ github.event.client_payload.slash_command.args.named.title || 'No title' }} >> $GITHUB_OUTPUT
+          echo description=${{ github.event.client_payload.slash_command.args.named.description || 'No description' }} >> $GITHUB_OUTPUT
+          echo section='${{ github.event.client_payload.slash_command.args.named.section || 'Others' }}' >> $GITHUB_OUTPUT
+          echo docker=${{ github.event.client_payload.slash_command.args.named.docker || 'ghcr.io/bioconductor/bioconductor:3.16' }} >> $GITHUB_OUTPUT
+          echo port=${{ github.event.client_payload.slash_command.args.named.port || '8787' }} >> $GITHUB_OUTPUT
+          echo command=${{ github.event.client_payload.slash_command.args.named.command || '/init' }} >> $GITHUB_OUTPUT
+
+      - name: Install Helm
+        run: curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+      - name: save kubeconfig
+        shell: bash
+        run: mkdir -p ~/.kube && echo "${{ secrets.TEST_KUBECONFIG }}" > ~/.kube/config
+      - name: Install Kubectl
+        run: curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" && chmod +x ./kubectl && sudo mv ./kubectl /usr/local/bin/kubectl && kubectl version
+
+      - name: Deploy
+        id: deploy
+        run: |
+          bash .github/scripts/request.sh '${{steps.defs.outputs.id}}' '${{steps.defs.outputs.title}}' '${{steps.defs.outputs.description}}' '${{steps.defs.outputs.section}}' '${{steps.defs.outputs.source}}' '${{steps.defs.outputs.docker}}' '${{steps.defs.outputs.port}}' '${{steps.defs.outputs.command}}'
+          bash .github/scripts/deploy.sh '${{steps.defs.outputs.id}}' '${{steps.defs.outputs.title}}' '${{steps.defs.outputs.description}}' '${{steps.defs.outputs.section}}' '${{steps.defs.outputs.source}}' '${{steps.defs.outputs.docker}}' '${{steps.defs.outputs.port}}' '${{steps.defs.outputs.command}}'
+        continue-on-error: true
+
+      - name: Create comment
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          token: ${{ secrets.PAT }}
+          issue-number: ${{ github.event.client_payload.github.payload.issue.number }}
+          body: |
+            _AUTO-GENERATED RESPONSE_
+            Your workshop has been successfully deployed to the [test instance](https://workshop.bioconductor.org). :sparkles:
+            Please test your workshop on the development instance and notify us via comment when you deem it ready for public consumption on the production instance.
+        if: steps.reqtest.outcome=='success'
+
+      - name: Create comment
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          token: ${{ secrets.PAT }}
+          issue-number: ${{ github.event.client_payload.github.payload.issue.number }}
+          body: |
+            _AUTO-GENERATED RESPONSE_
+            Your request has been received but is currently failing its deployment on test.
+            If the corresponding `/request` command has passed with the same parameters, this is likely a bug.
+        if: steps.reqtest.outcome=='failure'
