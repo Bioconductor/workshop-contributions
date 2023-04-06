@@ -24,7 +24,9 @@ configs:
 EOF
 
 # Add current tool_conf_bioc.xml
-kubectl get -n $NAMESPACE configmap/$GXYRELEASE-galaxy-configs -o yaml | grep -A 10000 "tool_conf_bioc.xml:" | grep -B10000 "      </toolbox>" >> generated/workshop-toolconf-values.yaml
+kubectl get -n $NAMESPACE configmap/$GXYRELEASE-galaxy-configs -o yaml | grep -m 1 -A100000 "tool_conf_bioc.xml:" | grep -m 1 -B100000 "</toolbox>" >> generated/workshop-toolconf-values.yaml
+
+kubectl get -n $NAMESPACE configmap/$GXYRELEASE-galaxy-configs -o yaml | grep -m 1 -A100000 "integrated_tool_panel.xml:" | grep -m 1 -B100000 "</toolbox>" >> generated/workshop-toolconf-values.yaml
 
 cat generated/workshop-values-$ID.yaml >> generated/workshop-values.yaml
 
