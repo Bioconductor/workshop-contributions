@@ -34,6 +34,7 @@ jobs:
       - name: Create comment
         uses: peter-evans/create-or-update-comment@v3
         with:
+          token: ${{ secrets.PAT }}
           issue-number: ${{ github.event.client_payload.github.payload.issue.number }}
           body: |
             _AUTO-GENERATED RESPONSE_
@@ -58,6 +59,7 @@ jobs:
       - name: Create comment
         uses: peter-evans/create-or-update-comment@v3
         with:
+          token: ${{ secrets.PAT }}
           issue-number: ${{ github.event.client_payload.github.payload.issue.number }}
           body: |
             _AUTO-GENERATED RESPONSE_

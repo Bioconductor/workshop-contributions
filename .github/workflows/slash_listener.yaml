@@ -10,18 +10,17 @@ jobs:
         uses: peter-evans/slash-command-dispatch@v3
         with:
           token: ${{ secrets.PAT }}
+          reactions: false
           config: >
             [
               {
                 "command": "request",
                 "permission": "none",
-                "issue_type": "issue",
-                "repository": "peter-evans/slash-command-dispatch-processor"
+                "issue_type": "issue"
               },
               {
                 "command": "test",
                 "permission": "write",
-                "issue_type": "issue",
-                "repository": "peter-evans/slash-command-dispatch-processor"
+                "issue_type": "issue"
               }
             ]
