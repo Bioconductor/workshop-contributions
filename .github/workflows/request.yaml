@@ -69,7 +69,7 @@ jobs:
           issue-number: ${{ github.event.client_payload.github.payload.issue.number }}
           body: |
             _AUTO-GENERATED RESPONSE_
-            Your request has been received but is currently failinginitial screening.
+            Your request has been received but is currently failing initial screening.
             Please retry your request ensuring all parameters are passed in correctly.
         if: steps.reqtest.outcome=='failure'
 

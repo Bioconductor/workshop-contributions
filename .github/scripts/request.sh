@@ -67,15 +67,16 @@ EOF
   echo "$CONTAINER" > generated/$ID.container
 
 elif [ ! -z $PKGLIST ]; then
-  LISTHASH=$(echo $PKGLIST | md5sum)
+  MD5HASH=$(echo $PKGLIST | md5sum)
+  LISTHASH=${MD5HASH:0:8}
   CONTAINER="ghcr.io/almahmoud/workshop-contributions:$BIOCVER-$LISTHASH"
   docker manifest inspect "$CONTAINER" && ( echo "$CONTAINER" > generated/$ID.container ) || echo "Container not found."
-  if [ -f generated/$ID.container ]; then
+  if [ ! -f generated/$ID.container ]; then
     cat << EOF >> "generated/$ID.Dockerfile"
 FROM ghcr.io/bioconductor/bioconductor:$BIOCVER
 RUN Rscript -e 'BiocManager::install(c("$(echo $PKGLIST | sed 's/,/","/g')"), dependencies = c("Depends", "Imports", "LinkingTo", "Suggests"))'
 EOF
-  echo "$CONTAINER" > generated/$ID.container
+    echo "$CONTAINER" > generated/$ID.container
   fi
 else
   CONTAINER="ghcr.io/bioconductor/bioconductor:$BIOCVER"
@@ -91,6 +92,4 @@ EOF
   cat << EOF >> "generated/$ID.Dockerfile"
 RUN mkdir -p /tmp && cd /tmp && curl -o install_missing.sh https://raw.githubusercontent.com/Bioconductor/BiocDeployableQuarto/main/.github/scripts/install_missing.sh && echo "$VIGNLIST" | tr ',' '\n' > vignettes && cat vignettes | xargs -i curl -O {} && ls *.*md | xargs -i bash -c "cp {} /home/rstudio/{} && bash install_missing.sh {}"
 EOF
-
-
-
+fi
