@@ -1,14 +1,41 @@
 #!/bin/bash
+
 set -xe
 
-ID="$1"
-TITLE="$2"
-DESCRIPTION="$3"
-SECTION="$4"
-SOURCE="$5"
-CONTAINER="$6"
-PORT="$7"
-COMMAND="$8"
+while getopts ":i:t:d:s:u:c:p:m:k:v:" opt; do
+  case $opt in
+    i) ID="$OPTARG"
+    ;;
+    t) TITLE="$OPTARG"
+    ;;
+    d) DESCRIPTION="$OPTARG"
+    ;;
+    s) SECTION="$OPTARG"
+    ;;
+    u) SOURCE="$OPTARG"
+    ;;
+    c) CONTAINER="$OPTARG"
+    ;;
+    p) PORT="$OPTARG"
+    ;;
+    m) COMMAND="$OPTARG"
+    ;;
+    k) PKGLIST="$OPTARG"
+    ;;
+    v) VIGNLIST="$OPTARG"
+    ;;
+    \?) echo "Invalid option -$OPTARG" >&2
+    exit 1
+    ;;
+  esac
+
+  case $OPTARG in
+    -*) echo "Option $opt needs a valid argument"
+    exit 1
+    ;;
+  esac
+done
+
 
 NAMESPACE="gxy-bioc"
 GXYRELEASE="gxy"

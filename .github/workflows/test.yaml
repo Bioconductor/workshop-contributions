@@ -21,11 +21,13 @@ jobs:
           echo source=$SRCURL >> $GITHUB_OUTPUT
           echo id=${{ github.event.client_payload.slash_command.args.named.id || 'error' }} >> $GITHUB_OUTPUT
           echo title=${{ github.event.client_payload.slash_command.args.named.title || 'No title' }} >> $GITHUB_OUTPUT
-          echo description=${{ github.event.client_payload.slash_command.args.named.description || 'No description' }} >> $GITHUB_OUTPUT
-          echo section='${{ github.event.client_payload.slash_command.args.named.section || 'Others' }}' >> $GITHUB_OUTPUT
-          echo docker=${{ github.event.client_payload.slash_command.args.named.docker || 'ghcr.io/bioconductor/bioconductor:3.16' }} >> $GITHUB_OUTPUT
+          echo description=${{ github.event.client_payload.slash_command.args.named.description || '' }} >> $GITHUB_OUTPUT
+          echo section=${{ github.event.client_payload.slash_command.args.named.section || 'Others' }} >> $GITHUB_OUTPUT
+          echo docker=${{ github.event.client_payload.slash_command.args.named.docker || '' }} >> $GITHUB_OUTPUT
           echo port=${{ github.event.client_payload.slash_command.args.named.port || '8787' }} >> $GITHUB_OUTPUT
           echo command=${{ github.event.client_payload.slash_command.args.named.command || '/init' }} >> $GITHUB_OUTPUT
+          echo pkglist=${{ github.event.client_payload.slash_command.args.named.pkglist || '' }} >> $GITHUB_OUTPUT
+          echo vignettes=${{ github.event.client_payload.slash_command.args.named.vignettes || '' }} >> $GITHUB_OUTPUT
 
       - name: Install Helm
         run: curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
@@ -38,8 +40,12 @@ jobs:
       - name: Deploy
         id: deploy
         run: |
-          bash .github/scripts/request.sh '${{steps.defs.outputs.id}}' '${{steps.defs.outputs.title}}' '${{steps.defs.outputs.description}}' '${{steps.defs.outputs.section}}' '${{steps.defs.outputs.source}}' '${{steps.defs.outputs.docker}}' '${{steps.defs.outputs.port}}' '${{steps.defs.outputs.command}}'
-          bash .github/scripts/deploy.sh '${{steps.defs.outputs.id}}' '${{steps.defs.outputs.title}}' '${{steps.defs.outputs.description}}' '${{steps.defs.outputs.section}}' '${{steps.defs.outputs.source}}' '${{steps.defs.outputs.docker}}' '${{steps.defs.outputs.port}}' '${{steps.defs.outputs.command}}'
+          ID='${{steps.defs.outputs.id}}'
+          bash .github/scripts/request.sh -i "$ID" -t '${{steps.defs.outputs.title}}' -d '${{steps.defs.outputs.description}}' -s '${{steps.defs.outputs.section}}' -u '${{steps.defs.outputs.source}}' -c '${{steps.defs.outputs.docker}}' -p '${{steps.defs.outputs.port}}' -m '${{steps.defs.outputs.command}}' -k '${{steps.defs.outputs.pkglist}}' -v '${{steps.defs.outputs.vignettes}}'
+          bash .github/scripts/build.sh '${{steps.defs.outputs.id}}'
+          # Redo request with container in case it was just built
+          bash .github/scripts/request.sh -i "$ID" -t '${{steps.defs.outputs.title}}' -d '${{steps.defs.outputs.description}}' -s '${{steps.defs.outputs.section}}' -u '${{steps.defs.outputs.source}}' -c "$(cat generated/$ID.container)" -p '${{steps.defs.outputs.port}}' -m '${{steps.defs.outputs.command}}'
+          bash .github/scripts/deploy.sh -i "$ID" -t '${{steps.defs.outputs.title}}' -d '${{steps.defs.outputs.description}}' -s '${{steps.defs.outputs.section}}' -u '${{steps.defs.outputs.source}}' -c '${{steps.defs.outputs.docker}}' -p '${{steps.defs.outputs.port}}' -m '${{steps.defs.outputs.command}}'
         continue-on-error: true
 
       - name: Create comment
