@@ -76,12 +76,21 @@ FROM ghcr.io/bioconductor/bioconductor:$BIOCVER
 RUN Rscript -e 'BiocManager::install(c("$(echo $PKGLIST | sed 's/,/","/g')"), dependencies = c("Depends", "Imports", "LinkingTo", "Suggests"))'
 EOF
   echo "$CONTAINER" > generated/$ID.container
-  #docker build . -f generated/$ID.Dockerfile -t $CONTAINER
   fi
 else
   CONTAINER="ghcr.io/bioconductor/bioconductor:$BIOCVER"
   echo "$CONTAINER" > generated/$ID.container
 fi
+
+if [ ! -z $VIGNLIST ]; then
+  if [ -f generated/$ID.Dockerfile ]; then
+    cat << EOF >> "generated/$ID.Dockerfile"
+FROM ghcr.io/bioconductor/bioconductor:$BIOCVER
+EOF
+  fi
+  cat << EOF >> "generated/$ID.Dockerfile"
+RUN mkdir -p /tmp && cd /tmp && curl -o install_missing.sh https://raw.githubusercontent.com/Bioconductor/BiocDeployableQuarto/main/.github/scripts/install_missing.sh && echo "$VIGNLIST" | tr ',' '\n' > vignettes && cat vignettes | xargs -i curl -O {} && ls *.*md | xargs -i bash -c "cp {} /home/rstudio/{} && bash install_missing.sh {}"
+EOF
 
 
 
