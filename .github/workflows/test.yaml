@@ -9,6 +9,10 @@ jobs:
     env:
       ISSUE_NUM: ${{ github.event.client_payload.github.payload.issue.number }}
     steps:
+      - name: Free root space
+        uses: almahmoud/free-root-space@main
+        with:
+          verbose: true
       - uses: actions/checkout@v3
 
       - name: Set defaults for all inputs
