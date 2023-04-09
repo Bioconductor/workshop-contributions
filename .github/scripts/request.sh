@@ -38,6 +38,8 @@ done
 
 
 BIOCVER="3.16"
+MD5HASH=$(echo "$PKGLIST-$VIGNLIST" | md5sum)
+LISTHASH=${MD5HASH:0:8}
 
 mkdir -p generated
 
@@ -67,8 +69,6 @@ EOF
   echo "$CONTAINER" > generated/$ID.container
 
 elif [ ! -z $PKGLIST ]; then
-  MD5HASH=$(echo $PKGLIST | md5sum)
-  LISTHASH=${MD5HASH:0:8}
   CONTAINER="ghcr.io/almahmoud/workshop-contributions:$BIOCVER-$LISTHASH"
   docker manifest inspect "$CONTAINER" && ( echo "$CONTAINER" > generated/$ID.container ) || echo "Container not found."
   if [ ! -f generated/$ID.container ]; then
@@ -88,6 +88,8 @@ if [ ! -z $VIGNLIST ]; then
     cat << EOF >> "generated/$ID.Dockerfile"
 FROM $(cat generated/$ID.container)
 EOF
+    CONTAINER="ghcr.io/almahmoud/workshop-contributions:$BIOCVER-$LISTHASH"
+    echo "$CONTAINER" > generated/$ID.container
   fi
   if [[ $VIGNLIST = "https://"* ]]; then
     cat << EOF >> "generated/$ID.Dockerfile"
