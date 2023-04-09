@@ -86,14 +86,14 @@ fi
 if [ ! -z $VIGNLIST ]; then
   if [ -f generated/$ID.Dockerfile ]; then
     cat << EOF >> "generated/$ID.Dockerfile"
-FROM ghcr.io/bioconductor/bioconductor:$BIOCVER
+FROM $(cat generated/$ID.container)
 EOF
   fi
   if [[ $VIGNLIST = "https://"* ]]; then
     cat << EOF >> "generated/$ID.Dockerfile"
 RUN mkdir -p /tmp && cd /tmp && curl -o install_missing.sh https://raw.githubusercontent.com/Bioconductor/BiocDeployableQuarto/main/.github/scripts/install_missing.sh && echo "$VIGNLIST" | tr ',' '\n' > vignettes && cat vignettes | xargs -i curl -O {} && ls *.*md | xargs -i bash -c "cp {} /home/rstudio/{} && bash install_missing.sh {}"
 EOF
-  elif [ -z $SOURCE ]; then
+  elif [ ! -z $SOURCE ]; then
     cat << EOF >> "generated/$ID.Dockerfile"
 RUN mkdir -p /tmp && cd /tmp && curl -o install_missing.sh https://raw.githubusercontent.com/Bioconductor/BiocDeployableQuarto/main/.github/scripts/install_missing.sh && echo "$VIGNLIST" | tr ',' '\n' > vignettes && git clone $SOURCE && cd $(basename $SOURCE) && cat ../vignettes | xargs -i bash -c 'cp {} /home/rstudio/ && ls {} | grep 'md$' | xargs -I## bash install_missing.sh ##'
 EOF
