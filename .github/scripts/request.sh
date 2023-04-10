@@ -84,7 +84,7 @@ else
 fi
 
 if [ ! -z $VIGNLIST ]; then
-  if [ -f generated/$ID.Dockerfile ]; then
+  if [ ! -f generated/$ID.Dockerfile ]; then
     cat << EOF >> "generated/$ID.Dockerfile"
 FROM $(cat generated/$ID.container)
 EOF
