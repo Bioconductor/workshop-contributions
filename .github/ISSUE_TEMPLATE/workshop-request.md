@@ -55,11 +55,13 @@ Below is an example of a full request for a url vignette:
 
 3) `pkglist=` which can be used with or without the `vignettes=` option, in order to add a list of Bioconductor and/or CRAN packages to the resulting auto-built container image for this request. It should be passed as a comma-separated list of package names. eg: `pkglist="VariantAnnotation,AnnotationHub,TxDb.Hsapiens.UCSC.hg19.knownGene"`
 
+Below is an example of a request to add a package demo
+
 ```
 /request id="bsgenome316" title="BSgenome package demo" description="in the latest Bioconductor" section="Package Demos" source="https://github.com/Bioconductor/BSgenome" pkglist="BSgenome"
 ```
 
-Every request must contain at least 1 of the 3 above parameters, in addition to the mandatory parameters listed above.
+Every request must contain at least 1 of the 3 listed parameters, in addition to the mandatory parameters listed above.
 
 You may add any comments, information or special requests after the second line, but the first line must contain only the `/command` and its parameters.
 
