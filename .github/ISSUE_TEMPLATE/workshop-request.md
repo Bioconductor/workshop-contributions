@@ -49,6 +49,13 @@ Below is an example of a full request with in-source vignettes:
 
 Every request must contain one of the 3 above parameters, in addition to the mandatory parameters.
 
+You may add any comments or information or special requests after the second line, but the first line must contain only the `/command` and its parameters.
 
-**Additional context**
-Add any other context or screenshots about the feature request here.
+#Admin request
+Bioconductor Core Team and repository admins will be able to deploy vetted requests to one of two servers. These requests take the same parameters as the `/request` command, but go through with building and deploying the changes. When the request does not include a `docker=` parameter, the image building might delay a response by a couple of hours for package-intensive workshops.
+
+The `/test` command will deploy the instance to our test server, where the requester can verify the aesthetics as well as functionality of the workshop and request any changes.
+
+The `/publish` command will deploy the final approved workshop to the production instance.
+
+The best way for an admin to populate these requests is copy-paste the last passing full `/request` command and all parameters from the requester, and replace the `/request` command with the appropriate deployment directive.
