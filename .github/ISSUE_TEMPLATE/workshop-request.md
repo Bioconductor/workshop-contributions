@@ -1,6 +1,6 @@
 ---
 name: Workshop Request
-about: How to request adding your workshop to workshop.bioconductor.org
+about: Request adding your workshop to workshop.bioconductor.org
 title: "[Section Name] Workshop Title"
 labels: ''
 assignees: ''
@@ -11,17 +11,20 @@ assignees: ''
 **PLEASE POST THIS TEMPLATE UNCHANGED THEN FOLLOW ITS INSTRUCTIONS IN A NEW COMMENT**
 
 
-#General Notes
+# General Notes
 This repository serves as a mostly automated pipeline for deploying workshops to the [Bioconductor Workshop](https://workshop.bioconductor.org).
 
-All commands need to be written on the first line of the comment, in a single line, starting with the `/command` and containing all `parameter="value in here"` pairs on a single line with no newlines. You may include newline characters (`\n`) in your parameter text, and these will later be evaluated by the script.
+# Bot Commands
 
-#Public request
-Unless you are a member of the Bioconductor core team or an administrator of this repository, you can only perform `/request` commands in this space. Some parameters are universal to all requests, namely the Title, Description, Source URL, and Section on the workshop instance. You may request your workshop be added to an existing section, or request a new Section name.
-Below is an example of the an incomplete request with all mandatory parameters:
+Issues in this repository are listen to by a bot. All commands need to be written on the first line of the comment, in a single line, starting with the `/command` and containing all `parameter="value in here"` pairs.
+
+## Public request
+Unless you are a member of the Bioconductor Core team or an administrator of this repository, you can only perform `/request` commands in this space. Some parameters are universal to all requests and mandatory, namely the Title, Description, Source URL, and Section on the workshop instance. You may request your workshop be added to an existing section, or request a new Section name.
+Below is an example of an incomplete request with all mandatory parameters:
 ```
 /request id="myworkshopuniqueid" title="Bold Text" description="unbolded text next to the title" section="Conference 1996" source="https://github.com/super/repository" 
 ```
+
 This request will then need to be completed with an additional 1-2 parameters depending on your source for the workshop.
 
 We currently support 3 types of submissions:
@@ -45,13 +48,22 @@ Below is an example of a full request with in-source vignettes:
 
 2) b) markdown file urls, in the form of a comma-separated list of URLs. eg: `vignettes="https://raw.githubusercontent.com/Bioconductor/annotation/devel/vignettes/Annotation_Resources.Rmd,https://raw.githubusercontent.com/Bioconductor/annotation/devel/vignettes/Annotating_Genomic_Ranges.Rmd"`. This can especially be useful for people unfamiliar with github, who could write a self-contained Rmd file in RStudio, paste it at https://gist.github.com where single files can be hosted with no directory structure or `git` operations.
 
+Below is an example of a full request for a url vignette:
+```
+/request id="genranges316" title="Annotating Genomic Ranges" description="with Bioconductor annotation package" section="Smorgasbord 2023" source="https://raw.githubusercontent.com/Bioconductor/annotation/devel/vignettes/Annotating_Genomic_Ranges.Rmd" vignettes="https://raw.githubusercontent.com/Bioconductor/annotation/devel/vignettes/Annotating_Genomic_Ranges.Rmd,https://raw.githubusercontent.com/Bioconductor/annotation/devel/vignettes/Annotating_Genomic_Ranges.Rmd"
+```
+
 3) `pkglist=` which can be used with or without the `vignettes=` option, in order to add a list of Bioconductor and/or CRAN packages to the resulting auto-built container image for this request. It should be passed as a comma-separated list of package names. eg: `pkglist="VariantAnnotation,AnnotationHub,TxDb.Hsapiens.UCSC.hg19.knownGene"`
 
-Every request must contain one of the 3 above parameters, in addition to the mandatory parameters.
+```
+/request id="bsgenome316" title="BSgenome package demo" description="in the latest Bioconductor" section="Package Demos" source="https://github.com/Bioconductor/BSgenome" pkglist="BSgenome"
+```
 
-You may add any comments or information or special requests after the second line, but the first line must contain only the `/command` and its parameters.
+Every request must contain at least 1 of the 3 above parameters, in addition to the mandatory parameters listed above.
 
-#Admin request
+You may add any comments, information or special requests after the second line, but the first line must contain only the `/command` and its parameters.
+
+## Admin request
 Bioconductor Core Team and repository admins will be able to deploy vetted requests to one of two servers. These requests take the same parameters as the `/request` command, but go through with building and deploying the changes. When the request does not include a `docker=` parameter, the image building might delay a response by a couple of hours for package-intensive workshops.
 
 The `/test` command will deploy the instance to our test server, where the requester can verify the aesthetics as well as functionality of the workshop and request any changes.
