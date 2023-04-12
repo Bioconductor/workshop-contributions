@@ -97,7 +97,7 @@ RUN mkdir -p /tmp && cd /tmp && curl -o install_missing.sh https://raw.githubuse
 EOF
   elif [ ! -z $SOURCE ]; then
     cat << EOF >> "generated/$ID.Dockerfile"
-RUN mkdir -p /tmp && cd /tmp && curl -o install_missing.sh https://raw.githubusercontent.com/Bioconductor/BiocDeployableQuarto/main/.github/scripts/install_missing.sh && echo "$VIGNLIST" | tr ',' '\n' > vignettes && git clone $SOURCE && cd $(basename $SOURCE) && install() { find $1 -type f -name ".*md" -print0 | xargs -r0 -I## bash ../install_missing.sh ## ; }; cat ../vignettes | xargs -i bash -c 'cp -r {} /home/rstudio/ && install {}'
+RUN mkdir -p /tmp && cd /tmp && curl -o install_missing.sh https://raw.githubusercontent.com/Bioconductor/BiocDeployableQuarto/main/.github/scripts/install_missing.sh && echo "$VIGNLIST" | tr ',' '\n' > vignettes && git clone $SOURCE && cd $(basename $SOURCE) && install() { find $1 -type f -name ".*md" -print0 | xargs -r0 -I## bash ../install_missing.sh ## ; } ; cat ../vignettes | xargs -i bash -c 'cp -r {} /home/rstudio/ && install {}'
 EOF
   fi
 fi
