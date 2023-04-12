@@ -37,7 +37,7 @@ while getopts ":i:t:d:s:u:c:p:m:k:v:" opt; do
 done
 
 
-BIOCVER="3.16"
+BIOCVER="devel"
 MD5HASH=$(echo "$PKGLIST-$VIGNLIST" | md5sum)
 LISTHASH=${MD5HASH:0:8}
 
