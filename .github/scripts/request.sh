@@ -93,11 +93,11 @@ EOF
   fi
   if [[ $VIGNLIST = "https://"* ]]; then
     cat << EOF >> "generated/$ID.Dockerfile"
-RUN mkdir -p /tmp && cd /tmp && curl -o install_missing.sh https://raw.githubusercontent.com/Bioconductor/BiocDeployableQuarto/main/.github/scripts/install_missing.sh && echo "$VIGNLIST" | tr ',' '\n' > vignettes && cat vignettes | xargs -i curl -O {} && ls *.*md | xargs -i bash -c "cp -r {} /home/rstudio/{} && bash ../install_missing.sh {}"
+RUN mkdir -p /tmp && cd /tmp && curl -o install_missing.sh https://raw.githubusercontent.com/Bioconductor/BiocDeployableQuarto/main/.github/scripts/install_missing.sh && echo "$VIGNLIST" | tr ',' '\n' > vignettes && ( cat vignettes | xargs -i curl -O {} ) && find {} -type f -name ".*md" -print0 | xargs -r0 -i bash -c "cp -r {} /home/rstudio/ && bash ../install_missing.sh {}"
 EOF
   elif [ ! -z $SOURCE ]; then
     cat << EOF >> "generated/$ID.Dockerfile"
-RUN mkdir -p /tmp && cd /tmp && curl -o install_missing.sh https://raw.githubusercontent.com/Bioconductor/BiocDeployableQuarto/main/.github/scripts/install_missing.sh && echo "$VIGNLIST" | tr ',' '\n' > vignettes && git clone $SOURCE && cd $(basename $SOURCE) && cat ../vignettes | xargs -i bash -c 'cp -r {} /home/rstudio/ && (ls {} | grep "md$" | xargs -I## bash ../install_missing.sh ##)'
+RUN mkdir -p /tmp && cd /tmp && curl -o install_missing.sh https://raw.githubusercontent.com/Bioconductor/BiocDeployableQuarto/main/.github/scripts/install_missing.sh && echo "$VIGNLIST" | tr ',' '\n' > vignettes && git clone $SOURCE && cd $(basename $SOURCE) && cat ../vignettes | xargs -i bash -c 'cp -r {} /home/rstudio/ && ( find {} -type f -name ".*md" -print0 | xargs -r0 -I## bash ../install_missing.sh ## )'
 EOF
   fi
 fi
