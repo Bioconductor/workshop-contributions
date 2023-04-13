@@ -69,7 +69,7 @@ EOF
   echo "$CONTAINER" > generated/$ID.container
 
 elif [ ! -z $PKGLIST ]; then
-  CONTAINER="ghcr.io/almahmoud/workshop-contributions:$BIOCVER-$LISTHASH"
+  CONTAINER="ghcr.io/bioconductor/workshop-contributions:$BIOCVER-$LISTHASH"
   docker manifest inspect "$CONTAINER" && ( echo "$CONTAINER" > generated/$ID.container ) || echo "Container not found."
   if [ ! -f generated/$ID.container ]; then
     cat << EOF >> "generated/$ID.Dockerfile"
