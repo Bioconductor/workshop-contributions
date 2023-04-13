@@ -88,7 +88,7 @@ if [ ! -z $VIGNLIST ]; then
     cat << EOF >> "generated/$ID.Dockerfile"
 FROM $(cat generated/$ID.container)
 EOF
-    CONTAINER="ghcr.io/almahmoud/workshop-contributions:$BIOCVER-$LISTHASH"
+    CONTAINER="ghcr.io/bioconductor/workshop-contributions:$BIOCVER-$LISTHASH"
     echo "$CONTAINER" > generated/$ID.container
   fi
   if [[ $VIGNLIST = "https://"* ]]; then
