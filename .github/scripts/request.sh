@@ -74,7 +74,7 @@ elif [ ! -z $PKGLIST ]; then
   if [ ! -f generated/$ID.container ]; then
     cat << EOF >> "generated/$ID.Dockerfile"
 FROM ghcr.io/bioconductor/bioconductor:$BIOCVER
-RUN Rscript -e 'BiocManager::install(c("$(echo $PKGLIST | sed 's/,/","/g')"), dependencies = c("Depends", "Imports", "LinkingTo", "Suggests"))'
+RUN Rscript -e 'if (!require("rspm")) install.packages("rspm"); rspm::enable(); BiocManager::install(c("$(echo $PKGLIST | sed 's/,/","/g')"), dependencies = c("Depends", "Imports", "LinkingTo", "Suggests"))'
 EOF
     echo "$CONTAINER" > generated/$ID.container
   fi
