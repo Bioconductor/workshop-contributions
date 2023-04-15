@@ -91,6 +91,7 @@ jobs:
       - name: Deploy
         id: deploy
         run: |
+          ID='${{steps.defs.outputs.id}}'
           bash .github/scripts/build.sh '${{steps.defs.outputs.id}}'
           # Redo request with container in case it was just built
           bash .github/scripts/request.sh -i "$ID" -t '${{steps.defs.outputs.title}}' -d '${{steps.defs.outputs.description}}' -s '${{steps.defs.outputs.section}}' -u '${{steps.defs.outputs.source}}' -c "$(cat generated/$ID.container)" -p '${{steps.defs.outputs.port}}' -m '${{steps.defs.outputs.command}}'
@@ -120,3 +121,22 @@ jobs:
             Your request has been received but is currently failing its deployment on test.
             If the corresponding `/request` command has passed with the same parameters, this is likely a bug.
         if: steps.request.outcome=='failure' || steps.deploy.outcome=='failure'
+
+      - run: "cp -r generated /tmp"
+
+      - name: Push generated
+        uses: nick-fields/retry@v2
+        with:
+          timeout_minutes: 10
+          max_attempts: 50
+          shell: bash
+          command: |
+            set -x
+            git config --global --add safe.directory "$GITHUB_WORKSPACE"
+            git pull origin main || git reset --hard origin/main
+            git config user.name github-actions
+            git config user.email github-actions@github.com
+            cp -r /tmp/generated ./
+            git add ./generated
+            git commit -m "Push generated ${{steps.defs.outputs.id}}"
+            git push
