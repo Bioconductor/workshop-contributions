@@ -19,7 +19,8 @@ jobs:
             SRCURL="https://github.com/${{github.repository}}/issues/$ISSUE_NUM"
           fi
           echo source=$SRCURL >> $GITHUB_OUTPUT
-          echo id=${{ github.event.client_payload.slash_command.args.named.id || 'error' }} >> $GITHUB_OUTPUT
+          IDINPUT=${{ github.event.client_payload.slash_command.args.named.id || 'error' }}
+          echo id=$IDINPUT >> $GITHUB_OUTPUT
           echo title=${{ github.event.client_payload.slash_command.args.named.title || 'No title' }} >> $GITHUB_OUTPUT
           echo description=${{ github.event.client_payload.slash_command.args.named.description || '' }} >> $GITHUB_OUTPUT
           echo section=${{ github.event.client_payload.slash_command.args.named.section || 'Others' }} >> $GITHUB_OUTPUT
@@ -28,6 +29,7 @@ jobs:
           echo command=${{ github.event.client_payload.slash_command.args.named.command || '/init' }} >> $GITHUB_OUTPUT
           echo pkglist=${{ github.event.client_payload.slash_command.args.named.pkglist || '' }} >> $GITHUB_OUTPUT
           echo vignettes=${{ github.event.client_payload.slash_command.args.named.vignettes || '' }} >> $GITHUB_OUTPUT
+          rm -f generated/${IDINPUT}.*
         
       - name: Test initial request
         id: reqtest
