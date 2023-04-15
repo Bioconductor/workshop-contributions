@@ -48,11 +48,49 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+
+      - name: Get Current Job Log URL
+        uses: Tiryoh/gha-jobid-action@v0
+        id: jobs
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          job_name: test
+          per_page: 100
+
       - name: Deploy
-        id: deploy
+        id: request
         run: |
           ID='${{steps.defs.outputs.id}}'
           bash .github/scripts/request.sh -i "$ID" -t '${{steps.defs.outputs.title}}' -d '${{steps.defs.outputs.description}}' -s '${{steps.defs.outputs.section}}' -u '${{steps.defs.outputs.source}}' -c '${{steps.defs.outputs.docker}}' -p '${{steps.defs.outputs.port}}' -m '${{steps.defs.outputs.command}}' -k '${{steps.defs.outputs.pkglist}}' -v '${{steps.defs.outputs.vignettes}}'
+        continue-on-error: true
+
+
+      - name: Create comment
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          token: ${{ secrets.PAT }}
+          issue-number: ${{ github.event.client_payload.github.payload.issue.number }}
+          body: |
+            _AUTO-GENERATED RESPONSE_
+            [Action Log](${{ steps.jobs.outputs.html_url }})
+            Your request has passed initial checks and is being built and/or deployed to the test instance.
+            Please wait further updates.
+        if: steps.request.outcome=='success'
+
+      - name: Create comment
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          token: ${{ secrets.PAT }}
+          issue-number: ${{ github.event.client_payload.github.payload.issue.number }}
+          body: |
+            _AUTO-GENERATED RESPONSE_
+            [Action Log](${{ steps.jobs.outputs.html_url }})
+            Your request has failed preliminary checks. Please make sure a corresponding `/request` command passes.
+        if: steps.request.outcome=='failure'
+
+      - name: Deploy
+        id: deploy
+        run: |
           bash .github/scripts/build.sh '${{steps.defs.outputs.id}}'
           # Redo request with container in case it was just built
           bash .github/scripts/request.sh -i "$ID" -t '${{steps.defs.outputs.title}}' -d '${{steps.defs.outputs.description}}' -s '${{steps.defs.outputs.section}}' -u '${{steps.defs.outputs.source}}' -c "$(cat generated/$ID.container)" -p '${{steps.defs.outputs.port}}' -m '${{steps.defs.outputs.command}}'
@@ -66,9 +104,10 @@ jobs:
           issue-number: ${{ github.event.client_payload.github.payload.issue.number }}
           body: |
             _AUTO-GENERATED RESPONSE_
+            [Action Log](${{ steps.jobs.outputs.html_url }})
             Your workshop has been successfully deployed to the [test instance](https://workshop.bioconductor.org). :sparkles:
             Please test your workshop on the development instance and notify us via comment when you deem it ready for public consumption on the production instance.
-        if: steps.deploy.outcome=='success'
+        if: steps.request.outcome=='success' && steps.deploy.outcome=='success'
 
       - name: Create comment
         uses: peter-evans/create-or-update-comment@v3
@@ -77,6 +116,7 @@ jobs:
           issue-number: ${{ github.event.client_payload.github.payload.issue.number }}
           body: |
             _AUTO-GENERATED RESPONSE_
+            [Action Log](${{ steps.jobs.outputs.html_url }})
             Your request has been received but is currently failing its deployment on test.
             If the corresponding `/request` command has passed with the same parameters, this is likely a bug.
-        if: steps.deploy.outcome=='failure'
+        if: steps.request.outcome=='failure' || steps.deploy.outcome=='failure'
