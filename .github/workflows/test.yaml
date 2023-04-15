@@ -54,7 +54,7 @@ jobs:
         id: jobs
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          job_name: test
+          job_name: "Deploy values to test"
           per_page: 100
 
       - name: Deploy
