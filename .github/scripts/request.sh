@@ -38,7 +38,7 @@ done
 
 
 BIOCVER="devel"
-MD5HASH=$(echo "$PKGLIST-$VIGNLIST" | md5sum)
+MD5HASH=$(echo "$PKGLIST-$VIGNLIST-$CONTAINER" | md5sum)
 LISTHASH=${MD5HASH:0:8}
 
 mkdir -p generated
