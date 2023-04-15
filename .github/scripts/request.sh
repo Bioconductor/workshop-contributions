@@ -67,6 +67,7 @@ $(sed """s@##PLACEHOLDERID##@${ID}@g
        s@^@      @g""" .github/scripts/rstudio-it-template.yaml)
 EOF
   echo "$CONTAINER" > generated/$ID.container
+fi
 
 if [ ! -z $PKGLIST ]; then
   CONTAINER="ghcr.io/bioconductor/workshop-contributions:$BIOCVER-$LISTHASH"
