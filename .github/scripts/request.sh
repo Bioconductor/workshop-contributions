@@ -74,7 +74,7 @@ elif [ ! -z $PKGLIST ]; then
   if [ ! -f generated/$ID.container ]; then
     cat << EOF >> "generated/$ID.Dockerfile"
 FROM ghcr.io/bioconductor/bioconductor:$BIOCVER
-RUN sudo apt update && sudo apt -y install apt-file && Rscript -e "BiocManager::install(c('$(echo $PKGLIST | sed 's/,/","/g')'), dependencies = c('Depends', 'Imports', 'LinkingTo', 'Suggests'))" && rm -rf /var/lib/apt/lists/*
+RUN Rscript -e "BiocManager::install(c('$(echo $PKGLIST | sed 's/,/","/g')'), dependencies = c('Depends', 'Imports', 'LinkingTo', 'Suggests'))"
 EOF
     echo "$CONTAINER" > generated/$ID.container
   fi
