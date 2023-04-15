@@ -68,7 +68,7 @@ $(sed """s@##PLACEHOLDERID##@${ID}@g
 EOF
   echo "$CONTAINER" > generated/$ID.container
 
-elif [ ! -z $PKGLIST ]; then
+if [ ! -z $PKGLIST ]; then
   CONTAINER="ghcr.io/bioconductor/workshop-contributions:$BIOCVER-$LISTHASH"
   docker manifest inspect "$CONTAINER" && ( echo "$CONTAINER" > generated/$ID.container ) || echo "Container not found."
   if [ ! -f generated/$ID.container ]; then
@@ -78,7 +78,7 @@ RUN Rscript -e "BiocManager::install(c('$(echo $PKGLIST | sed 's/,/","/g')'), de
 EOF
     echo "$CONTAINER" > generated/$ID.container
   fi
-else
+elif [ -z $CONTAINER ]; then
   CONTAINER="ghcr.io/bioconductor/bioconductor:$BIOCVER"
   echo "$CONTAINER" > generated/$ID.container
 fi
