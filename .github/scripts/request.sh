@@ -72,7 +72,7 @@ fi
 if [ ! -z $PKGLIST ]; then
   CONTAINER="ghcr.io/bioconductor/workshop-contributions:$BIOCVER-$LISTHASH"
   docker manifest inspect "$CONTAINER" && ( echo "$CONTAINER" > generated/$ID.container ) || echo "Container not found."
-  if [ ! -f generated/$ID.container ]; then
+  if [ ! -f generated/$ID.Dockerfile ]; then
     cat << EOF >> "generated/$ID.Dockerfile"
 FROM ghcr.io/bioconductor/bioconductor:$BIOCVER
 RUN Rscript -e "BiocManager::install(c('$(echo $PKGLIST | sed 's/,/","/g')'), dependencies = c('Depends', 'Imports', 'LinkingTo', 'Suggests'))"
