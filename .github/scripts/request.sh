@@ -78,7 +78,7 @@ if [ ! -z $PKGLIST ]; then
     fi
     cat << EOF >> "generated/$ID.Dockerfile"
 FROM $(cat generated/$ID.container)
-RUN Rscript -e "BiocManager::install(c('$(echo $PKGLIST | sed 's/,/","/g')'), dependencies = c('Depends', 'Imports', 'LinkingTo', 'Suggests'))"
+RUN echo $PKGLIST | tr ',' '\n' > /tmp/pkglist && cat /tmp/pkglist | xargs -i Rscript -e "if(BiocManager::install(c('{}'), dependencies = c('Depends', 'Imports', 'LinkingTo', 'Suggests'))) %in% rownames(installed.packages())) q(status = 0) else q(status = 1)"
 EOF
     echo "$CONTAINER" > generated/$ID.container
   fi
