@@ -9,10 +9,6 @@ jobs:
     env:
       ISSUE_NUM: ${{ github.event.client_payload.github.payload.issue.number }}
     steps:
-      - name: Free root space
-        uses: almahmoud/free-root-space@main
-        with:
-          verbose: true
       - uses: actions/checkout@v3
 
       - name: Set defaults for all inputs
@@ -89,6 +85,11 @@ jobs:
             [Action Log](${{ steps.jobs.outputs.html_url }})
             Your request has failed preliminary checks. Please make sure a corresponding `/request` command passes.
         if: steps.request.outcome=='failure'
+
+      - name: Free root space
+        uses: almahmoud/free-root-space@main
+        with:
+          verbose: true
 
       - name: Deploy
         id: deploy
