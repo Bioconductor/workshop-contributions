@@ -9,6 +9,12 @@ jobs:
     env:
       ISSUE_NUM: ${{ github.event.client_payload.github.payload.issue.number }}
     steps:
+    
+      - name: Free root space
+        uses: almahmoud/free-root-space@main
+        with:
+          verbose: true
+
       - uses: actions/checkout@v3
 
       - name: Set defaults for all inputs
@@ -38,14 +44,6 @@ jobs:
         run: mkdir -p ~/.kube && echo "${{ secrets.TEST_KUBECONFIG }}" > ~/.kube/config
       - name: Install Kubectl
         run: curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" && chmod +x ./kubectl && sudo mv ./kubectl /usr/local/bin/kubectl && kubectl version
-
-      - name: Login to GHCR
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
 
       - name: Get Current Job Log URL
         uses: Tiryoh/gha-jobid-action@v0
@@ -86,10 +84,12 @@ jobs:
             Your request has failed preliminary checks. Please make sure a corresponding `/request` command passes.
         if: steps.request.outcome=='failure'
 
-      - name: Free root space
-        uses: almahmoud/free-root-space@main
+      - name: Login to GHCR
+        uses: docker/login-action@v2
         with:
-          verbose: true
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Deploy
         id: deploy
