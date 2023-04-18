@@ -26,7 +26,9 @@ jobs:
           echo section=${{ github.event.client_payload.slash_command.args.named.section || 'Others' }} >> $GITHUB_OUTPUT
           echo docker=${{ github.event.client_payload.slash_command.args.named.docker || '' }} >> $GITHUB_OUTPUT
           echo port=${{ github.event.client_payload.slash_command.args.named.port || '8787' }} >> $GITHUB_OUTPUT
-          echo command=${{ github.event.client_payload.slash_command.args.named.command || 'echo "setwd(\"/home/rstudio\"); setHook(\"rstudio.sessionInit\", function(newSession) { if (newSession) rstudioapi::filesPaneNavigate(getwd()) }, action = \"append\")" > /home/rstudio/.Rprofile &amp;&amp; /init' }} >> $GITHUB_OUTPUT
+          CMDSTRING=${{ github.event.client_payload.slash_command.args.named.command }}
+          if [ -z $CMDSTRING ]; then CMDSTRING='echo "setwd(\"/home/rstudio\"); setHook(\"rstudio.sessionInit\", function(newSession) { if (newSession) rstudioapi::filesPaneNavigate(getwd()) }, action = \"append\")" > /home/rstudio/.Rprofile &amp;&amp; /init'; fi
+          echo command=$CMDSTRING >> $GITHUB_OUTPUT
           echo pkglist=${{ github.event.client_payload.slash_command.args.named.pkglist || '' }} >> $GITHUB_OUTPUT
           echo vignettes=${{ github.event.client_payload.slash_command.args.named.vignettes || '' }} >> $GITHUB_OUTPUT
           rm -f generated/${IDINPUT}.*
