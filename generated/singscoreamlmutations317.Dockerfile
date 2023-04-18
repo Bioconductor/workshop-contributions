@@ -1,3 +1,3 @@
-FROM ghcr.io/bioconductor/workshop-contributions:devel-015b0bd5
+FROM ghcr.io/almahmoud/bioconductor:3.16
 RUN echo SingscoreAMLMutations | tr ',' '\n' > /tmp/pkglist && cat /tmp/pkglist | xargs -i Rscript -e "if(BiocManager::install(c('{}'), dependencies = c('Depends', 'Imports', 'LinkingTo', 'Suggests')) %in% rownames(installed.packages())) q(status = 0) else q(status = 1)"
 RUN mkdir -p /tmp && cd /tmp && echo "vignettes/*" | tr ',' '\n' > vignettes && git clone https://git.bioconductor.org/packages/SingscoreAMLMutations && cd SingscoreAMLMutations && curl -o install.sh https://raw.githubusercontent.com/Bioconductor/workshop-contributions/main/.github/scripts/install_missing.sh && cat ../vignettes | xargs -i bash install.sh {}
