@@ -45,7 +45,7 @@ mkdir -p generated
 
 if [ ! -z $CONTAINER ]; then
 
-  docker manifest inspect "$CONTAINER"
+  docker buildx imagetools inspect "$CONTAINER"
 
   cat << EOF >> "generated/workshop-values-$ID.yaml"
   /galaxy/server/tools/interactive/biocworkshop_$ID.xml:
@@ -71,7 +71,7 @@ fi
 
 if [ ! -z $PKGLIST ]; then
   CONTAINER="ghcr.io/bioconductor/workshop-contributions:$BIOCVER-$LISTHASH"
-  docker manifest inspect "$CONTAINER" && ( echo "$CONTAINER" > generated/$ID.container ) || echo "Container not found."
+  docker buildx imagetools inspect "$CONTAINER" && ( echo "$CONTAINER" > generated/$ID.container ) || echo "Container not found."
   if [ ! -f generated/$ID.Dockerfile ]; then
     if [ ! -f generated/$ID.container ]; then
       echo "ghcr.io/bioconductor/bioconductor:$BIOCVER" > generated/$ID.container
