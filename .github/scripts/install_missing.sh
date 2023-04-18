@@ -4,5 +4,6 @@ if [ ! -f "install_missing.sh" ]
 then
     curl -o install_missing.sh https://raw.githubusercontent.com/Bioconductor/BiocDeployableQuarto/main/.github/scripts/install_missing.sh
 fi
-cp -r $TOCOPY /home/rstudio/
+mkdir -p /home/rstudio/workshop
+cp -r $TOCOPY /home/rstudio/workshop/
 find $TOCOPY -type f -name "*.*md" -print0 | xargs -r0 -i bash install_missing.sh {}
