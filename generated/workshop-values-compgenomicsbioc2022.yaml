@@ -1,4 +1,3 @@
-extraFileMappings:
   /galaxy/server/tools/interactive/biocworkshop_compgenomicsbioc2022.xml:
     useSecret: false
     applyToJob: true
