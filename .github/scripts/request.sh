@@ -18,7 +18,7 @@ while getopts ":i:t:d:s:u:c:p:m:k:v:" opt; do
     ;;
     p) PORT="$OPTARG"
     ;;
-    m) COMMAND="$OPTARG"
+    m) RAWCOMMAND="$OPTARG"
     ;;
     k) PKGLIST="$OPTARG"
     ;;
@@ -36,6 +36,8 @@ while getopts ":i:t:d:s:u:c:p:m:k:v:" opt; do
   esac
 done
 
+
+COMMAND=$(echo $RAWCOMMAND | sed "s/\\\\\"/'/g")
 
 BIOCVER="devel"
 MD5HASH=$(echo "$PKGLIST-$VIGNLIST-$CONTAINER" | md5sum)
