@@ -33,7 +33,7 @@ jobs:
           echo docker=${{ github.event.client_payload.slash_command.args.named.docker || '' }} >> $GITHUB_OUTPUT
           echo port=${{ github.event.client_payload.slash_command.args.named.port || '8787' }} >> $GITHUB_OUTPUT
           CMDSTRING=${{ github.event.client_payload.slash_command.args.named.command }}
-          if [ -z $CMDSTRING ]; then CMDSTRING='echo "setwd(\'/home/rstudio\'); setHook(\'rstudio.sessionInit\', function(newSession) { if (newSession) rstudioapi::filesPaneNavigate(getwd()) }, action = \'append\')" > /home/rstudio/.Rprofile; /init'; fi
+          if [ -z $CMDSTRING ]; then CMDSTRING="echo \"setwd('/home/rstudio'); setHook('rstudio.sessionInit', function(newSession) { if (newSession) rstudioapi::filesPaneNavigate(getwd()) }, action = 'append')\" > /home/rstudio/.Rprofile; /init"; fi
           echo command=$CMDSTRING >> $GITHUB_OUTPUT
           echo pkglist=${{ github.event.client_payload.slash_command.args.named.pkglist || '' }} >> $GITHUB_OUTPUT
           echo vignettes=${{ github.event.client_payload.slash_command.args.named.vignettes || '' }} >> $GITHUB_OUTPUT
