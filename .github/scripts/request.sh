@@ -2,7 +2,7 @@
 
 set -xe
 
-while getopts ":i:t:d:s:u:c:p:m:k:v:" opt; do
+while getopts ":i:t:d:s:u:c:p:m:k:v:b:" opt; do
   case $opt in
     i) ID="$OPTARG"
     ;;
