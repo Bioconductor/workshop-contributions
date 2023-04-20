@@ -24,6 +24,8 @@ while getopts ":i:t:d:s:u:c:p:m:k:v:" opt; do
     ;;
     v) VIGNLIST="$OPTARG"
     ;;
+    b) BEGINFILE="$OPTARG"
+    ;;
     \?) echo "Invalid option -$OPTARG" >&2
     exit 1
     ;;
@@ -40,7 +42,7 @@ done
 COMMAND=$(echo $RAWCOMMAND | sed "s/\\\\\"/'/g")
 
 BIOCVER="devel"
-MD5HASH=$(echo "$PKGLIST-$VIGNLIST-$CONTAINER" | md5sum)
+MD5HASH=$(echo "$PKGLIST-$VIGNLIST-$CONTAINER-$BEGINFILE" | md5sum)
 LISTHASH=${MD5HASH:0:8}
 
 mkdir -p generated
