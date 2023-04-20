@@ -23,6 +23,9 @@ jobs:
           SRCURL=${{ github.event.client_payload.slash_command.args.named.source || '' }}
           if [ -z "$SRCURL" ]; then
             SRCURL="https://github.com/${{github.repository}}/issues/$ISSUE_NUM"
+            SRCDIR=""
+          else
+            SRCDIR=$(basename $SRCURL)
           fi
           echo source=$SRCURL >> $GITHUB_OUTPUT
           IDINPUT=${{ github.event.client_payload.slash_command.args.named.id || 'error' }}
@@ -38,7 +41,11 @@ jobs:
           if [ -z $CMDSTRING ]; then
             ORIGCMD='echo "setwd(\"/home/rstudio\"); setHook(\"rstudio.sessionInit\", function(newSession) { if (newSession) rstudioapi::filesPaneNavigate(getwd()) }, action = \"append\")" > /home/rstudio/.Rprofile; /init';
             if [ ! -z $STARTFILE ]; then
-              CMDSTRING=$(echo ORIGCMD | sed 's#(getwd())#(getwd()); rstudioapi::navigateToFile(\"/home/rstudio/PLACEHOLDINGPATH\")#g' | sed "s#PLACEHOLDINGPATH#$STARTFILE#")
+              STARTPATH=$STARTFILE
+              if [ ! -z $SRCDIR ]; then
+                STARTPATH="$SRCDIR/$STARTFILE"
+              fi
+              CMDSTRING=$(echo ORIGCMD | sed 's#(getwd())#(getwd()); rstudioapi::navigateToFile(\"/home/rstudio/PLACEHOLDINGPATH\")#g' | sed "s#PLACEHOLDINGPATH#$STARTPATH#")
             fi
           fi
           echo command=$CMDSTRING >> $GITHUB_OUTPUT
