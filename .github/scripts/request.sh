@@ -47,9 +47,9 @@ fi
 
 GIVENCOMMAND=$(echo $RAWCOMMAND | sed "s/\\\\\"/'/g")
 COMMAND=$GIVENCOMMAND
-if [ ! -z $EXTRACMDS ]; then
-  COMMAND=$(echo $GIVENCOMMAND | sed "s#echo #$EXTRACMDS echo #")
-fi
+# if [ ! -z $EXTRACMDS ]; then
+#   COMMAND=$(echo $GIVENCOMMAND | sed "s#echo #$EXTRACMDS echo #")
+# fi
 
 BIOCVER="devel"
 MD5HASH=$(echo "$PKGLIST-$VIGNLIST-$CONTAINER-$BEGINFILE" | md5sum)
