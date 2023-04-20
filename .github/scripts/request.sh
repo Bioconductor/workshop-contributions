@@ -41,7 +41,7 @@ while getopts ":i:t:d:s:u:c:p:m:k:v:b:e:" opt; do
 done
 
 EXTRACMDS=""
-if [ ! -z $PRECMD ]; then
+if [ ! -z "$PRECMD" ]; then
   EXTRACMDS="$PRECMD &&"
 fi
 
@@ -52,7 +52,7 @@ COMMAND=$GIVENCOMMAND
 # fi
 
 BIOCVER="devel"
-MD5HASH=$(echo "$PKGLIST-$VIGNLIST-$CONTAINER-$BEGINFILE" | md5sum)
+MD5HASH=$(echo "$PKGLIST-$VIGNLIST-$CONTAINER-$BEGINFILE-$EXTRACMDS" | md5sum)
 LISTHASH=${MD5HASH:0:8}
 
 mkdir -p generated
