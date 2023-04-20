@@ -40,7 +40,11 @@ while getopts ":i:t:d:s:u:c:p:m:k:v:b:e:" opt; do
   esac
 done
 
-COMMAND=$(echo $RAWCOMMAND | sed "s/\\\\\"/'/g")
+GIVENCOMMAND=$(echo $RAWCOMMAND | sed "s/\\\\\"/'/g")
+COMMAND=$GIVENCOMMAND
+if [ ! -z $EXTRACMDS ]; then
+  COMMAND=$(echo GIVENCOMMAND | sed "s#echo #$EXTRACMDS && echo #")
+fi
 
 BIOCVER="devel"
 MD5HASH=$(echo "$PKGLIST-$VIGNLIST-$CONTAINER-$BEGINFILE" | md5sum)
@@ -107,11 +111,11 @@ EOF
   fi
   if [[ $VIGNLIST = "https://"* ]]; then
     cat << EOF >> "generated/$ID.Dockerfile"
-RUN $EXTRACMDS cd /home/rstudio && echo "$VIGNLIST" | tr ',' '\n' > vignettes && ( cat vignettes | xargs -i curl -O {} ) && curl -o install.sh https://raw.githubusercontent.com/Bioconductor/workshop-contributions/main/.github/scripts/install_missing.sh && bash install.sh .
+RUN cd /home/rstudio && echo "$VIGNLIST" | tr ',' '\n' > vignettes && ( cat vignettes | xargs -i curl -O {} ) && curl -o install.sh https://raw.githubusercontent.com/Bioconductor/workshop-contributions/main/.github/scripts/install_missing.sh && bash install.sh .
 EOF
   elif [ ! -z $SOURCE ]; then
     cat << EOF >> "generated/$ID.Dockerfile"
-RUN $EXTRACMDS cd /home/rstudio && echo "$VIGNLIST" | tr ',' '\n' > vignettes && git clone $SOURCE && cd $(basename $SOURCE) && curl -o install.sh https://raw.githubusercontent.com/Bioconductor/workshop-contributions/main/.github/scripts/install_missing.sh && cat ../vignettes | xargs -i bash install.sh {}
+RUN cd /home/rstudio && echo "$VIGNLIST" | tr ',' '\n' > vignettes && git clone $SOURCE && cd $(basename $SOURCE) && curl -o install.sh https://raw.githubusercontent.com/Bioconductor/workshop-contributions/main/.github/scripts/install_missing.sh && cat ../vignettes | xargs -i bash install.sh {}
 EOF
   fi
 fi
