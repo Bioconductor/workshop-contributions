@@ -2,27 +2,11 @@
 
 set -xe
 
-while getopts ":i:t:d:s:u:c:p:m:k:v:" opt; do
+while getopts ":i:s:" opt; do
   case $opt in
     i) ID="$OPTARG"
     ;;
-    t) TITLE="$OPTARG"
-    ;;
-    d) DESCRIPTION="$OPTARG"
-    ;;
     s) SECTION="$OPTARG"
-    ;;
-    u) SOURCE="$OPTARG"
-    ;;
-    c) CONTAINER="$OPTARG"
-    ;;
-    p) PORT="$OPTARG"
-    ;;
-    m) COMMAND="$OPTARG"
-    ;;
-    k) PKGLIST="$OPTARG"
-    ;;
-    v) VIGNLIST="$OPTARG"
     ;;
     \?) echo "Invalid option -$OPTARG" >&2
     exit 1
