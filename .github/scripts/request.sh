@@ -2,7 +2,7 @@
 
 set -xe
 
-while getopts ":i:t:d:s:u:c:p:m:k:v:b:" opt; do
+while getopts ":i:t:d:s:u:c:p:m:k:v:b:e:" opt; do
   case $opt in
     i) ID="$OPTARG"
     ;;
@@ -26,6 +26,8 @@ while getopts ":i:t:d:s:u:c:p:m:k:v:b:" opt; do
     ;;
     b) BEGINFILE="$OPTARG"
     ;;
+    e) EXTRACMDS="$OPTARG"
+    ;;
     \?) echo "Invalid option -$OPTARG" >&2
     exit 1
     ;;
@@ -38,7 +40,6 @@ while getopts ":i:t:d:s:u:c:p:m:k:v:b:" opt; do
   esac
 done
 
-
 COMMAND=$(echo $RAWCOMMAND | sed "s/\\\\\"/'/g")
 
 BIOCVER="devel"
@@ -46,6 +47,11 @@ MD5HASH=$(echo "$PKGLIST-$VIGNLIST-$CONTAINER-$BEGINFILE" | md5sum)
 LISTHASH=${MD5HASH:0:8}
 
 mkdir -p generated
+
+EXTRACMDS=""
+if [ ! -z $PRECMD ]; then
+  EXTRACMDS="$PRECMD &&"
+fi
 
 if [ ! -z $CONTAINER ]; then
 
@@ -101,11 +107,11 @@ EOF
   fi
   if [[ $VIGNLIST = "https://"* ]]; then
     cat << EOF >> "generated/$ID.Dockerfile"
-RUN cd /home/rstudio && echo "$VIGNLIST" | tr ',' '\n' > vignettes && ( cat vignettes | xargs -i curl -O {} ) && curl -o install.sh https://raw.githubusercontent.com/Bioconductor/workshop-contributions/main/.github/scripts/install_missing.sh && bash install.sh .
+RUN $EXTRACMDS cd /home/rstudio && echo "$VIGNLIST" | tr ',' '\n' > vignettes && ( cat vignettes | xargs -i curl -O {} ) && curl -o install.sh https://raw.githubusercontent.com/Bioconductor/workshop-contributions/main/.github/scripts/install_missing.sh && bash install.sh .
 EOF
   elif [ ! -z $SOURCE ]; then
     cat << EOF >> "generated/$ID.Dockerfile"
-RUN cd /home/rstudio && echo "$VIGNLIST" | tr ',' '\n' > vignettes && git clone $SOURCE && cd $(basename $SOURCE) && curl -o install.sh https://raw.githubusercontent.com/Bioconductor/workshop-contributions/main/.github/scripts/install_missing.sh && cat ../vignettes | xargs -i bash install.sh {}
+RUN $EXTRACMDS cd /home/rstudio && echo "$VIGNLIST" | tr ',' '\n' > vignettes && git clone $SOURCE && cd $(basename $SOURCE) && curl -o install.sh https://raw.githubusercontent.com/Bioconductor/workshop-contributions/main/.github/scripts/install_missing.sh && cat ../vignettes | xargs -i bash install.sh {}
 EOF
   fi
 fi
