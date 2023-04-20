@@ -35,6 +35,7 @@ jobs:
           echo section=${{ github.event.client_payload.slash_command.args.named.section || 'Others' }} >> $GITHUB_OUTPUT
           echo docker=${{ github.event.client_payload.slash_command.args.named.docker || '' }} >> $GITHUB_OUTPUT
           echo port=${{ github.event.client_payload.slash_command.args.named.port || '8787' }} >> $GITHUB_OUTPUT
+          echo precommand=${{ github.event.client_payload.slash_command.args.named.precommand || '' }} >> $GITHUB_OUTPUT
           STARTFILE=${{ github.event.client_payload.slash_command.args.named.startfile || '' }}
           echo startfile=$STARTFILE >> $GITHUB_OUTPUT
           CMDSTRING=${{ github.event.client_payload.slash_command.args.named.command }}
@@ -73,7 +74,7 @@ jobs:
         id: request
         run: |
           ID='${{steps.defs.outputs.id}}'
-          bash .github/scripts/request.sh -i "$ID" -t '${{steps.defs.outputs.title}}' -d '${{steps.defs.outputs.description}}' -s '${{steps.defs.outputs.section}}' -u '${{steps.defs.outputs.source}}' -c '${{steps.defs.outputs.docker}}' -p '${{steps.defs.outputs.port}}' -m '${{steps.defs.outputs.command}}' -k '${{steps.defs.outputs.pkglist}}' -v '${{steps.defs.outputs.vignettes}}' -b '${{steps.defs.outputs.startfile}}' 
+          bash .github/scripts/request.sh -i "$ID" -t '${{steps.defs.outputs.title}}' -d '${{steps.defs.outputs.description}}' -s '${{steps.defs.outputs.section}}' -u '${{steps.defs.outputs.source}}' -c '${{steps.defs.outputs.docker}}' -p '${{steps.defs.outputs.port}}' -m '${{steps.defs.outputs.command}}' -k '${{steps.defs.outputs.pkglist}}' -v '${{steps.defs.outputs.vignettes}}' -b '${{steps.defs.outputs.startfile}}'  -e '${{steps.defs.outputs.precommand}}' 
         continue-on-error: true
 
 
@@ -113,8 +114,8 @@ jobs:
           ID='${{steps.defs.outputs.id}}'
           bash .github/scripts/build.sh '${{steps.defs.outputs.id}}'
           # Redo request with container in case it was just built
-          bash .github/scripts/request.sh -i "$ID" -t '${{steps.defs.outputs.title}}' -d '${{steps.defs.outputs.description}}' -s '${{steps.defs.outputs.section}}' -u '${{steps.defs.outputs.source}}' -c '${{steps.defs.outputs.docker}}' -p '${{steps.defs.outputs.port}}' -m '${{steps.defs.outputs.command}}' -k '${{steps.defs.outputs.pkglist}}' -v '${{steps.defs.outputs.vignettes}}' -b '${{steps.defs.outputs.startfile}}'
-          bash .github/scripts/deploy.sh -i "$ID" -t '${{steps.defs.outputs.title}}' -d '${{steps.defs.outputs.description}}' -s '${{steps.defs.outputs.section}}' -u '${{steps.defs.outputs.source}}' -c '${{steps.defs.outputs.docker}}' -p '${{steps.defs.outputs.port}}' -m '${{steps.defs.outputs.command}}' -k '${{steps.defs.outputs.pkglist}}' -v '${{steps.defs.outputs.vignettes}}' -b '${{steps.defs.outputs.startfile}}'
+          bash .github/scripts/request.sh -i "$ID" -t '${{steps.defs.outputs.title}}' -d '${{steps.defs.outputs.description}}' -s '${{steps.defs.outputs.section}}' -u '${{steps.defs.outputs.source}}' -c "$(cat generated/$ID.container)" -p '${{steps.defs.outputs.port}}' -m '${{steps.defs.outputs.command}}'
+          bash .github/scripts/deploy.sh -i "$ID" -s '${{steps.defs.outputs.section}}'
         continue-on-error: true
 
       - name: Create comment
