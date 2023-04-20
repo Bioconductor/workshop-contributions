@@ -26,7 +26,7 @@ while getopts ":i:t:d:s:u:c:p:m:k:v:b:e:" opt; do
     ;;
     b) BEGINFILE="$OPTARG"
     ;;
-    e) EXTRACMDS="$OPTARG"
+    e) PRECMD="$OPTARG"
     ;;
     \?) echo "Invalid option -$OPTARG" >&2
     exit 1
@@ -40,10 +40,15 @@ while getopts ":i:t:d:s:u:c:p:m:k:v:b:e:" opt; do
   esac
 done
 
+EXTRACMDS=""
+if [ ! -z $PRECMD ]; then
+  EXTRACMDS="$PRECMD &&"
+fi
+
 GIVENCOMMAND=$(echo $RAWCOMMAND | sed "s/\\\\\"/'/g")
 COMMAND=$GIVENCOMMAND
 if [ ! -z $EXTRACMDS ]; then
-  COMMAND=$(echo GIVENCOMMAND | sed "s#echo #$EXTRACMDS && echo #")
+  COMMAND=$(echo $GIVENCOMMAND | sed "s#echo #$EXTRACMDS echo #")
 fi
 
 BIOCVER="devel"
@@ -51,11 +56,6 @@ MD5HASH=$(echo "$PKGLIST-$VIGNLIST-$CONTAINER-$BEGINFILE" | md5sum)
 LISTHASH=${MD5HASH:0:8}
 
 mkdir -p generated
-
-EXTRACMDS=""
-if [ ! -z $PRECMD ]; then
-  EXTRACMDS="$PRECMD &&"
-fi
 
 if [ ! -z $CONTAINER ]; then
 
@@ -111,11 +111,11 @@ EOF
   fi
   if [[ $VIGNLIST = "https://"* ]]; then
     cat << EOF >> "generated/$ID.Dockerfile"
-RUN cd /home/rstudio && echo "$VIGNLIST" | tr ',' '\n' > vignettes && ( cat vignettes | xargs -i curl -O {} ) && curl -o install.sh https://raw.githubusercontent.com/Bioconductor/workshop-contributions/main/.github/scripts/install_missing.sh && bash install.sh .
+RUN $EXTRACMDS cd /home/rstudio && echo "$VIGNLIST" | tr ',' '\n' > vignettes && ( cat vignettes | xargs -i curl -O {} ) && curl -o install.sh https://raw.githubusercontent.com/Bioconductor/workshop-contributions/main/.github/scripts/install_missing.sh && bash install.sh .
 EOF
   elif [ ! -z $SOURCE ]; then
     cat << EOF >> "generated/$ID.Dockerfile"
-RUN cd /home/rstudio && echo "$VIGNLIST" | tr ',' '\n' > vignettes && git clone $SOURCE && cd $(basename $SOURCE) && curl -o install.sh https://raw.githubusercontent.com/Bioconductor/workshop-contributions/main/.github/scripts/install_missing.sh && cat ../vignettes | xargs -i bash install.sh {}
+RUN $EXTRACMDS cd /home/rstudio && echo "$VIGNLIST" | tr ',' '\n' > vignettes && git clone $SOURCE && cd $(basename $SOURCE) && curl -o install.sh https://raw.githubusercontent.com/Bioconductor/workshop-contributions/main/.github/scripts/install_missing.sh && cat ../vignettes | xargs -i bash install.sh {}
 EOF
   fi
 fi
