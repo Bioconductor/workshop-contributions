@@ -41,6 +41,7 @@ jobs:
           CMDSTRING=${{ github.event.client_payload.slash_command.args.named.command }}
           if [ -z $CMDSTRING ]; then
             ORIGCMD='echo "{ \"visual_markdown_editing_is_default\": true }" > /etc/rstudio/rstudio-prefs.json && echo "setwd(\"/home/rstudio\"); setHook(\"rstudio.sessionInit\", function(newSession) { if (newSession) rstudioapi::filesPaneNavigate(getwd()) }, action = \"append\")" > /home/rstudio/.Rprofile; /init';
+            CMDSTRING="$ORIGCMD"
             if [ ! -z $STARTFILE ]; then
               STARTPATH=$STARTFILE
               if [ ! -z $SRCDIR ]; then
