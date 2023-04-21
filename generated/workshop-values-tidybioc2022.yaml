@@ -10,7 +10,7 @@
       <tool id="interactivetool_biocworkshop_tidybioc2022" tool_type="interactive" name="Tidy Transcriptomics" version="0.1">
           <description>For Single-Cell RNA Sequencing Analyses</description>
           <requirements>
-              <container type="docker">ghcr.io/bioconductor/workshop-contributions:devel-d19622f2</container>
+              <container type="docker">ghcr.io/bioconductor/workshop-contributions:devel-8210fbc9</container>
           </requirements>
           <entry_points>
               <entry_point name="tidybioc2022" requires_domain="True">
@@ -24,7 +24,7 @@
               <environment_variable name="GALAXY_URL">$__galaxy_url__</environment_variable>
               <environment_variable name="API_KEY" inject="api_key" />
           </environment_variables>
-          <command detect_errors="aggressive">echo "{ 'visual_markdown_editing_is_default': true }" > /etc/rstudio/rstudio-prefs.json && echo "setwd('/home/rstudio'); setHook('rstudio.sessionInit', function(newSession) { if (newSession) rstudioapi::filesPaneNavigate(getwd()); rstudioapi::navigateToFile('/home/rstudio/bioc2022_tidytranscriptomics/vignettes/tidytranscriptomics_case_study.Rmd') }, action = 'append')" > /home/rstudio/.Rprofile; /init</command>
+          <command detect_errors="aggressive">echo "{ 'visual_markdown_editing_is_default': true }" > /etc/rstudio/rstudio-prefs.json ; echo "setwd('/home/rstudio'); setHook('rstudio.sessionInit', function(newSession) { if (newSession) rstudioapi::filesPaneNavigate(getwd()); rstudioapi::navigateToFile('/home/rstudio/bioc2022_tidytranscriptomics/vignettes/tidytranscriptomics_case_study.Rmd') }, action = 'append')" > /home/rstudio/.Rprofile; /init</command>
           <inputs>
           </inputs>
           <outputs>
