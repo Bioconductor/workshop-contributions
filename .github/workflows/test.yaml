@@ -46,7 +46,7 @@ jobs:
               if [ ! -z $SRCDIR ]; then
                 STARTPATH="$SRCDIR/$STARTFILE"
               fi
-              APPENDCMD='if [ -f \\"PLACEHOLDERSTARTPATH\\" ]; then echo \\"PLACEHOLDERSTARTPATH\\" > /tmp/startfile; else echo \\"PLACEHOLDERSTARTFILE\\" > /tmp/startfile; fi'
+              APPENDCMD='if [ -f \\"/home/rstudio/PLACEHOLDERSTARTPATH\\" ]; then echo \\"/home/rstudio/PLACEHOLDERSTARTPATH\\" > /tmp/startfile; else echo \\"/home/rstudio/PLACEHOLDERSTARTFILE\\" > /tmp/startfile; fi'
               APPENDSTART=$(echo "$APPENDCMD" | sed "s@PLACEHOLDERSTARTPATH@$STARTPATH@g" | sed "s@PLACEHOLDERSTARTFILE@$STARTFILE@g")
               CMDSTRING=$(echo "$APPENDSTART ; $ORIGCMD" | sed 's#(getwd())#(getwd()); rstudioapi::navigateToFile(\\"/home/rstudio/\\\\$(cat /tmp/startfile)\\")#g')
             fi
