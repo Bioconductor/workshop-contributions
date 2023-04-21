@@ -53,7 +53,7 @@ FINALCOMMAND=$GIVENCOMMAND
 
 
 # Escape sed special characters $.*/[\]^
-COMMAND=$(echo "$FINALCOMMAND" | sed 's@\([]\$.*]\)@\\\1@g')
+COMMAND=$(echo "$FINALCOMMAND" | sed 's@\([]\$.*]\)@\\\\\1@g')
 
 BIOCVER="devel"
 MD5HASH=$(echo "$PKGLIST-$VIGNLIST-$CONTAINER-$BEGINFILE-$EXTRACMDS" | md5sum)
