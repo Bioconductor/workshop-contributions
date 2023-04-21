@@ -42,7 +42,7 @@ done
 
 EXTRACMDS=""
 if [ ! -z "$PRECMD" ]; then
-  EXTRACMDS="$PRECMD &&"
+  EXTRACMDS="$PRECMD;"
 fi
 
 GIVENCOMMAND=$(echo $RAWCOMMAND | sed "s/\\\\\"/'/g")
@@ -77,7 +77,7 @@ $(sed """s@##PLACEHOLDERID##@${ID}@g
        s@##PLACEHOLDERSOURCE##@${SOURCE}@g
        s@##PLACEHOLDERCONTAINER##@${CONTAINER}@g
        s@##PLACEHOLDERPORT##@${PORT}@g
-       s@##PLACEHOLDERCOMMAND##@$(echo "$COMMAND" | sed 's/\&/\\\&/g')@g
+       s@##PLACEHOLDERCOMMAND##@$(echo "$COMMAND" | sed 's/\&\&/;/g')@g
        s@^@      @g""" .github/scripts/rstudio-it-template.yaml)
 EOF
   echo "$CONTAINER" > generated/$ID.container
