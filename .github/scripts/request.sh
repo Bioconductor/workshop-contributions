@@ -111,11 +111,11 @@ EOF
   fi
   if [[ $VIGNLIST = "https://"* ]]; then
     cat << EOF >> "generated/$ID.Dockerfile"
-RUN $EXTRACMDS cd /home/rstudio && echo "$VIGNLIST" | tr ',' '\n' > vignlist && ( cat vignlist | xargs -i curl -O {} ) && curl -o install.sh https://raw.githubusercontent.com/Bioconductor/workshop-contributions/main/.github/scripts/install_missing.sh && bash install.sh . && rm vignlist
+RUN $EXTRACMDS echo '{ "visual_markdown_editing_is_default": true }' > /etc/rstudio/rstudio-prefs.json && cd /home/rstudio && echo "$VIGNLIST" | tr ',' '\n' > vignlist && ( cat vignlist | xargs -i curl -O {} ) && curl -o install.sh https://raw.githubusercontent.com/Bioconductor/workshop-contributions/main/.github/scripts/install_missing.sh && bash install.sh . && rm vignlist
 EOF
   elif [ ! -z $SOURCE ]; then
     cat << EOF >> "generated/$ID.Dockerfile"
-RUN $EXTRACMDS cd /home/rstudio && echo "$VIGNLIST" | tr ',' '\n' > vignlist && git clone $SOURCE && cd $(basename $SOURCE) && curl -o install.sh https://raw.githubusercontent.com/Bioconductor/workshop-contributions/main/.github/scripts/install_missing.sh && cat ../vignlist | xargs -i bash install.sh {} && rm ../vignlist
+RUN $EXTRACMDS echo '{ "visual_markdown_editing_is_default": true }' > /etc/rstudio/rstudio-prefs.json && cd /home/rstudio && echo "$VIGNLIST" | tr ',' '\n' > vignlist && git clone $SOURCE && cd $(basename $SOURCE) && curl -o install.sh https://raw.githubusercontent.com/Bioconductor/workshop-contributions/main/.github/scripts/install_missing.sh && cat ../vignlist | xargs -i bash install.sh {} && rm ../vignlist
 EOF
   fi
 fi
