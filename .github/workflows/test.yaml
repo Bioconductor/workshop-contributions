@@ -46,7 +46,8 @@ jobs:
               if [ ! -z $SRCDIR ]; then
                 STARTPATH="$SRCDIR/$STARTFILE"
               fi
-              CMDSTRING=$(echo $ORIGCMD | sed 's#(getwd())#(getwd()); rstudioapi::navigateToFile(\\"/home/rstudio/PLACEHOLDINGPATH\\")#g' | sed "s#PLACEHOLDINGPATH#$STARTPATH#")
+              APPENDSTART="if [ -f '$STARTPATH' ]; then echo '$STARTPATH' > startpathfile; else echo '$STARTFILE' > startpathfile; fi"
+              CMDSTRING=$(echo "$APPENDSTART ; $ORIGCMD" | sed 's#(getwd())#(getwd()); rstudioapi::navigateToFile(\\"/home/rstudio/$(cat startpathfile)\\")#g')
             fi
           fi
           echo command=$CMDSTRING >> $GITHUB_OUTPUT
