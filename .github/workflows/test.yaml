@@ -48,7 +48,7 @@ jobs:
               fi
               APPENDCMD='if [ -f \\"/home/rstudio/PLACEHOLDERSTARTPATH\\" ]; then echo \\"/home/rstudio/PLACEHOLDERSTARTPATH\\" > /tmp/startfile; else echo \\"/home/rstudio/PLACEHOLDERSTARTFILE\\" > /tmp/startfile; fi'
               APPENDSTART=$(echo "$APPENDCMD" | sed "s@PLACEHOLDERSTARTPATH@$STARTPATH@g" | sed "s@PLACEHOLDERSTARTFILE@$STARTFILE@g")
-              CMDSTRING=$(echo "$APPENDSTART ; $ORIGCMD" | sed 's#(getwd())#(getwd()); rstudioapi::navigateToFile(\\"/home/rstudio/\\\\$(cat /tmp/startfile)\\")#g')
+              CMDSTRING=$(echo "$APPENDSTART ; $ORIGCMD" | sed 's#(getwd())#(getwd()); rstudioapi::navigateToFile(\\"\\\\$(cat /tmp/startfile)\\")#g')
             fi
           fi
           echo command=$CMDSTRING >> $GITHUB_OUTPUT
