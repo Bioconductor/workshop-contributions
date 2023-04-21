@@ -46,9 +46,9 @@ if [ ! -z "$PRECMD" ]; then
 fi
 
 GIVENCOMMAND=$(echo $RAWCOMMAND | sed "s/\\\\\"/'/g")
-FINALCOMMAND=$GIVENCOMMAND
+COMMAND=$GIVENCOMMAND
 # if [ ! -z $EXTRACMDS ]; then
-#   FINALCOMMAND=$(echo $GIVENCOMMAND | sed "s#echo #$EXTRACMDS echo #")
+#   COMMAND=$(echo $GIVENCOMMAND | sed "s#echo #$EXTRACMDS echo #")
 # fi
 
 BIOCVER="devel"
