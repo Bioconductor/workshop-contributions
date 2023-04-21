@@ -46,10 +46,14 @@ if [ ! -z "$PRECMD" ]; then
 fi
 
 GIVENCOMMAND=$(echo $RAWCOMMAND | sed "s/\\\\\"/'/g")
-COMMAND=$GIVENCOMMAND
+FINALCOMMAND=$GIVENCOMMAND
 # if [ ! -z $EXTRACMDS ]; then
-#   COMMAND=$(echo $GIVENCOMMAND | sed "s#echo #$EXTRACMDS echo #")
+#   FINALCOMMAND=$(echo $GIVENCOMMAND | sed "s#echo #$EXTRACMDS echo #")
 # fi
+
+
+# Escape sed special characters $.*/[\]^
+COMMAND=$(echo "$FINALCOMMAND" | sed 's@\([]\$.*]\)@\\\1@g')
 
 BIOCVER="devel"
 MD5HASH=$(echo "$PKGLIST-$VIGNLIST-$CONTAINER-$BEGINFILE-$EXTRACMDS" | md5sum)
