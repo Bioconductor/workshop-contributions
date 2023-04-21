@@ -51,10 +51,6 @@ FINALCOMMAND=$GIVENCOMMAND
 #   FINALCOMMAND=$(echo $GIVENCOMMAND | sed "s#echo #$EXTRACMDS echo #")
 # fi
 
-
-# Escape sed special characters $.*/[\]^
-COMMAND=$(echo "$FINALCOMMAND" | sed 's@\([]\$.*]\)@\\\\\1@g')
-
 BIOCVER="devel"
 MD5HASH=$(echo "$PKGLIST-$VIGNLIST-$CONTAINER-$BEGINFILE-$EXTRACMDS" | md5sum)
 LISTHASH=${MD5HASH:0:8}
@@ -81,7 +77,7 @@ $(sed """s@##PLACEHOLDERID##@${ID}@g
        s@##PLACEHOLDERSOURCE##@${SOURCE}@g
        s@##PLACEHOLDERCONTAINER##@${CONTAINER}@g
        s@##PLACEHOLDERPORT##@${PORT}@g
-       s@##PLACEHOLDERCOMMAND##@${COMMAND}@g
+       s@##PLACEHOLDERCOMMAND##@$(echo "$COMMAND" | sed 's/\&/\\\&/g')@g
        s@^@      @g""" .github/scripts/rstudio-it-template.yaml)
 EOF
   echo "$CONTAINER" > generated/$ID.container
