@@ -61,7 +61,7 @@ if [ ! -z $CONTAINER ]; then
 
   docker buildx imagetools inspect "$CONTAINER"
 
-  cat << EOF >> "generated/workshop-values-$ID.yaml"
+  cat << EOF > "generated/workshop-values-$ID.yaml"
   /galaxy/server/tools/interactive/biocworkshop_$ID.xml:
     useSecret: false
     applyToJob: true
