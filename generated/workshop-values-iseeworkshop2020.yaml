@@ -24,7 +24,7 @@
               <environment_variable name="GALAXY_URL">$__galaxy_url__</environment_variable>
               <environment_variable name="API_KEY" inject="api_key" />
           </environment_variables>
-          <command detect_errors="aggressive">echo "{ 'visual_markdown_editing_is_default': true }" > /etc/rstudio/rstudio-prefs.json ; echo "setwd('/home/rstudio'); setHook('rstudio.sessionInit', function(newSession) { if (newSession) rstudioapi::filesPaneNavigate(getwd()); rstudioapi::navigateToFile('/home/rstudio/iSEEWorkshop2020/vignettes/iSEE-lab.Rmd') }, action = 'append')" > /home/rstudio/.Rprofile; chown -R rstudio /home/rstudio/*; /init</command>
+          <command detect_errors="aggressive">if [ -f iSEEWorkshop2020/vignettes/iSEE-lab.Rmd ]; then echo iSEEWorkshop2020/vignettes/iSEE-lab.Rmd > startpathfile; else echo vignettes/iSEE-lab.Rmd > startpathfile; fi ; echo "{ 'visual_markdown_editing_is_default': true }" > /etc/rstudio/rstudio-prefs.json ; echo "setwd('/home/rstudio'); setHook('rstudio.sessionInit', function(newSession) { if (newSession) rstudioapi::filesPaneNavigate(getwd()); rstudioapi::navigateToFile('/home/rstudio/$(cat startpathfile)') }, action = 'append')" > /home/rstudio/.Rprofile; chown -R rstudio /home/rstudio/*; chown -R rstudio /home/rstudio/.*; /init</command>
           <inputs>
           </inputs>
           <outputs>
