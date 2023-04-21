@@ -57,7 +57,7 @@ LISTHASH=${MD5HASH:0:8}
 
 mkdir -p generated
 
-if [ ! -z $CONTAINER ]; then
+if [ ! -z "$CONTAINER" ]; then
 
   docker buildx imagetools inspect "$CONTAINER"
 
@@ -83,7 +83,7 @@ EOF
   echo "$CONTAINER" > generated/$ID.container
 fi
 
-if [ ! -z $PKGLIST ]; then
+if [ ! -z "$PKGLIST" ]; then
   CONTAINER="ghcr.io/bioconductor/workshop-contributions:$BIOCVER-$LISTHASH"
   docker buildx imagetools inspect "$CONTAINER" && ( echo "$CONTAINER" > generated/$ID.container ) || echo "Container not found."
   if [ ! -f generated/$ID.Dockerfile ]; then
@@ -96,13 +96,13 @@ RUN echo $PKGLIST | tr ',' '\n' > /tmp/pkglist && cat /tmp/pkglist | xargs -i Rs
 EOF
     echo "$CONTAINER" > generated/$ID.container
   fi
-elif [ -z $CONTAINER ]; then
+elif [ -z "$CONTAINER" ]; then
   CONTAINER="ghcr.io/bioconductor/bioconductor:$BIOCVER"
   echo "$CONTAINER" > generated/$ID.container
 fi
 
-if [ ! -z $VIGNLIST ]; then
-  if [ ! -f generated/$ID.Dockerfile ]; then
+if [ ! -z "$VIGNLIST" ]; then
+  if [ ! -f "generated/$ID.Dockerfile" ]; then
     cat << EOF >> "generated/$ID.Dockerfile"
 FROM $(cat generated/$ID.container)
 EOF
@@ -113,7 +113,7 @@ EOF
     cat << EOF >> "generated/$ID.Dockerfile"
 RUN $EXTRACMDS cd /home/rstudio && echo "$VIGNLIST" | tr ',' '\n' > vignlist && mkdir workshop && cd workhop && cp -r workshop tmpworkshop && ( cat vignlist | xargs -i curl -O {} ) && cd .. && curl -o install.sh https://raw.githubusercontent.com/Bioconductor/workshop-contributions/main/.github/scripts/install_missing.sh && bash install.sh tmpworkshop/ && rm -rf tmpworkshop/ vignlist install.sh install_missing.sh
 EOF
-  elif [ ! -z $SOURCE ]; then
+  elif [ ! -z "$SOURCE" ]; then
     cat << EOF >> "generated/$ID.Dockerfile"
 RUN $EXTRACMDS cd /home/rstudio && echo "$VIGNLIST" | tr ',' '\n' > vignlist && git clone $SOURCE && cp -r $(basename $SOURCE) tmpsource && cd tmpsource && curl -o install.sh https://raw.githubusercontent.com/Bioconductor/workshop-contributions/main/.github/scripts/install_missing.sh && cat ../vignlist | xargs -i bash install.sh {} && cd .. && rm -rf vignlist tmpsource/
 EOF
