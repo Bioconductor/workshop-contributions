@@ -52,7 +52,7 @@ COMMAND=$(echo "$GIVENCOMMAND" | sed 's@/init@chown -R rstudio /home/rstudio/*; 
 # fi
 
 BIOCVER="devel"
-MD5HASH=$(echo "$PKGLIST-$VIGNLIST-$CONTAINER-$BEGINFILE-$EXTRACMDS" | md5sum)
+MD5HASH=$(echo "$ID-$PKGLIST-$VIGNLIST-$CONTAINER-$BEGINFILE-$EXTRACMDS" | md5sum)
 LISTHASH=${MD5HASH:0:8}
 
 mkdir -p generated
