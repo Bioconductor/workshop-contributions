@@ -1,4 +1,3 @@
-extraFileMappings:
   /galaxy/server/tools/interactive/biocworkshop_biocproject317.xml:
     useSecret: false
     applyToJob: true
