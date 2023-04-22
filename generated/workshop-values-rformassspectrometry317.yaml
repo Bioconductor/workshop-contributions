@@ -10,7 +10,7 @@
       <tool id="interactivetool_biocworkshop_rformassspectrometry317" tool_type="interactive" name="Mass Spectrometry" version="0.1">
           <description>with R and Bioconductor</description>
           <requirements>
-              <container type="docker">ghcr.io/bioconductor/workshop-contributions:devel-4fe4f2b6</container>
+              <container type="docker">ghcr.io/bioconductor/workshop-contributions:devel-5b67021a</container>
           </requirements>
           <entry_points>
               <entry_point name="rformassspectrometry317" requires_domain="True">
