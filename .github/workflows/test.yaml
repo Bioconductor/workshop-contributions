@@ -35,7 +35,7 @@ jobs:
           echo section=${{ github.event.client_payload.slash_command.args.named.section || 'Others' }} >> $GITHUB_OUTPUT
           echo docker=${{ github.event.client_payload.slash_command.args.named.docker || '' }} >> $GITHUB_OUTPUT
           echo port=${{ github.event.client_payload.slash_command.args.named.port || '8787' }} >> $GITHUB_OUTPUT
-          echo precommand=${{ github.event.client_payload.slash_command.args.named.precommand || '' }} >> $GITHUB_OUTPUT
+          echo precommand="${{ github.event.client_payload.slash_command.args.named.precommand || '' }}" >> $GITHUB_OUTPUT
           STARTFILE=${{ github.event.client_payload.slash_command.args.named.startfile || '' }}
           echo startfile=$STARTFILE >> $GITHUB_OUTPUT
           CMDSTRING=${{ github.event.client_payload.slash_command.args.named.command }}
