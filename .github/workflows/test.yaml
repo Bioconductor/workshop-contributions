@@ -77,7 +77,7 @@ jobs:
         id: request
         run: |
           ID='${{steps.defs.outputs.id}}'
-          bash .github/scripts/request.sh -i "$ID" -t '${{steps.defs.outputs.title}}' -d '${{steps.defs.outputs.description}}' -s '${{steps.defs.outputs.section}}' -u '${{steps.defs.outputs.source}}' -c '${{steps.defs.outputs.docker}}' -p '${{steps.defs.outputs.port}}' -m '${{steps.defs.outputs.command}}' -k '${{steps.defs.outputs.pkglist}}' -v '${{steps.defs.outputs.vignettes}}' -b '${{steps.defs.outputs.startfile}}'  -e '${{steps.defs.outputs.precommand}}' 
+          bash .github/scripts/request.sh -i "$ID" -t '${{steps.defs.outputs.title}}' -d '${{steps.defs.outputs.description}}' -s '${{steps.defs.outputs.section}}' -u '${{steps.defs.outputs.source}}' -c '${{steps.defs.outputs.docker}}' -p '${{steps.defs.outputs.port}}' -m '${{steps.defs.outputs.command}}' -k '${{steps.defs.outputs.pkglist}}' -v '${{steps.defs.outputs.vignettes}}' -b '${{steps.defs.outputs.startfile}}'  -e "${{steps.defs.outputs.precommand}}" 
         continue-on-error: true
 
 
