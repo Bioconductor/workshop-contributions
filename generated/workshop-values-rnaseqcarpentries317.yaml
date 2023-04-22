@@ -1,4 +1,3 @@
-extraFileMappings:
   /galaxy/server/tools/interactive/biocworkshop_rnaseqcarpentries317.xml:
     useSecret: false
     applyToJob: true
