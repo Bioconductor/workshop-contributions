@@ -10,7 +10,7 @@
       <tool id="interactivetool_biocworkshop_tidybioc2022" tool_type="interactive" name="Tidy Transcriptomics" version="0.1">
           <description>For Single-Cell RNA Sequencing Analyses</description>
           <requirements>
-              <container type="docker">ghcr.io/bioconductor/workshop-contributions:devel-8210fbc9</container>
+              <container type="docker">ghcr.io/bioconductor/workshop-contributions:devel-8008fe04</container>
           </requirements>
           <entry_points>
               <entry_point name="tidybioc2022" requires_domain="True">

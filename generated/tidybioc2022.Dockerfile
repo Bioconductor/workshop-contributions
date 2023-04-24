@@ -1,2 +1,2 @@
-FROM ghcr.io/almahmoud/bioc2022_tidytranscriptomics:42f4e2e
+FROM ghcr.io/almahmoud/bioc2022_tidytranscriptomics:3573c89
 RUN rm -rf /home/rstudio/*; cd /home/rstudio && echo "vignettes/*" | tr ',' '\n' > vignlist && git clone https://github.com/almahmoud/bioc2022_tidytranscriptomics && cp -r bioc2022_tidytranscriptomics tmpsource && cd tmpsource && curl -o install.sh https://raw.githubusercontent.com/Bioconductor/workshop-contributions/main/.github/scripts/install_missing.sh && cat ../vignlist | xargs -i bash install.sh {} && cd .. && rm -rf vignlist tmpsource/
