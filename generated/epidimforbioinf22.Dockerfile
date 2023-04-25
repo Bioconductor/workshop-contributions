@@ -1,0 +1,2 @@
+FROM ghcr.io/cmirzayi/epiforbioworkshop2022:6282ebd
+RUN rm -rf /home/rstudio/*; cd /home/rstudio && echo "vignettes/*" | tr ',' '\n' > vignlist && git clone https://github.com/cmirzayi/epiforbioworkshop2022 && cp -r epiforbioworkshop2022 tmpsource && cd tmpsource && curl -o install.sh https://raw.githubusercontent.com/Bioconductor/workshop-contributions/main/.github/scripts/install_missing.sh && cat ../vignlist | xargs -i bash install.sh {} && cd .. && rm -rf vignlist tmpsource/
