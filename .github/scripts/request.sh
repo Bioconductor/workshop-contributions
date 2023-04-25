@@ -92,7 +92,7 @@ if [ ! -z "$PKGLIST" ]; then
     fi
     cat << EOF >> "generated/$ID.Dockerfile"
 FROM $(cat generated/$ID.container)
-RUN echo $PKGLIST | tr ',' '\n' > /tmp/pkglist && cat /tmp/pkglist | xargs -i Rscript -e "if (!require('rspm')) { install.packages('rspm'); rspm::enable(); }; if(BiocManager::install(c('{}'), dependencies = c('Depends', 'Imports', 'LinkingTo', 'Suggests')) %in% rownames(installed.packages())) q(status = 0) else q(status = 1)"
+RUN sudo apt-get update && sudo apt-get -y install apt-file && echo $PKGLIST | tr ',' '\n' > /tmp/pkglist && cat /tmp/pkglist | xargs -i Rscript -e "if (!require('rspm')) { install.packages('rspm'); rspm::enable(); }; if(BiocManager::install(c('{}'), dependencies = c('Depends', 'Imports', 'LinkingTo', 'Suggests')) %in% rownames(installed.packages())) q(status = 0) else q(status = 1)"
 EOF
     echo "$CONTAINER" > generated/$ID.container
   fi
@@ -111,11 +111,11 @@ EOF
   fi
   if [[ $VIGNLIST = "https://"* ]]; then
     cat << EOF >> "generated/$ID.Dockerfile"
-RUN $EXTRACMDS cd /home/rstudio && echo "$VIGNLIST" | tr ',' '\n' > vignlist && mkdir workshop && cd workhop && cp -r workshop tmpworkshop && ( cat vignlist | xargs -i curl -O {} ) && cd .. && curl -o install.sh https://raw.githubusercontent.com/Bioconductor/workshop-contributions/main/.github/scripts/install_missing.sh && bash install.sh tmpworkshop/ && rm -rf tmpworkshop/ vignlist install.sh install_missing.sh
+RUN sudo apt-get update && sudo apt-get -y install apt-file && $EXTRACMDS cd /home/rstudio && echo "$VIGNLIST" | tr ',' '\n' > vignlist && mkdir workshop && cd workhop && cp -r workshop tmpworkshop && ( cat vignlist | xargs -i curl -O {} ) && cd .. && curl -o install.sh https://raw.githubusercontent.com/Bioconductor/workshop-contributions/main/.github/scripts/install_missing.sh && bash install.sh tmpworkshop/ && rm -rf tmpworkshop/ vignlist install.sh install_missing.sh
 EOF
   elif [ ! -z "$SOURCE" ]; then
     cat << EOF >> "generated/$ID.Dockerfile"
-RUN $EXTRACMDS cd /home/rstudio && echo "$VIGNLIST" | tr ',' '\n' > vignlist && git clone $SOURCE && cp -r $(basename $SOURCE) tmpsource && cd tmpsource && curl -o install.sh https://raw.githubusercontent.com/Bioconductor/workshop-contributions/main/.github/scripts/install_missing.sh && cat ../vignlist | xargs -i bash install.sh {} && cd .. && rm -rf vignlist tmpsource/
+RUN sudo apt-get update && sudo apt-get -y install apt-file && $EXTRACMDS cd /home/rstudio && echo "$VIGNLIST" | tr ',' '\n' > vignlist && git clone $SOURCE && cp -r $(basename $SOURCE) tmpsource && cd tmpsource && curl -o install.sh https://raw.githubusercontent.com/Bioconductor/workshop-contributions/main/.github/scripts/install_missing.sh && cat ../vignlist | xargs -i bash install.sh {} && cd .. && rm -rf vignlist tmpsource/
 EOF
   fi
 fi
