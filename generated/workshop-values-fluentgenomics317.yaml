@@ -1,4 +1,3 @@
-extraFileMappings:
   /galaxy/server/tools/interactive/biocworkshop_fluentgenomics317.xml:
     useSecret: false
     applyToJob: true
