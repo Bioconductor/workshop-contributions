@@ -92,7 +92,7 @@ if [ ! -z "$PKGLIST" ]; then
     fi
     cat << EOF >> "generated/$ID.Dockerfile"
 FROM $(cat generated/$ID.container)
-RUN sudo apt-get update && sudo apt-get -y install apt-file && echo $PKGLIST | tr ',' '\n' > /tmp/pkglist && cat /tmp/pkglist | xargs -i Rscript -e "if (!require('rspm')) { install.packages('rspm'); rspm::enable(); }; if(BiocManager::install(c('{}'), dependencies = c('Depends', 'Imports', 'LinkingTo', 'Suggests')) %in% rownames(installed.packages())) q(status = 0) else q(status = 1)"
+RUN sudo apt-get update && sudo apt-get -y install apt-file && $EXTRACMDS echo $PKGLIST | tr ',' '\n' > /tmp/pkglist && cat /tmp/pkglist | xargs -i Rscript -e "if (!require('rspm')) { install.packages('rspm'); rspm::enable(); }; p = BiocManager::install(c('{}'), dependencies = c('Depends', 'Imports', 'LinkingTo', 'Suggests')); if(p %in% rownames(installed.packages())) q(status = 0) else if(strsplit(p, "/")[[1]][2] %in% rownames(installed.packages())) q(status = 0) else q(status = 1)"
 EOF
     echo "$CONTAINER" > generated/$ID.container
   fi
