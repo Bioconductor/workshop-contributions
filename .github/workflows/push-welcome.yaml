@@ -1,0 +1,24 @@
+name: Deploy Welcome Page
+on:
+  push:
+    paths:
+      - welcome.html
+jobs:
+  deploywelcome:
+    name: Deploy Welcome page
+    runs-on: ubuntu-latest
+    env:
+      ISSUE_NUM: ${{ github.event.client_payload.github.payload.issue.number }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Helm
+        run: curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+      - name: save kubeconfig
+        shell: bash
+        run: mkdir -p ~/.kube && echo "${{ secrets.TEST_KUBECONFIG }}" > ~/.kube/config
+      - name: Install Kubectl
+        run: curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" && chmod +x ./kubectl && sudo mv ./kubectl /usr/local/bin/kubectl && kubectl version
+      - name: Deploy homepage
+        run: bash .github/scripts/deploy-welcome.sh
+
