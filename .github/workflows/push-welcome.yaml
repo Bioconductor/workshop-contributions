@@ -8,8 +8,6 @@ jobs:
   deploywelcome:
     name: Deploy Welcome page
     runs-on: ubuntu-latest
-    env:
-      ISSUE_NUM: ${{ github.event.client_payload.github.payload.issue.number }}
     steps:
       - uses: actions/checkout@v3
 
