@@ -26,3 +26,6 @@ cat welcome.html | sed 's/^/      /' >> generated/welcome.yaml
 helm repo add bioc https://github.com/Bioconductor/helm-charts/raw/devel
 helm repo update
 helm upgrade --wait --timeout 600s --install --create-namespace -n $NAMESPACE $GXYRELEASE bioc/galaxy --version $CHARTVER --reuse-values -f generated/welcome.yaml
+
+# Delete nginx pod to be replaced with new one since chart doesn't have extra mappings hash in nginx pod
+kubectl get -n $NAMESPACE pods -o name | grep "nginx" | xargs -r -i kubectl delete -n $NAMESPACE {}
