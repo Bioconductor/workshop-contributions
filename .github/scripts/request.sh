@@ -2,7 +2,7 @@
 
 set -xe
 
-while getopts ":i:t:d:s:u:c:p:m:k:v:b:e:" opt; do
+while getopts ":i:t:d:s:u:c:p:m:k:v:b:e:f:" opt; do
   case $opt in
     i) ID="$OPTARG"
     ;;
@@ -27,6 +27,8 @@ while getopts ":i:t:d:s:u:c:p:m:k:v:b:e:" opt; do
     b) BEGINFILE="$OPTARG"
     ;;
     e) PRECMD="$OPTARG"
+    ;;
+    f) FILESKEEP="$OPTARG"
     ;;
     \?) echo "Invalid option -$OPTARG" >&2
     exit 1
@@ -101,6 +103,11 @@ elif [ -z "$CONTAINER" ]; then
   echo "$CONTAINER" > generated/$ID.container
 fi
 
+POSTCMD=""
+if [ "$FILESKEEP" = "FALSE" ]; then
+  POSTCMD="; rm -rf /home/rstudio/$(basename $SOURCE)"
+fi
+
 if [ ! -z "$VIGNLIST" ]; then
   if [ ! -f "generated/$ID.Dockerfile" ]; then
     cat << EOF >> "generated/$ID.Dockerfile"
@@ -115,7 +122,7 @@ RUN sudo apt-get update && sudo apt-get -y install apt-file && $EXTRACMDS cd /ho
 EOF
   elif [ ! -z "$SOURCE" ]; then
     cat << EOF >> "generated/$ID.Dockerfile"
-RUN sudo apt-get update && sudo apt-get -y install apt-file && $EXTRACMDS cd /home/rstudio && echo "$VIGNLIST" | tr ',' '\n' > vignlist && git clone $SOURCE && cp -r $(basename $SOURCE) tmpsource && cd tmpsource && curl -o install.sh https://raw.githubusercontent.com/Bioconductor/workshop-contributions/main/.github/scripts/install_missing.sh && cat ../vignlist | xargs -i bash install.sh {} && cd .. && rm -rf vignlist tmpsource/
+RUN sudo apt-get update && sudo apt-get -y install apt-file && $EXTRACMDS cd /home/rstudio && echo "$VIGNLIST" | tr ',' '\n' > vignlist && git clone $SOURCE && cp -r $(basename $SOURCE) tmpsource && cd tmpsource && curl -o install.sh https://raw.githubusercontent.com/Bioconductor/workshop-contributions/main/.github/scripts/install_missing.sh && cat ../vignlist | xargs -i bash install.sh {} && cd .. && rm -rf vignlist tmpsource/ $POSTCMD
 EOF
   fi
 fi
