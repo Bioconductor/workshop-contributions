@@ -53,7 +53,7 @@ COMMAND=$(echo "$GIVENCOMMAND" | sed 's@/init@chown -R rstudio /home/rstudio/*; 
 #   COMMAND=$(echo $GIVENCOMMAND | sed "s#echo #$EXTRACMDS echo #")
 # fi
 
-BIOCVER="devel"
+BIOCVER="3.17"
 MD5HASH=$(echo "$SOURCE-$PKGLIST-$VIGNLIST-$CONTAINER-$BEGINFILE-$EXTRACMDS" | md5sum)
 LISTHASH=${MD5HASH:0:8}
 
