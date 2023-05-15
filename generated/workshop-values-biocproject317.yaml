@@ -10,7 +10,7 @@
       <tool id="interactivetool_biocworkshop_biocproject317" tool_type="interactive" name="The Bioconductor project" version="0.1">
           <description>an introduction to the open source software and community</description>
           <requirements>
-              <container type="docker">ghcr.io/bioconductor/workshop-contributions:devel-08b49b4e</container>
+              <container type="docker">ghcr.io/bioconductor/workshop-contributions:3.17-08b49b4e</container>
           </requirements>
           <entry_points>
               <entry_point name="biocproject317" requires_domain="True">
