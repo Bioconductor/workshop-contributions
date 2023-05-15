@@ -11,10 +11,8 @@ configs:
           <tool file="interactive/biocworkshop_epidimforbioinf22.xml" />
           <tool file="interactive/biocworkshop_singscoreamlmutations317.xml" />
           <tool file="interactive/biocworkshop_biocproject317.xml" />
-          <tool file="interactive/biocworkshop_rnaseqcarpentries317.xml" />
           <tool file="interactive/biocworkshop_biocintro317.xml" />
           <tool file="interactive/biocworkshop_rformassspectrometry317.xml" />
-          <tool file="interactive/biocworkshop_annotation316.xml" />
           <tool file="interactive/biocworkshop_compgenomicsbioc2022.xml" />
           <tool file="interactive/biocworkshop_tidybioc2022.xml" />
           <tool file="interactive/biocworkshop_iseeworkshop2020.xml" />
@@ -46,10 +44,8 @@ configs:
           <tool file="interactive/biocworkshop_epidimforbioinf22.xml" />
           <tool file="interactive/biocworkshop_singscoreamlmutations317.xml" />
           <tool file="interactive/biocworkshop_biocproject317.xml" />
-          <tool file="interactive/biocworkshop_rnaseqcarpentries317.xml" />
           <tool file="interactive/biocworkshop_biocintro317.xml" />
           <tool file="interactive/biocworkshop_rformassspectrometry317.xml" />
-          <tool file="interactive/biocworkshop_annotation316.xml" />
           <tool file="interactive/biocworkshop_compgenomicsbioc2022.xml" />
           <tool file="interactive/biocworkshop_tidybioc2022.xml" />
           <tool file="interactive/biocworkshop_iseeworkshop2020.xml" />
