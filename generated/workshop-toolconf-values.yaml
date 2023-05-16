@@ -3,6 +3,7 @@ configs:
     <?xml version='1.0' encoding='utf-8'?>
       <toolbox monitor="true">
         <label text="Smorgasbord 2023" id="smorgasbord2023" />
+          <tool file="interactive/biocworkshop_mungesumstats2023.xml" />
           <tool file="interactive/biocworkshop_fluentgenomics317.xml" />
           <tool file="interactive/biocworkshop_rnaseqgenedgerql317.xml" />
           <tool file="interactive/biocworkshop_ranseq123317.xml" />
@@ -34,6 +35,7 @@ configs:
         its section) modify that file and restart Galaxy.
         -->
         <label text="Smorgasbord 2023" id="smorgasbord2023" />
+          <tool file="interactive/biocworkshop_mungesumstats2023.xml" />
           <tool file="interactive/biocworkshop_fluentgenomics317.xml" />
           <tool file="interactive/biocworkshop_rnaseqgenedgerql317.xml" />
           <tool file="interactive/biocworkshop_ranseq123317.xml" />
