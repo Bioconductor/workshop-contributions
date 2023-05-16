@@ -48,6 +48,7 @@ configs:
           <tool file="interactive/biocworkshop_compgenomicsbioc2022.xml" />
           <tool file="interactive/biocworkshop_tidybioc2022.xml" />
           <tool file="interactive/biocworkshop_iseeworkshop2020.xml" />
-        <label id="bioconductorrstudio" text="Bioconductor RStudio" version="" />
+        <label text="Bioconductor RStudio" id="bioconductorrstudio" version="" />
+          <tool file="interactive/biocworkshop_rstudio317.xml" />
           <tool id="interactivetool_biocworkshop_rstudio316" />
     </toolbox>
