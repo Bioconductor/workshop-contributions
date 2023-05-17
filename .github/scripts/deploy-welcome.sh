@@ -23,7 +23,7 @@ EOF
 
 cat welcome.html | sed 's/^/      /' >> generated/welcome.yaml
 
-cat << "EOF" > generated/welcome.yaml
+cat << "EOF" >> generated/welcome.yaml
   /galaxy/server/static/tos.html:
     useSecret: false
     applyToJob: false
