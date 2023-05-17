@@ -23,6 +23,20 @@ EOF
 
 cat welcome.html | sed 's/^/      /' >> generated/welcome.yaml
 
+cat << "EOF" > generated/welcome.yaml
+  /galaxy/server/static/tos.html:
+    useSecret: false
+    applyToJob: false
+    applyToWeb: true
+    applyToSetupJob: false
+    applyToWorkflow: false
+    applyToNginx: true
+    tpl: true
+    content: |
+EOF
+
+cat tos.html | sed 's/^/      /' >> generated/welcome.yaml
+
 helm repo add bioc https://github.com/Bioconductor/helm-charts/raw/devel
 helm repo update
 helm upgrade --wait --timeout 600s --install --create-namespace -n $NAMESPACE $GXYRELEASE bioc/galaxy --version $CHARTVER --reuse-values -f generated/welcome.yaml
