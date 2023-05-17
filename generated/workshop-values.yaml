@@ -11,7 +11,7 @@ extraFileMappings:
       <tool id="interactivetool_biocworkshop_mungesumstats2023" tool_type="interactive" name="MungeSumstats" version="0.1">
           <description>Getting started</description>
           <requirements>
-              <container type="docker">ghcr.io/bioconductor/workshop-contributions:3.17-89061616</container>
+              <container type="docker">almurphy/mungesumstats:latest</container>
           </requirements>
           <entry_points>
               <entry_point name="mungesumstats2023" requires_domain="True">
