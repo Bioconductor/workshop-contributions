@@ -23,34 +23,25 @@
             margin: 0;
         }
         .content {
-            text-align: center;
+            text-align: left;
             padding: 20px;
-        }
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            margin: 20px 0;
-            color: white;
-            background-color: #87b13f;
-            text-decoration: none;
+            background-color: #FFFFFF;
+            margin-bottom: 10px;
             border-radius: 5px;
         }
-        .button:hover {
-            background-color: #6a8f33;
+        .content h3 {
+            margin-top: 20px;
         }
-        .button-small {
-            display: inline-block;
-            padding: 10px 20px;
-            margin: 20px 0;
-            color: #2C3143;
-            background-color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            border: 2px solid #2C3143;
+        .content img {
+            max-width: 100%;
+            height: auto;
+        }
+        .content ul {
+            margin-left: 20px;
         }
         .footer {
             text-align: center;
-            padding: 10px;
+            padding: 5px;
             background-color: #2C3143;
             color: white;
         }
@@ -59,6 +50,20 @@
             text-decoration: none;
         }
         .footer a:hover {
+            text-decoration: underline;
+        }
+        .navigation {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .navigation h5 {
+            margin-bottom: 10px;
+        }
+        .navigation h5 a {
+            color: #2C3143;
+            text-decoration: none;
+        }
+        .navigation h5 a:hover {
             text-decoration: underline;
         }
         .screenshot {
@@ -70,44 +75,54 @@
     <title>How to use workshop.bioconductor.org</title>
 </head>
 <body>
-    <h1>How to use workshop.bioconductor.org</h1>
-
-    <div>
+  <div class="header">
+        <h1>How to use workshop.bioconductor.org</h1>
+  </div>
+  <div class="container">
+    <div class="navigation" style="line-height:0.2;">
         <h5><a href="#register-login">1) Register/Login</a></h5>
         <h5><a href="#find">2) Find tutorial and Execute</a></h5>
         <h5><a href="#launch">3) Launch RStudio</a></h5>
         <h5><a href="#run">4) Run tutorial</a></h5>
-        <h5><a href="#stop">5) Stop a tutorial</a></h5>
+        <h5><a href="#stop">5) Stop tutorial</a></h5>
         <h5><a href="#note">Note</a></h5>
     </div>
+    
+    <div class="content">
+        <h3 id="register-login">1) Register/Login</h3>
+        <img src="https://github.com/Bioconductor/workshop-contributions/raw/main/images/image1.png" alt="Screenshot of login page" class="screenshot">
 
-    <h3 id="register-login">1) Register/Login</h3>
-    <img src="https://github.com/Bioconductor/workshop-contributions/raw/main/images/image1.png" alt="Screenshot of login page" class="screenshot">
 
-    <div>
         <h3 id="find">2) Find tutorial and Execute</h3>
         <p>1 then 2 in screenshot</p>
         <img src="https://github.com/Bioconductor/workshop-contributions/raw/main/images/image2.png" alt="Screenshot of finding a tutorial" class="screenshot">
+
+
+        <h3 id="launch">3) Launch RStudio</h3>
+        <p>Click "Click here to display" (might take a couple of minutes to appear)</p>
+        <img src="https://github.com/Bioconductor/workshop-contributions/raw/main/images/image3.png" alt="Screenshot of launch page" class="screenshot">
+
+        <h3 id="run">4) Run tutorial</h3>
+        <p>For most tutorials, except Carpentries, an Rmd will be in the Editor pane. Learners can run the code in this or create a new script/Rmd (File &gt; New File &gt; R Script) to write the code from scratch. For Carpentries tutorials, the idea is to start from scratch, so create a new script and type the code. The code to follow along can be found on the tutorial website. For example, see under "Materials" for each tutorial on <a href="https://gallantries.github.io/video-library/modules/bioconductor" target="_blank">the Smorgasbord tutorials webpage </a>.</p>
+        <img src="https://github.com/Bioconductor/workshop-contributions/raw/main/images/image4.png" alt="Screenshot of Bioconductor workshop RStudio" class="screenshot">
+
+        <h3 id="stop">5) Stop tutorial</h3>
+        <p>(This will delete it, so download any R code/data you want to keep in RStudio first*)</p>
+        <p>1 then 2 then 3 in screenshot</p>
+        <img src="https://github.com/Bioconductor/workshop-contributions/raw/main/images/image5.png" alt="Screenshot of stopping a tutorial" class="screenshot">
     </div>
+        <h3 id="note">Note</h3>
+        <ul>
+            <li>Only 2 tutorials (per person) can run at the same time.</li>
+            <li>Stop a tutorial before launching another.</li>
+            <li>Running tutorials will be automatically stopped after 7 days.</li>
+            <li>*Download data you want to keep (such as .Rhistory) from RStudio before stopping, see below.<p><img src="https://github.com/Bioconductor/workshop-contributions/raw/main/images/image6.png" alt="Screenshot of downloading files from RStudio" class="screenshot"></p></li>
+        </ul>
 
-    <h3 id="launch">3) Launch RStudio</h3>
-    <p>Click "Click here to display" (might take a couple of minutes to appear)</p>
-    <img src="https://github.com/Bioconductor/workshop-contributions/raw/main/images/image3.png" alt="Screenshot of launch page" class="screenshot">
-
-    <h3 id="run">4) Run tutorial</h3>
-    <p>For all tutorials except Carpentries, an Rmd will be in the Editor pane. Learners can run the code in this or create a new script/Rmd (File &gt; New File &gt; R Script) to write the code from scratch. For Carpentries, the idea is to start from scratch, so create a new script and type the code. The code to follow along is under "Materials" for each tutorial on this webpage.</p>
-    <img src="https://github.com/Bioconductor/workshop-contributions/raw/main/images/image4.png" alt="Screenshot of Bioconductor workshop RStudio" class="screenshot">
-
-    <h3 id="stop">5) Stop tutorial</h3>
-    <p>(This will delete it, so download any R code/data you want to keep in RStudio first*)</p>
-    <p>1 then 2 then 3 in screenshot</p>
-    <img src="https://github.com/Bioconductor/workshop-contributions/raw/main/images/image5.png" alt="Screenshot of stopping a tutorial" class="screenshot">
-
-    <h3 id="note">Note</h3>
-    <ul>
-        <li>Only 2 tutorials (per person) can run at the same time.</li>
-        <li>Stop a tutorial before launching another.</li>
-        <li>*Download data you want to keep (such as .Rhistory) from RStudio before stopping, see below.<p><img src="https://github.com/Bioconductor/workshop-contributions/raw/main/images/image6.png" alt="Screenshot of downloading files from RStudio" class="screenshot"></p></li>
-    </ul>
+  </div>
+      <div class="footer">
+        <p><a href="tos.html">Terms of Service</a></p>
+        <p><a href="https://support.bioconductor.org/" target="_blank">Contact us: support.bioconductor.org</a></p>
+    </div>
 </body>
 </html>
