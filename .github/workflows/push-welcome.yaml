@@ -5,7 +5,7 @@ on:
     branches:    
       - main
     paths:
-      - welcome.html
+      - *.html
 jobs:
   deploywelcome:
     name: Deploy Welcome page
