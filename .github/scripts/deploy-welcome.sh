@@ -17,7 +17,7 @@ ls | grep "\(css\|html\)$" > /tmp/filelist
 while read htmlfile; do
   echo "$htmlfile"
   cat << "EOF" >> generated/welcome.yaml
-  /galaxy/server/static/$htmlfile.html:
+  /galaxy/server/static/$htmlfile:
     useSecret: false
     applyToJob: false
     applyToWeb: true
@@ -27,7 +27,7 @@ while read htmlfile; do
     tpl: true
     content: |
 EOF
-  cat $htmlfile.html | sed 's/^/      /' >> generated/welcome.yaml
+  cat $htmlfile | sed 's/^/      /' >> generated/welcome.yaml
 done </tmp/filelist
 
 helm repo add bioc https://github.com/Bioconductor/helm-charts/raw/devel
