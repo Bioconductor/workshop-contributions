@@ -12,7 +12,7 @@ cat << "EOF" > generated/welcome.yaml
 extraFileMappings:
 EOF
 
-ls | grep ".html$" > /tmp/htmls
+ls | grep "\(css\|html\)$" > /tmp/filelist
 
 while read htmlfile; do
   echo "$htmlfile"
@@ -28,7 +28,7 @@ while read htmlfile; do
     content: |
 EOF
   cat $htmlfile.html | sed 's/^/      /' >> generated/welcome.yaml
-done </tmp/htmls
+done </tmp/filelist
 
 helm repo add bioc https://github.com/Bioconductor/helm-charts/raw/devel
 helm repo update
