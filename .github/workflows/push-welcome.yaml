@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - *.html
+      - *.css
 jobs:
   deploywelcome:
     name: Deploy Welcome page
