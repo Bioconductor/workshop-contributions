@@ -10,7 +10,14 @@ mkdir -p generated
 
 cat << "EOF" > generated/welcome.yaml
 extraFileMappings:
-  /galaxy/server/static/welcome.html:
+EOF
+
+ls | grep ".html$" > /tmp/htmls
+
+while read htmlfile; do
+  echo "$htmlfile"
+  cat << "EOF" >> generated/welcome.yaml
+  /galaxy/server/static/$htmlfile.html:
     useSecret: false
     applyToJob: false
     applyToWeb: true
@@ -20,22 +27,8 @@ extraFileMappings:
     tpl: true
     content: |
 EOF
-
-cat welcome.html | sed 's/^/      /' >> generated/welcome.yaml
-
-cat << "EOF" >> generated/welcome.yaml
-  /galaxy/server/static/tos.html:
-    useSecret: false
-    applyToJob: false
-    applyToWeb: true
-    applyToSetupJob: false
-    applyToWorkflow: false
-    applyToNginx: true
-    tpl: true
-    content: |
-EOF
-
-cat tos.html | sed 's/^/      /' >> generated/welcome.yaml
+  cat $htmlfile.html | sed 's/^/      /' >> generated/welcome.yaml
+done </tmp/htmls
 
 helm repo add bioc https://github.com/Bioconductor/helm-charts/raw/devel
 helm repo update
