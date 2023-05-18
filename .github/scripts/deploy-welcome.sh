@@ -16,8 +16,8 @@ ls | grep "\(css\|html\)$" > /tmp/filelist
 
 while read htmlfile; do
   echo "$htmlfile"
-  cat << "EOF" >> generated/welcome.yaml
-  /galaxy/server/static/$htmlfile:
+  cat << EOF >> generated/welcome.yaml
+  /galaxy/server/static/${htmlfile}:
     useSecret: false
     applyToJob: false
     applyToWeb: true
