@@ -1,11 +1,11 @@
 name: Deploy Toolconf order
 on:
   workflow_dispatch:
-  push:
-    branches:    
-      - main
-    paths:
-      - generated/workshop-toolconf-values.yaml
+#   push:
+#     branches:    
+#       - main
+#     paths:
+#       - generated/workshop-toolconf-values.yaml
 jobs:
   deploytoolconf:
     name: Deploy Toolconf
