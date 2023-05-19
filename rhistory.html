@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F8F9FA;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            padding: 20px;
+            background-color: #2C3143;
+            color: white;
+        }
+        .header h1 {
+            margin: 0;
+        }
+        .content {
+            text-align: left;
+            padding: 20px;
+            background-color: #FFFFFF;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .content h3 {
+            margin-top: 20px;
+        }
+        .content img {
+            max-width: 100%;
+            height: auto;
+        }
+        .content ul {
+            margin-left: 20px;
+        }
+        .footer {
+            text-align: center;
+            padding: 5px;
+            background-color: #2C3143;
+            color: white;
+        }
+        .footer a {
+            color: white;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .navigation {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .navigation h5 {
+            margin-bottom: 10px;
+        }
+        .navigation h5 a {
+            color: #2C3143;
+            text-decoration: none;
+        }
+        .navigation h5 a:hover {
+            text-decoration: underline;
+        }
+        .screenshot {
+            width: 400px;
+            height: auto;
+        }
+    </style>
+    <meta charset="utf-8">
+    <title>How to use workshop.bioconductor.org</title>
+</head>
+<body>
+  <div class="header">
+        <h1>How to use workshop.bioconductor.org</h1>
+  </div>
+  <div class="container">
+    <div class="content">
+        <h1>Smörgåsbord 2023 Certificates</h1>
+        <p>If you wish for Bioconductor to issue you a Certificate proving your succesful and active participation in Smörgåsbord 2023, you will have to meet all activity requirements.</p>
+        <p>In order to prove your successful completion of a Bioconductor workshop, you will be required to export and provide your <strong>.Rhistory file from EACH completed workshop, by filling out <a href="https://forms.gle/L2iEJkhnhXYdtZD48">the following form </a>.</strong></p>
+        <p>Please export your .Rhistory as soon as you are done with a workshop, to avoid the possibility of losing your progress. You will not be able to recover your .Rhistory after the workshop is stopped.</p>
+        <h2>How to Save your .Rhistory</h2>
+        <h3 id="create">1) Create the .Rhistory file</h3>
+        <p>In order to save a history of the R code run in the session up to that point, you may use the built-in <a href="https://rdrr.io/r/utils/savehistory.html">savehistory(file=".Rhistory")</a> function in R.</p>
+        <p>This can be done by running the code in the console, as shown in 1 below.</p>
+        <p>After running, an .Rhistory file will be created in your Home directory, which you may access by clicking the Home button in the Files pane, as shown in 2 below.</p>
+        <img src="https://github.com/Bioconductor/workshop-contributions/raw/main/images/rhistory-save-1.png" alt="Screenshot of running savehistory" class="screenshot">
+        <h3 id="export">2) Export the .Rhistory file</h3>
+        <p>In order to export the .Rhistory file, after navigating to the Home directory as shown above, you must first select the .Rhistory file by checking the appropriate box, as shown in 1 below.</p>
+        <p>After selecting the file, you will have to click on the More button, as shown in 2 below, then the Export option from the dropdown menu, as shown in 3 below.</p>
+        <img src="https://github.com/Bioconductor/workshop-contributions/raw/main/images/rhistory-save-2.png" alt="Screenshot of running savehistory" class="screenshot">
+        <h3 id="download">3) Rename and download the .Rhistory file</h3>
+        <p>After clicking the Export button as shown above, a new window will prompt you for the name under which to save the desired file on your own computer.</p>
+        <p>We recommend changing the name for each workshop, to facilitate saving and later identifying histories from multiple workshops.</p>
+        <p>Change the name by typing the desired filename in the text box as shown in 1 below, then download the file by pressing the Download button, as shown in 2 below.</p>
+        <p>Generally, the resulting file will be downloaded in your Downloads folder. Note that using Incognito/Private Mode or the equivalent, can result in your downloaded files being automatically deleted when you close your browser.</p>
+        <p>Depending on your Browser and Operating System settings, you might be further prompted to choose a location on your computer.</p>
+        <img src="https://github.com/Bioconductor/workshop-contributions/raw/main/images/rhistory-save-3.png" alt="Screenshot of running savehistory" class="screenshot">
+        <h3 id="form">4) Fill out the <a href="https://forms.gle/L2iEJkhnhXYdtZD48">Ceritifacte Request Form</a></h3>
+        <p>We recommend you save your Rhistory when taking long breaks from a workshop, and as soon as a workshop is completed.</p>
+        <p>We might accept partial histories on a case-by-base basis, but cannot issue a certificate if no evidence of completion is provided.</p>
+        <p>After the .Rhistory is saved, you will need to fill out the Fill out the <a href="https://forms.gle/L2iEJkhnhXYdtZD48">Ceritifacte Request Form</a> and upload the Rhistory for EACH workshop.</p> 
+        <p>You will receive your certificate via the provided email, a few weeks after the end of the event.</p>
+    </div>
+        <p><a href="welcome.html" class="button" target="_self">Return to Welcome Page</a></p>
+  </div>
+    <div class="footer">
+      <p><a href="tos.html">Terms of Service</a></p>
+      <p><a href="https://support.bioconductor.org/" target="_blank">Contact us: support.bioconductor.org</a></p>
+    </div>
+</body>
+</html>
