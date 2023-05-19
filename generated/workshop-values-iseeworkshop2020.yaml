@@ -10,7 +10,7 @@
       <tool id="interactivetool_biocworkshop_iseeworkshop2020" tool_type="interactive" name="iSEE" version="0.1">
           <description>Interactive visualization of SummarizedExperiment objects</description>
           <requirements>
-              <container type="docker">ghcr.io/almahmoud/iseeworkshop2020:a3106e8</container>
+              <container type="docker">ghcr.io/bioconductor/workshop-contributions:3.17-587c028a</container>
           </requirements>
           <entry_points>
               <entry_point name="iseeworkshop2020" requires_domain="True">
