@@ -3,6 +3,7 @@ configs:
     <?xml version='1.0' encoding='utf-8'?>
       <toolbox monitor="true">
         <label text="Smorgasbord 2023" id="smorgasbord2023" />
+          <tool file="interactive/biocworkshop_nanostringsoo2023.xml" />
           <tool file="interactive/biocworkshop_biocintro317.xml" />
           <tool file="interactive/biocworkshop_biocproject317.xml" />
           <tool file="interactive/biocworkshop_iseeworkshop2020.xml" />
@@ -35,6 +36,7 @@ configs:
         its section) modify that file and restart Galaxy.
         -->
         <label text="Smorgasbord 2023" id="smorgasbord2023" />
+          <tool file="interactive/biocworkshop_nanostringsoo2023.xml" />
           <tool id="interactivetool_biocworkshop_biocintro317" />
           <tool id="interactivetool_biocworkshop_biocproject317" />
           <tool id="interactivetool_biocworkshop_iseeworkshop2020" />
