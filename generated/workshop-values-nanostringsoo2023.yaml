@@ -10,7 +10,7 @@
       <tool id="interactivetool_biocworkshop_nanostringsoo2023" tool_type="interactive" name="Introduction to SpatialOmicsOverlay" version="0.1">
           <description>from NanoString</description>
           <requirements>
-              <container type="docker">ghcr.io/almahmoud/soobiocworkshop:35105c6</container>
+              <container type="docker">ghcr.io/almahmoud/soobiocworkshop:f3d2447</container>
           </requirements>
           <entry_points>
               <entry_point name="nanostringsoo2023" requires_domain="True">
