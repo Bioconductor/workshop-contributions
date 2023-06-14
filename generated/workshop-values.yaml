@@ -11,7 +11,7 @@ extraFileMappings:
       <tool id="interactivetool_biocworkshop_xm2023" tool_type="interactive" name="XM2023 R / Bioconductor intro" version="0.1">
           <description>Talk and Short Course Material for R / Bioconductor</description>
           <requirements>
-              <container type="docker">ghcr.io/mtmorgan/xm2023:574e2e6</container>
+              <container type="docker">ghcr.io/mtmorgan/xm2023:latest</container>
           </requirements>
           <entry_points>
               <entry_point name="xm2023" requires_domain="True">
