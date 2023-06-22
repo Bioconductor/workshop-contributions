@@ -22,6 +22,8 @@ configs:
           <tool file="interactive/biocworkshop_mungesumstats2023.xml" />
           <tool file="interactive/biocworkshop_rformassspectrometry317.xml" />
         </section>
+        <label text="ARTNet 2023" id="artnet2023" />
+          <tool file="interactive/biocworkshop_ARTNet2023.xml" />
       </toolbox>
   integrated_tool_panel.xml: |
     <?xml version="1.0"?>
@@ -59,4 +61,6 @@ configs:
           <tool id="interactivetool_biocworkshop_mungesumstats2023" />
           <tool id="interactivetool_biocworkshop_rformassspectrometry317" />
         </section>
+        <label text="ARTNet 2023" id="artnet2023" />
+          <tool file="interactive/biocworkshop_ARTNet2023.xml" />
     </toolbox>
