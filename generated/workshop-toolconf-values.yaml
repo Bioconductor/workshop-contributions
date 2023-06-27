@@ -2,6 +2,8 @@ configs:
   tool_conf_bioc.xml: |
     <?xml version='1.0' encoding='utf-8'?>
       <toolbox monitor="true">
+        <label text="ARTNet 2023" id="artnet2023" />
+          <tool file="interactive/biocworkshop_ARTNet2023.xml" />
         <label text="X-Meeting / BSB 2023" id="xmeetingbsb2023" />
           <tool file="interactive/biocworkshop_xm2023.xml" />
         <label text="Bioconductor RStudio" id="bioconductorrstudio" />
@@ -22,8 +24,6 @@ configs:
           <tool file="interactive/biocworkshop_mungesumstats2023.xml" />
           <tool file="interactive/biocworkshop_rformassspectrometry317.xml" />
         </section>
-        <label text="ARTNet 2023" id="artnet2023" />
-          <tool file="interactive/biocworkshop_ARTNet2023.xml" />
       </toolbox>
   integrated_tool_panel.xml: |
     <?xml version="1.0"?>
@@ -41,6 +41,8 @@ configs:
         via its API - but if changes are necessary (such as to hide a tool or re-assign
         its section) modify that file and restart Galaxy.
         -->
+        <label text="ARTNet 2023" id="artnet2023" />
+          <tool file="interactivetool_biocworkshop_ARTNet2023" />
         <label text="X-Meeting / BSB 2023" id="xmeetingbsb2023" />
           <tool id="interactivetool_biocworkshop_xm2023" />
         <label text="Bioconductor RStudio" id="bioconductorrstudio" version="" />
@@ -61,6 +63,4 @@ configs:
           <tool id="interactivetool_biocworkshop_mungesumstats2023" />
           <tool id="interactivetool_biocworkshop_rformassspectrometry317" />
         </section>
-        <label text="ARTNet 2023" id="artnet2023" />
-          <tool file="interactive/biocworkshop_ARTNet2023.xml" />
     </toolbox>
