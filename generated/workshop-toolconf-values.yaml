@@ -20,10 +20,10 @@ configs:
           <tool file="interactive/biocworkshop_mungesumstats2023.xml" />
           <tool file="interactive/biocworkshop_rformassspectrometry317.xml" />
         </section>
-        <section name="ARTNet 2023" id="artnet2023" />
+        <section name="ARTNet 2023" id="artnet2023">
           <tool file="interactive/biocworkshop_ARTNet2023.xml" />
         </section>
-        <section name="X-Meeting BSB 2023" id="xmeetingbsb2023" />
+        <section name="X-Meeting BSB 2023" id="xmeetingbsb2023">
           <tool file="interactive/biocworkshop_xm2023.xml" />
         </section>
         <label text="ISMB 2023" id="ismb2023" />
@@ -63,10 +63,10 @@ configs:
           <tool id="interactivetool_biocworkshop_mungesumstats2023" />
           <tool id="interactivetool_biocworkshop_rformassspectrometry317" />
         </section>
-        <section name="ARTNet 2023" id="artnet2023" />
+        <section name="ARTNet 2023" id="artnet2023">
           <tool id="interactivetool_biocworkshop_ARTNet2023" />
         </section>
-        <section name="X-Meeting BSB 2023" id="xmeetingbsb2023" />
+        <section name="X-Meeting BSB 2023" id="xmeetingbsb2023">
           <tool id="interactivetool_biocworkshop_xm2023" />
         </section>
         <label text="ISMB 2023" id="ismb2023" />
