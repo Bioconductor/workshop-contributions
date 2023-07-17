@@ -29,6 +29,7 @@ configs:
           <tool file="interactive/biocworkshop_xm2023.xml" />
         </section>
         <label text="BioC 2023" id="bioc2023" />
+          <tool file="interactive/biocworkshop_bioc2023cytoverse.xml" />
           <tool file="interactive/biocworkshop_bioc2023parallelcompyting.xml" />
           <tool file="interactive/biocworkshop_bioc2023pyinterop.xml" />
           <tool file="interactive/biocworkshop_bioc2023voyager.xml" />
@@ -77,6 +78,7 @@ configs:
           <tool id="interactivetool_biocworkshop_xm2023" />
         </section>
         <label text="BioC 2023" id="bioc2023" />
+          <tool file="interactive/biocworkshop_bioc2023cytoverse.xml" />
           <tool file="interactive/biocworkshop_bioc2023parallelcompyting.xml" />
           <tool file="interactive/biocworkshop_bioc2023pyinterop.xml" />
           <tool file="interactive/biocworkshop_bioc2023voyager.xml" />
