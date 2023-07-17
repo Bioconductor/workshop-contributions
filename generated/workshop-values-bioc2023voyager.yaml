@@ -1,4 +1,3 @@
-extraFileMappings:
   /galaxy/server/tools/interactive/biocworkshop_bioc2023voyager.xml:
     useSecret: false
     applyToJob: true
