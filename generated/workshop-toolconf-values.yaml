@@ -28,7 +28,11 @@ configs:
         <section name="X-Meeting BSB 2023" id="xmeetingbsb2023">
           <tool file="interactive/biocworkshop_xm2023.xml" />
         </section>
+        <section name="Test" id="testingsection">
+          <tool file="interactive/biocshiny_iseehub.xml" />
+        </section>
         <label text="BioC 2023" id="bioc2023" />
+          <tool file="interactive/biocworkshop_bioc2023pdscrnaseqapp.xml" />
           <tool file="interactive/biocworkshop_bioc2023speaqeasy.xml" />
           <tool file="interactive/biocworkshop_bioc2023cytoverse.xml" />
           <tool file="interactive/biocworkshop_bioc2023parallelcompyting.xml" />
@@ -78,11 +82,15 @@ configs:
         <section name="X-Meeting BSB 2023" id="xmeetingbsb2023">
           <tool id="interactivetool_biocworkshop_xm2023" />
         </section>
+        <section name="Test" id="testingsection">
+          <tool id="interactivetool_biocshiny_iseehub" />
+        </section>
         <label text="BioC 2023" id="bioc2023" />
-          <tool file="interactive/biocworkshop_bioc2023speaqeasy.xml" />
-          <tool file="interactive/biocworkshop_bioc2023cytoverse.xml" />
-          <tool file="interactive/biocworkshop_bioc2023parallelcompyting.xml" />
-          <tool file="interactive/biocworkshop_bioc2023pyinterop.xml" />
-          <tool file="interactive/biocworkshop_bioc2023voyager.xml" />
-          <tool file="interactive/biocworkshop_bioc2023mariner.xml" />
+          <tool file="interactive/biocworkshop_bioc2023pdscrnaseqapp.xml" />
+          <tool id="interactivetool_biocworkshop_bioc2023speaqeasy" />
+          <tool file="interactivetool_biocworkshop_bioc2023cytoverse" />
+          <tool file="interactivetool_biocworkshop_bioc2023parallelcompyting" />
+          <tool file="interactivetool_biocworkshop_bioc2023pyinterop" />
+          <tool file="interactivetool_biocworkshop_bioc2023voyager" />
+          <tool file="interactivetool_biocworkshop_bioc2023mariner" />
     </toolbox>

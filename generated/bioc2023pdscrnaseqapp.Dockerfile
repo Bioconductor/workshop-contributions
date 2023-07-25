@@ -1,0 +1,2 @@
+FROM ghcr.io/jianhong/scrnaseqappbioc2023workshop:latest
+RUN sudo apt-get update && sudo apt-get -y install apt-file &&  cd /home/rstudio && echo "vignettes/*" | tr ',' '\n' > vignlist && git clone https://github.com/jianhong/scRNAseqAppBioc2023Workshop && cp -r scRNAseqAppBioc2023Workshop tmpsource && cd tmpsource && curl -o install.sh https://raw.githubusercontent.com/Bioconductor/workshop-contributions/main/.github/scripts/install_missing.sh && cat ../vignlist | xargs -i bash install.sh {} && cd .. && rm -rf vignlist tmpsource/ 
