@@ -54,7 +54,7 @@ COMMAND=$(echo "$GIVENCOMMAND" | sed 's@/init@chown -R rstudio /home/rstudio/*; 
 # fi
 
 if [ "$FILESKEEP" = "FALSE" ]; then
-  FINALCOMMAND=$(echo "$COMMAND" | sed "s@/init@rm -rf /home/rstudio/$(basename $SOURCE); /init@g")
+  FINALCOMMAND=$(echo "rm -rf /home/rstudio/$(basename $SOURCE); $COMMAND")
   COMMAND="$FINALCOMMAND"
 fi
 
