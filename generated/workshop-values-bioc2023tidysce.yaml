@@ -1,4 +1,3 @@
-extraFileMappings:
   /galaxy/server/tools/interactive/biocworkshop_bioc2023tidysce.xml:
     useSecret: false
     applyToJob: true

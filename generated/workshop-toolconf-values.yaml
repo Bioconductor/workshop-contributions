@@ -32,6 +32,7 @@ configs:
           <tool file="interactive/biocshiny_iseehub.xml" />
         </section>
         <label text="BioC 2023" id="bioc2023" />
+          <tool file="interactive/biocworkshop_bioc2023tidysce.xml" />
           <tool file="interactive/biocworkshop_bioc2023isoformic.xml" />
           <tool file="interactive/biocworkshop_bioc2023pdscmerge.xml" />
           <tool file="interactive/biocworkshop_bioc2023demuxsnp.xml" />
@@ -89,6 +90,7 @@ configs:
           <tool id="interactivetool_biocshiny_iseehub" />
         </section>
         <label text="BioC 2023" id="bioc2023" />
+          <tool file="interactive/biocworkshop_bioc2023tidysce.xml" />
           <tool file="interactive/biocworkshop_bioc2023isoformic.xml" />
           <tool file="interactive/biocworkshop_bioc2023pdscmerge.xml" />
           <tool file="interactive/biocworkshop_bioc2023demuxsnp.xml" />
