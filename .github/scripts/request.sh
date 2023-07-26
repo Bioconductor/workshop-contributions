@@ -53,6 +53,11 @@ COMMAND=$(echo "$GIVENCOMMAND" | sed 's@/init@chown -R rstudio /home/rstudio/*; 
 #   COMMAND=$(echo $GIVENCOMMAND | sed "s#echo #$EXTRACMDS echo #")
 # fi
 
+if [ "$FILESKEEP" = "FALSE" ]; then
+  FINALCOMMAND=$(echo "$COMMAND" | sed "s@/init@rm -rf /home/rstudio/$(basename $SOURCE); /init@g")
+  COMMAND="$FINALCOMMAND"
+fi
+
 BIOCVER="3.17"
 MD5HASH=$(echo "$SOURCE-$PKGLIST-$VIGNLIST-$CONTAINER-$BEGINFILE-$EXTRACMDS" | md5sum)
 LISTHASH=${MD5HASH:0:8}
