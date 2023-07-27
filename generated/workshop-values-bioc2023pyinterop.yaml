@@ -7,8 +7,8 @@
     applyToNginx: true
     tpl: false
     content: |
-      <tool id="interactivetool_biocworkshop_bioc2023pyinterop" tool_type="interactive" name="interplay between R, Python, and Apache Spark in genetic and single-cell applications" version="0.1">
-          <description>with basilisk, scivR, BiocHail, OSCA, and more</description>
+      <tool id="interactivetool_biocworkshop_bioc2023pyinterop" tool_type="interactive" name="Bridges from Python to Bioconductor" version="0.1">
+          <description>Applications in Genetics and Single-cell Genomics</description>
           <requirements>
               <container type="docker">ghcr.io/vjcitn/biocpyinterop:latest</container>
           </requirements>
