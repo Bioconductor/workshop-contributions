@@ -7,10 +7,10 @@
     applyToNginx: true
     tpl: false
     content: |
-      <tool id="interactivetool_biocworkshop_bioc2023speaqeasy" tool_type="interactive" name="SPEAQeasy" version="0.1">
+      <tool id="interactivetool_biocworkshop_bioc2023speaqeasy" tool_type="interactive" name="A Bioconductor-style differential expression analysis powered by SPEAQeasy" version="0.1">
           <description>a Scalable Pipeline for Expression Analysis and Quantification</description>
           <requirements>
-              <container type="docker">ghcr.io/bioconductor/workshop-contributions:3.17-5cb5eb3a</container>
+              <container type="docker">ghcr.io/bioconductor/workshop-contributions:3.17-5da77d62</container>
           </requirements>
           <entry_points>
               <entry_point name="bioc2023speaqeasy" requires_domain="True">
@@ -24,7 +24,7 @@
               <environment_variable name="GALAXY_URL">$__galaxy_url__</environment_variable>
               <environment_variable name="API_KEY" inject="api_key" />
           </environment_variables>
-          <command detect_errors="aggressive">if [ -f '/home/rstudio/SPEAQeasyWorkshop2023/vignettes/SPEAQeasyWorkshop2023.Rmd' ]; then echo '/home/rstudio/SPEAQeasyWorkshop2023/vignettes/SPEAQeasyWorkshop2023.Rmd' > /tmp/startfile; else echo '/home/rstudio/vignettes/SPEAQeasyWorkshop2023.Rmd' > /tmp/startfile; fi ; echo "{ 'visual_markdown_editing_is_default': true }" > /etc/rstudio/rstudio-prefs.json ; echo "setwd('/home/rstudio'); setHook('rstudio.sessionInit', function(newSession) { if (newSession) rstudioapi::filesPaneNavigate('\$(dirname \$(cat /tmp/startfile))'); rstudioapi::navigateToFile('\$(cat /tmp/startfile)') }, action = 'append')" > /home/rstudio/.Rprofile; chown -R rstudio /home/rstudio/*; rm /tmp/startfile; chown -R rstudio /home/rstudio/.*; /init</command>
+          <command detect_errors="aggressive">export TEMP=/tmp TMP=/tmp TMPDIR=/tmp TEMPDIR=/tmp; if [ -f '/home/rstudio/SPEAQeasyWorkshop2023/vignettes/SPEAQeasyWorkshop2023.Rmd' ]; then echo '/home/rstudio/SPEAQeasyWorkshop2023/vignettes/SPEAQeasyWorkshop2023.Rmd' > /tmp/startfile; else echo '/home/rstudio/vignettes/SPEAQeasyWorkshop2023.Rmd' > /tmp/startfile; fi ; echo "{ 'visual_markdown_editing_is_default': true }" > /etc/rstudio/rstudio-prefs.json ; echo "setwd('/home/rstudio'); setHook('rstudio.sessionInit', function(newSession) { if (newSession) rstudioapi::filesPaneNavigate('\$(dirname \$(cat /tmp/startfile))'); rstudioapi::navigateToFile('\$(cat /tmp/startfile)') }, action = 'append')" > /home/rstudio/.Rprofile; chown -R rstudio /home/rstudio/*; rm /tmp/startfile; chown -R rstudio /home/rstudio/.*; /init</command>
           <inputs>
           </inputs>
           <outputs>
