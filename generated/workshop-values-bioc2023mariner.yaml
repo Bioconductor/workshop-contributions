@@ -7,7 +7,7 @@
     applyToNginx: true
     tpl: false
     content: |
-      <tool id="interactivetool_biocworkshop_bioc2023mariner" tool_type="interactive" name="Mariner: Explore the Hi-Cs" version="0.1">
+      <tool id="interactivetool_biocworkshop_bioc2023mariner" tool_type="interactive" name="Analyzing and visualizing Hi-C data" version="0.1">
           <description>with mariner and plotgardener packages</description>
           <requirements>
               <container type="docker">ghcr.io/ericsdavis/bioc2023mariner:latest</container>
@@ -24,7 +24,7 @@
               <environment_variable name="GALAXY_URL">$__galaxy_url__</environment_variable>
               <environment_variable name="API_KEY" inject="api_key" />
           </environment_variables>
-          <command detect_errors="aggressive">export TEMP=/tmp TMP=/tmp TMPDIR=/tmp TEMPDIR=/tmp; if [ -f '/home/rstudio/Bioc2023mariner/vignettes/Bioc2023mariner.Rmd' ]; then echo '/home/rstudio/Bioc2023mariner/vignettes/Bioc2023mariner.Rmd' > /tmp/startfile; else echo '/home/rstudio/vignettes/Bioc2023mariner.Rmd' > /tmp/startfile; fi ; echo "{ 'visual_markdown_editing_is_default': true }" > /etc/rstudio/rstudio-prefs.json ; echo "setwd('/home/rstudio'); setHook('rstudio.sessionInit', function(newSession) { if (newSession) rstudioapi::filesPaneNavigate('\$(dirname \$(cat /tmp/startfile))'); rstudioapi::navigateToFile('\$(cat /tmp/startfile)') }, action = 'append')" > /home/rstudio/.Rprofile; chown -R rstudio /home/rstudio/*; rm /tmp/startfile; chown -R rstudio /home/rstudio/.*; /init</command>
+          <command detect_errors="aggressive">if [ -f '/home/rstudio/Bioc2023mariner/vignettes/Bioc2023mariner.Rmd' ]; then echo '/home/rstudio/Bioc2023mariner/vignettes/Bioc2023mariner.Rmd' > /tmp/startfile; else echo '/home/rstudio/vignettes/Bioc2023mariner.Rmd' > /tmp/startfile; fi ; echo "{ 'visual_markdown_editing_is_default': true }" > /etc/rstudio/rstudio-prefs.json ; echo "setwd('/home/rstudio'); setHook('rstudio.sessionInit', function(newSession) { if (newSession) rstudioapi::filesPaneNavigate('\$(dirname \$(cat /tmp/startfile))'); rstudioapi::navigateToFile('\$(cat /tmp/startfile)') }, action = 'append')" > /home/rstudio/.Rprofile; chown -R rstudio /home/rstudio/*; rm /tmp/startfile; chown -R rstudio /home/rstudio/.*; /init</command>
           <inputs>
           </inputs>
           <outputs>
