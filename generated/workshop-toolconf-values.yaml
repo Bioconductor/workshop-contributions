@@ -2,11 +2,33 @@ configs:
   tool_conf_bioc.xml: |
     <?xml version='1.0' encoding='utf-8'?>
       <toolbox monitor="true">
-        <label text="ISMB 2023" id="ismb2023" />
-          <tool file="interactive/biocworkshop_oscaismb2023.xml" />
+        <label text="BioC 2023" id="bioc2023" />
+          <tool file="interactive/biocworkshop_bioc2023statial.xml" />
+          <tool file="interactive/biocworkshop_bioc2023qsvar.xml" />
+          <tool file="interactive/biocworkshop_bioc2023tidysce.xml" />
+          <tool file="interactive/biocworkshop_bioc2023isoformic.xml" />
+          <tool file="interactive/biocworkshop_bioc2023multiassay.xml" />
+          <tool file="interactive/biocworkshop_bioc2023pdscmerge.xml" />
+          <tool file="interactive/biocworkshop_bioc2023demuxsnp.xml" />
+          <tool file="interactive/biocworkshop_bioc2023pdscrnaseqapp.xml" />
+          <tool file="interactive/biocworkshop_bioc2023speaqeasy.xml" />
+          <tool file="interactive/biocworkshop_bioc2023cytoverse.xml" />
+          <tool file="interactive/biocworkshop_bioc2023parallelcompyting.xml" />
+          <tool file="interactive/biocworkshop_bioc2023pyinterop.xml" />
+          <tool file="interactive/biocworkshop_bioc2023voyager.xml" />
+          <tool file="interactive/biocworkshop_bioc2023mariner.xml" />
         <label text="Bioconductor RStudio" id="bioconductorrstudio" />
           <tool file="interactive/biocworkshop_rstudio317.xml" />
         <label text="Archived Events" id="archived" />
+        <section id="ismb2023" name="ISMB 2023">
+          <tool file="interactive/biocworkshop_oscaismb2023.xml" />
+        </section>
+        <section name="X-Meeting BSB 2023" id="xmeetingbsb2023">
+          <tool file="interactive/biocworkshop_xm2023.xml" />
+        </section>
+        <section name="ARTNet 2023" id="artnet2023">
+          <tool file="interactive/biocworkshop_ARTNet2023.xml" />
+        </section>
         <section id="smorgasbord2023" name="Smorgasbord 2023">
           <tool file="interactive/biocworkshop_biocintro317.xml" />
           <tool file="interactive/biocworkshop_biocproject317.xml" />
@@ -22,32 +44,10 @@ configs:
           <tool file="interactive/biocworkshop_mungesumstats2023.xml" />
           <tool file="interactive/biocworkshop_rformassspectrometry317.xml" />
         </section>
-        <section name="ARTNet 2023" id="artnet2023">
-          <tool file="interactive/biocworkshop_ARTNet2023.xml" />
-        </section>
-        <section name="X-Meeting BSB 2023" id="xmeetingbsb2023">
-          <tool file="interactive/biocworkshop_xm2023.xml" />
-        </section>
         <section name="Test" id="testingsection">
           <tool file="interactive/biocshiny_iseehub.xml" />
           <tool file="interactive/biocworkshop_bioc2023redis.xml" />
         </section>
-        <label text="BioC 2023" id="bioc2023" />
-          <tool file="interactive/biocworkshop_bioc2023statial.xml" />
-          <tool file="interactive/biocworkshop_bioc2023qsvar.xml" />
-          <tool file="interactive/biocworkshop_bioc2023tidysce.xml" />
-          <tool file="interactive/biocworkshop_bioc2023isoformic.xml" />
-          <tool file="interactive/biocworkshop_bioc2023pdscmerge.xml" />
-          <tool file="interactive/biocworkshop_bioc2023demuxsnp.xml" />
-          <tool file="interactive/biocworkshop_bioc2023pdscrnaseqapp.xml" />
-          <tool file="interactive/biocworkshop_bioc2023speaqeasy.xml" />
-          <tool file="interactive/biocworkshop_bioc2023cytoverse.xml" />
-          <tool file="interactive/biocworkshop_bioc2023parallelcompyting.xml" />
-          <tool file="interactive/biocworkshop_bioc2023pyinterop.xml" />
-          <tool file="interactive/biocworkshop_bioc2023voyager.xml" />
-          <tool file="interactive/biocworkshop_bioc2023mariner.xml" />
-        <label text="Bioc2023" id="bioc2023" />
-          <tool file="interactive/biocworkshop_bioc2023multiassay.xml" />
       </toolbox>
   integrated_tool_panel.xml: |
     <?xml version="1.0"?>
@@ -65,11 +65,33 @@ configs:
         via its API - but if changes are necessary (such as to hide a tool or re-assign
         its section) modify that file and restart Galaxy.
         -->
-        <label text="ISMB 2023" id="ismb2023" />
-          <tool id="interactivetool_biocworkshop_oscaismb2023" />
+        <label text="BioC 2023" id="bioc2023" />
+          <tool file="interactive/biocworkshop_bioc2023statial.xml" />
+          <tool id="interactivetool_biocworkshop_bioc2023qsvar" />
+          <tool id="interactivetool_biocworkshop_bioc2023tidysce" />
+          <tool id="interactivetool_biocworkshop_bioc2023isoformic" />
+          <tool id="interactivetool_biocworkshop_bioc2023pdscmerge" />
+          <tool id="interactivetool_biocworkshop_bioc2023demuxsnp" />
+          <tool id="interactivetool_biocworkshop_bioc2023multiassay" />
+          <tool id="interactivetool_biocworkshop_bioc2023pdscrnaseqapp" />
+          <tool id="interactivetool_biocworkshop_bioc2023speaqeasy" />
+          <tool id="interactivetool_biocworkshop_bioc2023cytoverse" />
+          <tool id="interactivetool_biocworkshop_bioc2023parallelcompyting" />
+          <tool id="interactivetool_biocworkshop_bioc2023pyinterop" />
+          <tool id="interactivetool_biocworkshop_bioc2023voyager" />
+          <tool id="interactivetool_biocworkshop_bioc2023mariner" />
         <label text="Bioconductor RStudio" id="bioconductorrstudio" version="" />
           <tool id="interactivetool_biocworkshop_rstudio317" />
         <label text="Archived Events" id="archived" />
+        <section id="ismb2023" name="ISMB 2023">
+          <tool id="interactivetool_biocworkshop_oscaismb2023" />
+        </section>
+        <section name="X-Meeting BSB 2023" id="xmeetingbsb2023">
+          <tool id="interactivetool_biocworkshop_xm2023" />
+        </section>
+        <section name="ARTNet 2023" id="artnet2023">
+          <tool id="interactivetool_biocworkshop_ARTNet2023" />
+        </section>
         <section id="smorgasbord2023" name="Smorgasbord 2023">
           <tool id="interactivetool_biocworkshop_biocintro317" />
           <tool id="interactivetool_biocworkshop_biocproject317" />
@@ -85,30 +107,7 @@ configs:
           <tool id="interactivetool_biocworkshop_mungesumstats2023" />
           <tool id="interactivetool_biocworkshop_rformassspectrometry317" />
         </section>
-        <section name="ARTNet 2023" id="artnet2023">
-          <tool id="interactivetool_biocworkshop_ARTNet2023" />
-        </section>
-        <section name="X-Meeting BSB 2023" id="xmeetingbsb2023">
-          <tool id="interactivetool_biocworkshop_xm2023" />
-        </section>
-        <section name="Test" id="testingsection">
+        <section name="(Test) Shiny Apps" id="testingsection">
           <tool id="interactivetool_biocshiny_iseehub" />
-          <tool id="interactivetool_biocworkshop_bioc2023redis" />
         </section>
-        <label text="BioC 2023" id="bioc2023" />
-          <tool file="interactive/biocworkshop_bioc2023statial.xml" />
-          <tool id="interactivetool_biocworkshop_bioc2023qsvar" />
-          <tool id="interactivetool_biocworkshop_bioc2023tidysce" />
-          <tool id="interactivetool_biocworkshop_bioc2023isoformic" />
-          <tool id="interactivetool_biocworkshop_bioc2023pdscmerge" />
-          <tool id="interactivetool_biocworkshop_bioc2023demuxsnp" />
-          <tool id="interactivetool_biocworkshop_bioc2023pdscrnaseqapp" />
-          <tool id="interactivetool_biocworkshop_bioc2023speaqeasy" />
-          <tool id="interactivetool_biocworkshop_bioc2023cytoverse" />
-          <tool id="interactivetool_biocworkshop_bioc2023parallelcompyting" />
-          <tool id="interactivetool_biocworkshop_bioc2023pyinterop" />
-          <tool id="interactivetool_biocworkshop_bioc2023voyager" />
-          <tool id="interactivetool_biocworkshop_bioc2023mariner" />
-        <label text="Bioc2023" id="bioc2023" />
-          <tool file="interactive/biocworkshop_bioc2023multiassay.xml" />
     </toolbox>
