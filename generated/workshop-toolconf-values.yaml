@@ -30,8 +30,10 @@ configs:
         </section>
         <section name="Test" id="testingsection">
           <tool file="interactive/biocshiny_iseehub.xml" />
+          <tool file="interactive/biocworkshop_bioc2023redis.xml" />
         </section>
         <label text="BioC 2023" id="bioc2023" />
+          <tool file="interactive/biocworkshop_bioc2023statial.xml" />
           <tool file="interactive/biocworkshop_bioc2023qsvar.xml" />
           <tool file="interactive/biocworkshop_bioc2023tidysce.xml" />
           <tool file="interactive/biocworkshop_bioc2023isoformic.xml" />
@@ -91,8 +93,10 @@ configs:
         </section>
         <section name="Test" id="testingsection">
           <tool id="interactivetool_biocshiny_iseehub" />
+          <tool id="interactivetool_biocworkshop_bioc2023redis" />
         </section>
         <label text="BioC 2023" id="bioc2023" />
+          <tool file="interactive/biocworkshop_bioc2023statial.xml" />
           <tool id="interactivetool_biocworkshop_bioc2023qsvar" />
           <tool id="interactivetool_biocworkshop_bioc2023tidysce" />
           <tool id="interactivetool_biocworkshop_bioc2023isoformic" />

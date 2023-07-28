@@ -1,4 +1,3 @@
-extraFileMappings:
   /galaxy/server/tools/interactive/biocworkshop_bioc2023statial.xml:
     useSecret: false
     applyToJob: true
