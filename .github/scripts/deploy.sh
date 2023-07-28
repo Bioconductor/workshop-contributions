@@ -23,7 +23,7 @@ done
 
 NAMESPACE="gxy-bioc"
 GXYRELEASE="gxy"
-CHARTVER="4.10.2"
+CHARTVER="4.10.3"
 
 
 cat << "EOF" > generated/workshop-values.yaml

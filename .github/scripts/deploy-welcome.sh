@@ -4,7 +4,7 @@ set -xe
 
 NAMESPACE="gxy-bioc"
 GXYRELEASE="gxy"
-CHARTVER="4.10.2"
+CHARTVER="4.10.3"
 
 mkdir -p generated
 

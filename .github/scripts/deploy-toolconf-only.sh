@@ -4,7 +4,7 @@ set -xe
 
 NAMESPACE="gxy-bioc"
 GXYRELEASE="gxy"
-CHARTVER="4.10.2"
+CHARTVER="4.10.3"
 
 helm repo add bioc https://github.com/Bioconductor/helm-charts/raw/devel
 helm repo update
