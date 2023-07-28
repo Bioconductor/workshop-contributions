@@ -10,7 +10,7 @@
       <tool id="interactivetool_biocworkshop_bioc2023speaqeasy" tool_type="interactive" name="A Bioconductor-style differential expression analysis powered by SPEAQeasy" version="0.1">
           <description>a Scalable Pipeline for Expression Analysis and Quantification</description>
           <requirements>
-              <container type="docker">ghcr.io/bioconductor/workshop-contributions:3.17-5da77d62</container>
+              <container type="docker">ghcr.io/bioconductor/workshop-contributions:3.17-c3ef5f54</container>
           </requirements>
           <entry_points>
               <entry_point name="bioc2023speaqeasy" requires_domain="True">
