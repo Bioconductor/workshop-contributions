@@ -44,6 +44,8 @@ configs:
           <tool file="interactive/biocworkshop_bioc2023pyinterop.xml" />
           <tool file="interactive/biocworkshop_bioc2023voyager.xml" />
           <tool file="interactive/biocworkshop_bioc2023mariner.xml" />
+        <label text="Bioc2023" id="bioc2023" />
+          <tool file="interactive/biocworkshop_bioc2023multiassay.xml" />
       </toolbox>
   integrated_tool_panel.xml: |
     <?xml version="1.0"?>
@@ -91,16 +93,18 @@ configs:
           <tool id="interactivetool_biocshiny_iseehub" />
         </section>
         <label text="BioC 2023" id="bioc2023" />
-          <tool file="interactive/biocworkshop_bioc2023qsvar.xml" />
-          <tool file="interactive/biocworkshop_bioc2023tidysce.xml" />
-          <tool file="interactive/biocworkshop_bioc2023isoformic.xml" />
-          <tool file="interactive/biocworkshop_bioc2023pdscmerge.xml" />
-          <tool file="interactive/biocworkshop_bioc2023demuxsnp.xml" />
-          <tool file="interactive/biocworkshop_bioc2023pdscrnaseqapp.xml" />
+          <tool id="interactivetool_biocworkshop_bioc2023qsvar" />
+          <tool id="interactivetool_biocworkshop_bioc2023tidysce" />
+          <tool id="interactivetool_biocworkshop_bioc2023isoformic" />
+          <tool id="interactivetool_biocworkshop_bioc2023pdscmerge" />
+          <tool id="interactivetool_biocworkshop_bioc2023demuxsnp" />
+          <tool id="interactivetool_biocworkshop_bioc2023pdscrnaseqapp" />
           <tool id="interactivetool_biocworkshop_bioc2023speaqeasy" />
-          <tool file="interactivetool_biocworkshop_bioc2023cytoverse" />
-          <tool file="interactivetool_biocworkshop_bioc2023parallelcompyting" />
-          <tool file="interactivetool_biocworkshop_bioc2023pyinterop" />
-          <tool file="interactivetool_biocworkshop_bioc2023voyager" />
-          <tool file="interactivetool_biocworkshop_bioc2023mariner" />
+          <tool id="interactivetool_biocworkshop_bioc2023cytoverse" />
+          <tool id="interactivetool_biocworkshop_bioc2023parallelcompyting" />
+          <tool id="interactivetool_biocworkshop_bioc2023pyinterop" />
+          <tool id="interactivetool_biocworkshop_bioc2023voyager" />
+          <tool id="interactivetool_biocworkshop_bioc2023mariner" />
+        <label text="Bioc2023" id="bioc2023" />
+          <tool file="interactive/biocworkshop_bioc2023multiassay.xml" />
     </toolbox>
