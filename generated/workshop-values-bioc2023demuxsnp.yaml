@@ -10,7 +10,7 @@
       <tool id="interactivetool_biocworkshop_bioc2023demuxsnp" tool_type="interactive" name="Package Demo: demuxSNP" version="0.1">
           <description>demonstrate different methods for visualising the data, carry out some benchmarking, and demonstrate the application of demuxSNP in scenarios where hashing quality is poor</description>
           <requirements>
-              <container type="docker">ghcr.io/bioconductor/workshop-contributions:3.17-ca225131</container>
+              <container type="docker">ghcr.io/michaelplynch/demultiplexing-bioc23:latest</container>
           </requirements>
           <entry_points>
               <entry_point name="bioc2023demuxsnp" requires_domain="True">
@@ -24,7 +24,7 @@
               <environment_variable name="GALAXY_URL">$__galaxy_url__</environment_variable>
               <environment_variable name="API_KEY" inject="api_key" />
           </environment_variables>
-          <command detect_errors="aggressive">if [ -f '/home/rstudio/demultiplexing-bioc23/vignettes/a-intro-to-demultiplexing.Rmd' ]; then echo '/home/rstudio/demultiplexing-bioc23/vignettes/a-intro-to-demultiplexing.Rmd' > /tmp/startfile; else echo '/home/rstudio/vignettes/a-intro-to-demultiplexing.Rmd' > /tmp/startfile; fi ; echo "{ 'visual_markdown_editing_is_default': true }" > /etc/rstudio/rstudio-prefs.json ; echo "setwd('/home/rstudio'); setHook('rstudio.sessionInit', function(newSession) { if (newSession) rstudioapi::filesPaneNavigate('\$(dirname \$(cat /tmp/startfile))'); rstudioapi::navigateToFile('\$(cat /tmp/startfile)') }, action = 'append')" > /home/rstudio/.Rprofile; chown -R rstudio /home/rstudio/*; rm /tmp/startfile; chown -R rstudio /home/rstudio/.*; /init</command>
+          <command detect_errors="aggressive">export TEMP=/tmp TMP=/tmp TMPDIR=/tmp TEMPDIR=/tmp; if [ -f '/home/rstudio/demultiplexing-bioc23/vignettes/a-intro-to-demultiplexing.Rmd' ]; then echo '/home/rstudio/demultiplexing-bioc23/vignettes/a-intro-to-demultiplexing.Rmd' > /tmp/startfile; else echo '/home/rstudio/vignettes/a-intro-to-demultiplexing.Rmd' > /tmp/startfile; fi ; echo "{ 'visual_markdown_editing_is_default': true }" > /etc/rstudio/rstudio-prefs.json ; echo "setwd('/home/rstudio'); setHook('rstudio.sessionInit', function(newSession) { if (newSession) rstudioapi::filesPaneNavigate('\$(dirname \$(cat /tmp/startfile))'); rstudioapi::navigateToFile('\$(cat /tmp/startfile)') }, action = 'append')" > /home/rstudio/.Rprofile; chown -R rstudio /home/rstudio/*; rm /tmp/startfile; chown -R rstudio /home/rstudio/.*; /init</command>
           <inputs>
           </inputs>
           <outputs>
