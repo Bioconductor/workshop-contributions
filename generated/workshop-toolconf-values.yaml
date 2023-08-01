@@ -3,6 +3,7 @@ configs:
     <?xml version='1.0' encoding='utf-8'?>
       <toolbox monitor="true">
         <label text="BioC 2023" id="bioc2023" />
+          <tool file="interactive/biocworkshop_bioc2023rcwl.xml" />
           <tool file="interactive/biocworkshop_bioc2023statial.xml" />
           <tool file="interactive/biocworkshop_bioc2023qsvar.xml" />
           <tool file="interactive/biocworkshop_bioc2023tidysce.xml" />
@@ -66,6 +67,7 @@ configs:
         its section) modify that file and restart Galaxy.
         -->
         <label text="BioC 2023" id="bioc2023" />
+          <tool file="interactive/biocworkshop_bioc2023rcwl.xml" />
           <tool file="interactive/biocworkshop_bioc2023statial.xml" />
           <tool id="interactivetool_biocworkshop_bioc2023qsvar" />
           <tool id="interactivetool_biocworkshop_bioc2023tidysce" />
