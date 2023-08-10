@@ -10,7 +10,7 @@
       <tool id="interactivetool_biocworkshop_bioc2023statial" tool_type="interactive" name="Package Demo: Statial" version="0.1">
           <description>a Bioconductor package for identifying spatially-related changes in cell state</description>
           <requirements>
-              <container type="docker">ghcr.io/bioconductor/workshop-contributions:3.17-a415082d</container>
+              <container type="docker">ghcr.io/sydneybiox/statialbioc2023:latest</container>
           </requirements>
           <entry_points>
               <entry_point name="bioc2023statial" requires_domain="True">
