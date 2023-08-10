@@ -8,9 +8,9 @@
     tpl: false
     content: |
       <tool id="interactivetool_biocworkshop_bioc2023statial" tool_type="interactive" name="Package Demo: Statial" version="0.1">
-          <description>Statial: A Bioconductor package for identifying spatially-related changes in cell state</description>
+          <description>a Bioconductor package for identifying spatially-related changes in cell state</description>
           <requirements>
-              <container type="docker">ghcr.io/bioconductor/workshop-contributions:3.17-2d4b58c0</container>
+              <container type="docker">ghcr.io/bioconductor/workshop-contributions:3.17-a415082d</container>
           </requirements>
           <entry_points>
               <entry_point name="bioc2023statial" requires_domain="True">
