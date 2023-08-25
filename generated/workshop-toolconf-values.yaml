@@ -2,7 +2,12 @@ configs:
   tool_conf_bioc.xml: |
     <?xml version='1.0' encoding='utf-8'?>
       <toolbox monitor="true">
-        <label text="BioC 2023" id="bioc2023" />
+        <label text="ISCB 2023" id="iscb2023" />
+          <tool file="interactive/biocworkshop_iscb2023angen.xml" />
+        <label text="Bioconductor RStudio" id="bioconductorrstudio" />
+          <tool file="interactive/biocworkshop_rstudio317.xml" />
+        <label text="Archived Events" id="archived" />
+        <section id="bioc2023" name="BioC 2023">
           <tool file="interactive/biocworkshop_bioc2023rcwl.xml" />
           <tool file="interactive/biocworkshop_bioc2023statial.xml" />
           <tool file="interactive/biocworkshop_bioc2023qsvar.xml" />
@@ -18,9 +23,7 @@ configs:
           <tool file="interactive/biocworkshop_bioc2023pyinterop.xml" />
           <tool file="interactive/biocworkshop_bioc2023voyager.xml" />
           <tool file="interactive/biocworkshop_bioc2023mariner.xml" />
-        <label text="Bioconductor RStudio" id="bioconductorrstudio" />
-          <tool file="interactive/biocworkshop_rstudio317.xml" />
-        <label text="Archived Events" id="archived" />
+        </section>
         <section id="ismb2023" name="ISMB 2023">
           <tool file="interactive/biocworkshop_oscaismb2023.xml" />
         </section>
@@ -49,8 +52,6 @@ configs:
           <tool file="interactive/biocshiny_iseehub.xml" />
           <tool file="interactive/biocworkshop_bioc2023redis.xml" />
         </section>
-        <label text="ISCB 2023" id="iscb2023" />
-          <tool file="interactive/biocworkshop_iscb2023angen.xml" />
       </toolbox>
   integrated_tool_panel.xml: |
     <?xml version="1.0"?>
@@ -68,9 +69,14 @@ configs:
         via its API - but if changes are necessary (such as to hide a tool or re-assign
         its section) modify that file and restart Galaxy.
         -->
-        <label text="BioC 2023" id="bioc2023" />
-          <tool file="interactive/biocworkshop_bioc2023rcwl.xml" />
-          <tool file="interactive/biocworkshop_bioc2023statial.xml" />
+        <label text="ISCB 2023" id="iscb2023" />
+          <tool id="interactivetool_biocworkshop_iscb2023angen" />
+        <label text="Bioconductor RStudio" id="bioconductorrstudio" version="" />
+          <tool id="interactivetool_biocworkshop_rstudio317" />
+        <label text="Archived Events" id="archived" />
+        <section id="bioc2023" name="BioC 2023">
+          <tool id="interactivetool_biocworkshop_bioc2023rcwl" />
+          <tool id="interactivetool_biocworkshop_bioc2023statial" />
           <tool id="interactivetool_biocworkshop_bioc2023qsvar" />
           <tool id="interactivetool_biocworkshop_bioc2023tidysce" />
           <tool id="interactivetool_biocworkshop_bioc2023isoformic" />
@@ -84,9 +90,7 @@ configs:
           <tool id="interactivetool_biocworkshop_bioc2023pyinterop" />
           <tool id="interactivetool_biocworkshop_bioc2023voyager" />
           <tool id="interactivetool_biocworkshop_bioc2023mariner" />
-        <label text="Bioconductor RStudio" id="bioconductorrstudio" version="" />
-          <tool id="interactivetool_biocworkshop_rstudio317" />
-        <label text="Archived Events" id="archived" />
+        </section>
         <section id="ismb2023" name="ISMB 2023">
           <tool id="interactivetool_biocworkshop_oscaismb2023" />
         </section>
