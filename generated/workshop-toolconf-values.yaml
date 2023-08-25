@@ -50,7 +50,6 @@ configs:
         </section>
         <section name="Test" id="testingsection">
           <tool file="interactive/biocshiny_iseehub.xml" />
-          <tool file="interactive/biocworkshop_bioc2023redis.xml" />
         </section>
       </toolbox>
   integrated_tool_panel.xml: |
