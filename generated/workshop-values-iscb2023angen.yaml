@@ -1,4 +1,3 @@
-extraFileMappings:
   /galaxy/server/tools/interactive/biocworkshop_iscb2023angen.xml:
     useSecret: false
     applyToJob: true
