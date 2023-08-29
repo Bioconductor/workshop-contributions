@@ -57,7 +57,7 @@ configs:
           <tool file="interactive/biocworkshop_eurobioc2023cytopipeline.xml" />
       </toolbox>
   integrated_tool_panel.xml: |
-    < version="1.0"?>
+    <?xml version='1.0'?>
     <toolbox>
         <!--
         This is Galaxy's integrated tool panel and should be modified directly only for
