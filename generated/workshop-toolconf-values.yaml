@@ -51,6 +51,8 @@ configs:
         <section name="Test" id="testingsection">
           <tool file="interactive/biocshiny_iseehub.xml" />
         </section>
+        <label text="EuroBioC2023" id="eurobioc2023" />
+          <tool file="interactive/biocworkshop_eurobioc2023cytopipeline.xml" />
       </toolbox>
   integrated_tool_panel.xml: |
     <?xml version="1.0"?>
@@ -119,4 +121,6 @@ configs:
         </section>
         <label text="ISCB 2023" id="iscb2023" />
           <tool file="interactive/biocworkshop_iscb2023angen.xml" />
+        <label text="EuroBioC2023" id="eurobioc2023" />
+          <tool file="interactive/biocworkshop_eurobioc2023cytopipeline.xml" />
     </toolbox>
