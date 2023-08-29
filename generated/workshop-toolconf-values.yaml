@@ -120,8 +120,6 @@ configs:
         <section name="(Test) Shiny Apps" id="testingsection">
           <tool id="interactivetool_biocshiny_iseehub" />
         </section>
-        <label text="ISCB 2023" id="iscb2023" />
-          <tool id="interactivetool_biocworkshop_iscb2023angen" />
         <label text="EuroBioC2023" id="eurobioc2023" />
           <tool id="interactivetool_biocworkshop_eurobioc2023multiassay" />
           <tool id="interactivetool_biocworkshop_eurobioc2023cytopipeline" />
