@@ -122,7 +122,7 @@ configs:
           <tool id="interactivetool_biocshiny_iseehub" />
         </section>
         <label text="EuroBioC2023" id="eurobioc2023" />
-          <tool id="interactivetool_biocworkshop_eurobioc2023iseeing" />
           <tool id="interactivetool_biocworkshop_eurobioc2023multiassay" />
+          <tool id="interactivetool_biocworkshop_eurobioc2023iseeing" />
           <tool id="interactivetool_biocworkshop_eurobioc2023cytopipeline" />
     </toolbox>
