@@ -52,10 +52,11 @@ configs:
           <tool file="interactive/biocshiny_iseehub.xml" />
         </section>
         <label text="EuroBioC2023" id="eurobioc2023" />
+          <tool file="interactive/biocworkshop_eurobioc2023multiassay.xml" />
           <tool file="interactive/biocworkshop_eurobioc2023cytopipeline.xml" />
       </toolbox>
-  integrated_tool_panel.xml: |
-    <?xml version="1.0"?>
+  integrated_tool_panel: |
+    < version="1.0"?>
     <toolbox>
         <!--
         This is Galaxy's integrated tool panel and should be modified directly only for
@@ -120,7 +121,8 @@ configs:
           <tool id="interactivetool_biocshiny_iseehub" />
         </section>
         <label text="ISCB 2023" id="iscb2023" />
-          <tool file="interactive/biocworkshop_iscb2023angen.xml" />
+          <tool id="interactivetool_biocworkshop_iscb2023angen" />
         <label text="EuroBioC2023" id="eurobioc2023" />
-          <tool file="interactive/biocworkshop_eurobioc2023cytopipeline.xml" />
+          <tool id="interactivetool_biocworkshop_eurobioc2023multiassay" />
+          <tool id="interactivetool_biocworkshop_eurobioc2023cytopipeline" />
     </toolbox>
