@@ -51,8 +51,8 @@ if ! grep -qi "$LINETOADD" generated/workshop-toolconf-values.yaml; then
     sed -i "\|</toolbox>|i \ \ \ \ \ \ \ \ $SECTIONTOADD"  generated/workshop-toolconf-values.yaml
     sed -i "\|</toolbox>|i \ \ \ \ \ \ \ \ \ \ $LINETOADD"  generated/workshop-toolconf-values.yaml
   fi
-  sed -i '#integrated_tool_panel.xml#,# *</toolbox># s#file="interactive/biocworkshop_#id="interactivetool_biocworkshop_#' generated/workshop-toolconf-values.yaml
-  sed -i '#integrated_tool_panel.xml#,# *</toolbox># s#.xml"##' generated/workshop-toolconf-values.yaml
+  sed -i '/integrated_tool_panel.xml/,/<\/toolbox>/s/file="interactive\/biocworkshop_/id="interactivetool_biocworkshop_/g' generated/workshop-toolconf-values.yaml
+  sed -i '/integrated_tool_panel.xml/,/<\/toolbox>/s/.xml//g' generated/workshop-toolconf-values.yaml
 fi
 
 cat generated/workshop-toolconf-values.yaml
