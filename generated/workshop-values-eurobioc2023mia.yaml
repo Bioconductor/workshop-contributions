@@ -1,4 +1,3 @@
-extraFileMappings:
   /galaxy/server/tools/interactive/biocworkshop_eurobioc2023mia.xml:
     useSecret: false
     applyToJob: true
