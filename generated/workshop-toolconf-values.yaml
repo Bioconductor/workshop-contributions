@@ -52,6 +52,7 @@ configs:
           <tool file="interactive/biocshiny_iseehub.xml" />
         </section>
         <label text="EuroBioC2023" id="eurobioc2023" />
+          <tool file="interactive/biocworkshop_eurobioc2023spectra.xml" />
           <tool file="interactive/biocworkshop_eurobioc2023iseeing.xml" />
           <tool file="interactive/biocworkshop_eurobioc2023multiassay.xml" />
           <tool file="interactive/biocworkshop_eurobioc2023cytopipeline.xml" />
@@ -122,6 +123,7 @@ configs:
           <tool id="interactivetool_biocshiny_iseehub" />
         </section>
         <label text="EuroBioC2023" id="eurobioc2023" />
+          <tool id="interactivetool_biocworkshop_eurobioc2023spectra" />
           <tool id="interactivetool_biocworkshop_eurobioc2023multiassay" />
           <tool id="interactivetool_biocworkshop_eurobioc2023iseeing" />
           <tool id="interactivetool_biocworkshop_eurobioc2023cytopipeline" />
