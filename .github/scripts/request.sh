@@ -127,7 +127,7 @@ RUN sudo apt-get update && sudo apt-get -y install apt-file && $EXTRACMDS cd /ho
 EOF
   elif [ ! -z "$SOURCE" ]; then
     cat << EOF >> "generated/$ID.Dockerfile"
-RUN sudo apt-get update && sudo apt-get -y install apt-file && $EXTRACMDS cd /home/rstudio && echo "$VIGNLIST" | tr ',' '\n' > vignlist && git clone $SOURCE && cp -r $(basename $SOURCE) tmpsource && cd tmpsource && curl -o install.sh https://raw.githubusercontent.com/Bioconductor/workshop-contributions/main/.github/scripts/install_missing.sh && cat ../vignlist | xargs -i bash install.sh {} && cd .. && rm -rf vignlist tmpsource/ $POSTCMD
+RUN sudo apt-get update && sudo apt-get -y install apt-file && $EXTRACMDS cd /home/rstudio && echo "$VIGNLIST" | tr ',' '\n' > vignlist && echo "$SRCLIST" | tr ',' '\n' > sourcelist && cat sourcelist | xargs -i bash -c "git clone {} && cp -r $(basename {}) tmpsource/" && cd tmpsource && curl -o install.sh https://raw.githubusercontent.com/Bioconductor/workshop-contributions/main/.github/scripts/install_missing.sh && cat ../vignlist | xargs -i bash install.sh {} && cd .. && rm -rf vignlist tmpsource/ $POSTCMD
 EOF
   fi
 fi
