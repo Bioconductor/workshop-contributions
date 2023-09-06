@@ -10,7 +10,7 @@
       <tool id="interactivetool_biocworkshop_eurobioc2023rworkflows" tool_type="interactive" name="rworkflows:" version="0.1">
           <description>taming the Wild West of R packages</description>
           <requirements>
-              <container type="docker">ghcr.io/bioconductor/workshop-contributions:devel-8d59b69e</container>
+              <container type="docker">ghcr.io/bioconductor/workshop-contributions:devel-a941ac12</container>
           </requirements>
           <entry_points>
               <entry_point name="eurobioc2023rworkflows" requires_domain="True">
