@@ -50,7 +50,7 @@ jobs:
             Below are the detected values:
 
             ```
-            source='${{steps.defs.outputs.id}}'
+            id='${{steps.defs.outputs.id}}'
             title='${{steps.defs.outputs.title}}'
             description='${{steps.defs.outputs.description}}'
             section='${{steps.defs.outputs.section}}'
