@@ -123,7 +123,7 @@ EOF
   fi
   if [[ $VIGNLIST = "https://"* ]]; then
     cat << EOF >> "generated/$ID.Dockerfile"
-RUN sudo apt-get update && sudo apt-get -y install apt-file && $EXTRACMDS cd /home/rstudio && echo "$VIGNLIST" | tr ',' '\n' > vignlist && mkdir workshop && cd workhop && cp -r workshop tmpworkshop && ( cat vignlist | xargs -i curl -O {} ) && cd .. && curl -o install.sh https://raw.githubusercontent.com/Bioconductor/workshop-contributions/main/.github/scripts/install_missing.sh && bash install.sh tmpworkshop/ && rm -rf tmpworkshop/ vignlist install.sh install_missing.sh
+RUN sudo apt-get update && sudo apt-get -y install apt-file && $EXTRACMDS cd /home/rstudio && echo "$VIGNLIST" | tr ',' '\n' > vignlist && mkdir workshop && cd workshop && cp -r workshop tmpworkshop && ( cat vignlist | xargs -i curl -O {} ) && cd .. && curl -o install.sh https://raw.githubusercontent.com/Bioconductor/workshop-contributions/main/.github/scripts/install_missing.sh && bash install.sh tmpworkshop/ && rm -rf tmpworkshop/ vignlist install.sh install_missing.sh
 EOF
   elif [ ! -z "$SOURCE" ]; then
     cat << EOF >> "generated/$ID.Dockerfile"
