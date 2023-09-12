@@ -59,8 +59,6 @@ configs:
           <tool file="interactive/biocworkshop_eurobioc2023iseeing.xml" />
           <tool file="interactive/biocworkshop_eurobioc2023multiassay.xml" />
           <tool file="interactive/biocworkshop_eurobioc2023cytopipeline.xml" />
-        <label text="Monash Bioinformatics 2023" id="monashbioinformatics2023" />
-          <tool file="interactive/biocworkshop_standmonash2023.xml" />
       </toolbox>
   integrated_tool_panel.xml: |
     <?xml version='1.0'?>
@@ -135,6 +133,4 @@ configs:
           <tool id="interactivetool_biocworkshop_eurobioc2023multiassay" />
           <tool id="interactivetool_biocworkshop_eurobioc2023iseeing" />
           <tool id="interactivetool_biocworkshop_eurobioc2023cytopipeline" />
-        <label text="Monash Bioinformatics 2023" id="monashbioinformatics2023" />
-          <tool id="interactivetool_biocworkshop_standmonash2023" />
     </toolbox>
