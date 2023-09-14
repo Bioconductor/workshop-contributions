@@ -11,7 +11,7 @@ extraFileMappings:
       <tool id="interactivetool_biocworkshop_eurobioc2023mia" tool_type="interactive" name="Microbiome data integration workflow for population cohort studies" version="0.1">
           <description>with mia and miaViz</description>
           <requirements>
-              <container type="docker">ghcr.io/bioconductor/workshop-contributions:devel-b2baa460</container>
+              <container type="docker">ghcr.io/bioconductor/workshop-contributions:devel-b2883aa7</container>
           </requirements>
           <entry_points>
               <entry_point name="eurobioc2023mia" requires_domain="True">
@@ -25,7 +25,7 @@ extraFileMappings:
               <environment_variable name="GALAXY_URL">$__galaxy_url__</environment_variable>
               <environment_variable name="API_KEY" inject="api_key" />
           </environment_variables>
-          <command detect_errors="aggressive">echo "{ 'visual_markdown_editing_is_default': true }" > /etc/rstudio/rstudio-prefs.json ; echo "setwd('/home/rstudio'); setHook('rstudio.sessionInit', function(newSession) { if (newSession) rstudioapi::filesPaneNavigate(getwd()) }, action = 'append')" > /home/rstudio/.Rprofile; chown -R rstudio /home/rstudio/*; rm /tmp/startfile; chown -R rstudio /home/rstudio/.*; /init</command>
+          <command detect_errors="aggressive">export TEMP=/tmp TMP=/tmp TMPDIR=/tmp TEMPDIR=/tmp; if [ -f '/home/rstudio/workflow.Rmd' ]; then echo '/home/rstudio/workflow.Rmd' > /tmp/startfile; else echo '/home/rstudio/workflow.Rmd' > /tmp/startfile; fi ; echo "{ 'visual_markdown_editing_is_default': true }" > /etc/rstudio/rstudio-prefs.json ; echo "setwd('/home/rstudio'); setHook('rstudio.sessionInit', function(newSession) { if (newSession) rstudioapi::filesPaneNavigate('\$(dirname \$(cat /tmp/startfile))'); rstudioapi::navigateToFile('\$(cat /tmp/startfile)') }, action = 'append')" > /home/rstudio/.Rprofile; chown -R rstudio /home/rstudio/*; rm /tmp/startfile; chown -R rstudio /home/rstudio/.*; /init</command>
           <inputs>
           </inputs>
           <outputs>
