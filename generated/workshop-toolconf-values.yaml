@@ -79,8 +79,6 @@ configs:
         via its API - but if changes are necessary (such as to hide a tool or re-assign
         its section) modify that file and restart Galaxy.
         -->
-        <label text="Monash Bioinformatics 2023" id="monashbioinformatics2023" />
-          <tool id="interactivetool_biocworkshop_standmonash2023" />
         <label text="EuroBioC2023" id="eurobioc2023" />
           <tool id="interactivetool_biocworkshop_eurobioc2023rworkflows" />
           <tool id="interactivetool_biocworkshop_eurobioc2023sager" />
@@ -89,6 +87,8 @@ configs:
           <tool id="interactivetool_biocworkshop_eurobioc2023multiassay" />
           <tool id="interactivetool_biocworkshop_eurobioc2023iseeing" />
           <tool id="interactivetool_biocworkshop_eurobioc2023cytopipeline" />
+        <label text="Monash Bioinformatics 2023" id="monashbioinformatics2023" />
+          <tool id="interactivetool_biocworkshop_standmonash2023" />
         <label text="Bioconductor RStudio" id="bioconductorrstudio" version="" />
           <tool id="interactivetool_biocworkshop_rstudio317" />
         <label text="Archived Events" id="archived" />
