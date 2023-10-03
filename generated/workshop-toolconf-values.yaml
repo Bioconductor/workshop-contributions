@@ -2,7 +2,12 @@ configs:
   tool_conf_bioc.xml: |
     <?xml version='1.0' encoding='utf-8'?>
       <toolbox monitor="true">
-        <label text="EuroBioC2023" id="eurobioc2023" />
+        <label text="Add your workshop!" id="workshopsubmit" />
+          <tool file="interactive/biocshiny_biocworkshopsubmit.xml" />
+        <label text="Bioconductor RStudio" id="bioconductorrstudio" />
+          <tool file="interactive/biocworkshop_rstudio317.xml" />
+        <label text="Archived Events" id="archived" />
+        <section name="EuroBioC2023" id="eurobioc2023">
           <tool file="interactive/biocworkshop_eurobioc2023rworkflows.xml" />
           <tool file="interactive/biocworkshop_eurobioc2023sager.xml" />
           <tool file="interactive/biocworkshop_eurobioc2023mia.xml" />
@@ -10,11 +15,10 @@ configs:
           <tool file="interactive/biocworkshop_eurobioc2023iseeing.xml" />
           <tool file="interactive/biocworkshop_eurobioc2023multiassay.xml" />
           <tool file="interactive/biocworkshop_eurobioc2023cytopipeline.xml" />
-        <label text="Monash Bioinformatics 2023" id="monashbioinformatics2023" />
+        </section>
+        <section name="Monash Bioinformatics 2023" id="monashbioinformatics2023">
           <tool file="interactive/biocworkshop_standmonash2023.xml" />
-        <label text="Bioconductor RStudio" id="bioconductorrstudio" />
-          <tool file="interactive/biocworkshop_rstudio317.xml" />
-        <label text="Archived Events" id="archived" />
+        </section>
         <section name="ISCB 2023" id="iscb2023">
           <tool file="interactive/biocworkshop_iscb2023angen.xml" />
         </section>
@@ -79,7 +83,12 @@ configs:
         via its API - but if changes are necessary (such as to hide a tool or re-assign
         its section) modify that file and restart Galaxy.
         -->
-        <label text="EuroBioC2023" id="eurobioc2023" />
+        <label text="Add your workshop!" id="workshopsubmit" />
+          <tool file="interactivetool_biocshiny_biocworkshopsubmit" />
+        <label text="Bioconductor RStudio" id="bioconductorrstudio" version="" />
+          <tool id="interactivetool_biocworkshop_rstudio317" />
+        <label text="Archived Events" id="archived" />
+        <section name="EuroBioC2023" id="eurobioc2023">
           <tool id="interactivetool_biocworkshop_eurobioc2023rworkflows" />
           <tool id="interactivetool_biocworkshop_eurobioc2023sager" />
           <tool id="interactivetool_biocworkshop_eurobioc2023mia" />
@@ -87,11 +96,10 @@ configs:
           <tool id="interactivetool_biocworkshop_eurobioc2023multiassay" />
           <tool id="interactivetool_biocworkshop_eurobioc2023iseeing" />
           <tool id="interactivetool_biocworkshop_eurobioc2023cytopipeline" />
-        <label text="Monash Bioinformatics 2023" id="monashbioinformatics2023" />
+        </section>
+        <section name="Monash Bioinformatics 2023" id="monashbioinformatics2023">
           <tool id="interactivetool_biocworkshop_standmonash2023" />
-        <label text="Bioconductor RStudio" id="bioconductorrstudio" version="" />
-          <tool id="interactivetool_biocworkshop_rstudio317" />
-        <label text="Archived Events" id="archived" />
+        </section>
         <section name="ISCB 2023" id="iscb2023">
           <tool id="interactivetool_biocworkshop_iscb2023angen" />
         </section>
