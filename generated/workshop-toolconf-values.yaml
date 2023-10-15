@@ -66,6 +66,8 @@ configs:
         <section name="Test" id="testingsection">
           <tool file="interactive/biocshiny_iseehub.xml" />
         </section>
+        <label text="Smorgasbord 2023" id="smorgasbord2023" />
+          <tool file="interactive/biocworkshop_biocasia2023rnaseqcarpentries.xml" />
       </toolbox>
   integrated_tool_panel.xml: |
     <?xml version='1.0'?>
@@ -147,4 +149,6 @@ configs:
         <section name="(Test) Shiny Apps" id="testingsection">
           <tool id="interactivetool_biocshiny_iseehub" />
         </section>
+        <label text="Smorgasbord 2023" id="smorgasbord2023" />
+          <tool id="interactivetool_biocworkshop_biocasia2023rnaseqcarpentries" />
     </toolbox>
