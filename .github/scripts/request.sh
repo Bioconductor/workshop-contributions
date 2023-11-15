@@ -48,7 +48,7 @@ if [ ! -z "$PRECMD" ]; then
 fi
 
 GIVENCOMMAND=$(echo $RAWCOMMAND | sed "s/\\\\\"/'/g")
-COMMAND=$(echo "$GIVENCOMMAND" | sed 's@/init@chown -R rstudio /home/rstudio/*; rm /tmp/startfile; chown -R rstudio /home/rstudio/.*; /init@g')
+COMMAND=$(echo "$GIVENCOMMAND" | sed 's@/init@export TEMP=/tmp TMP=/tmp TMPDIR=/tmp TEMPDIR=/tmp; chown -R rstudio /home/rstudio/*; rm /tmp/startfile; chown -R rstudio /home/rstudio/.*; /init@g')
 # if [ ! -z $EXTRACMDS ]; then
 #   COMMAND=$(echo $GIVENCOMMAND | sed "s#echo #$EXTRACMDS echo #")
 # fi
