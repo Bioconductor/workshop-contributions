@@ -8,8 +8,9 @@ configs:
           <tool file="interactive/biocworkshop_biocrstudio318.xml" />
           <tool file="interactive/biocworkshop_rstudio317.xml" />
         <label text="Archived Events" id="archived" />
-        <section name="BiocAsia 2023" id="biocasia2023" />
+        <section name="BiocAsia 2023" id="biocasia2023">
           <tool file="interactive/biocworkshop_biocasia2023rnaseqcarpentries.xml" />
+        </section>
         <section name="EuroBioC2023" id="eurobioc2023">
           <tool file="interactive/biocworkshop_eurobioc2023rworkflows.xml" />
           <tool file="interactive/biocworkshop_eurobioc2023sager.xml" />
@@ -92,8 +93,9 @@ configs:
           <tool id="interactivetool_biocworkshop_biocrstudio318" />
           <tool id="interactivetool_biocworkshop_rstudio317" />
         <label text="Archived Events" id="archived" />
-        <section name="BiocAsia 2023" id="biocasia2023" />
+        <section name="BiocAsia 2023" id="biocasia2023" >
           <tool id="interactivetool_biocworkshop_biocasia2023rnaseqcarpentries" />
+        </section>
         <section name="EuroBioC2023" id="eurobioc2023">
           <tool id="interactivetool_biocworkshop_eurobioc2023rworkflows" />
           <tool id="interactivetool_biocworkshop_eurobioc2023sager" />
