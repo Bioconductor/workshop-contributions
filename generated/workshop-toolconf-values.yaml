@@ -4,12 +4,12 @@ configs:
       <toolbox monitor="true">
         <label text="Add your workshop!" id="workshopsubmit" />
           <tool file="interactive/biocshiny_biocworkshopsubmit.xml" />
-        <label text="BiocAsia 2023" id="biocasia2023" />
-          <tool file="interactive/biocworkshop_biocasia2023rnaseqcarpentries.xml" />
         <label text="Bioconductor RStudio" id="bioconductorrstudio" />
           <tool file="interactive/biocworkshop_biocrstudio318.xml" />
           <tool file="interactive/biocworkshop_rstudio317.xml" />
         <label text="Archived Events" id="archived" />
+        <section name="BiocAsia 2023" id="biocasia2023" />
+          <tool file="interactive/biocworkshop_biocasia2023rnaseqcarpentries.xml" />
         <section name="EuroBioC2023" id="eurobioc2023">
           <tool file="interactive/biocworkshop_eurobioc2023rworkflows.xml" />
           <tool file="interactive/biocworkshop_eurobioc2023sager.xml" />
@@ -88,12 +88,12 @@ configs:
         -->
         <label text="Add your workshop!" id="workshopsubmit" />
           <tool file="interactivetool_biocshiny_biocworkshopsubmit" />
-        <label text="BiocAsia 2023" id="biocasia2023" />
-          <tool id="interactivetool_biocworkshop_biocasia2023rnaseqcarpentries" />
         <label text="Bioconductor RStudio" id="bioconductorrstudio" version="" />
           <tool id="interactivetool_biocworkshop_biocrstudio318" />
           <tool id="interactivetool_biocworkshop_rstudio317" />
         <label text="Archived Events" id="archived" />
+        <section name="BiocAsia 2023" id="biocasia2023" />
+          <tool id="interactivetool_biocworkshop_biocasia2023rnaseqcarpentries" />
         <section name="EuroBioC2023" id="eurobioc2023">
           <tool id="interactivetool_biocworkshop_eurobioc2023rworkflows" />
           <tool id="interactivetool_biocworkshop_eurobioc2023sager" />
