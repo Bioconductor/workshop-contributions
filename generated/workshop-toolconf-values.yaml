@@ -70,6 +70,8 @@ configs:
         <section name="Test" id="testingsection">
           <tool file="interactive/biocshiny_iseehub.xml" />
         </section>
+        <label text="BBCC2023" id="bbcc2023" />
+          <tool file="interactive/biocworkshop_bbcc2023.xml" />
       </toolbox>
   integrated_tool_panel.xml: |
     <?xml version='1.0'?>
@@ -155,4 +157,6 @@ configs:
         <section name="(Test) Shiny Apps" id="testingsection">
           <tool id="interactivetool_biocshiny_iseehub" />
         </section>
+        <label text="BBCC2023" id="bbcc2023" />
+          <tool id="interactivetool_biocworkshop_bbcc2023" />
     </toolbox>
