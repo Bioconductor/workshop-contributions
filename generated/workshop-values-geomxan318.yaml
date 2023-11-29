@@ -1,4 +1,3 @@
-extraFileMappings:
   /galaxy/server/tools/interactive/biocworkshop_geomxan318.xml:
     useSecret: false
     applyToJob: true
