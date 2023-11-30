@@ -1,4 +1,3 @@
-extraFileMappings:
   /galaxy/server/tools/interactive/biocworkshop_scdneyspatialabacbs2023.xml:
     useSecret: false
     applyToJob: true
