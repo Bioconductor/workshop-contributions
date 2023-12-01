@@ -4,6 +4,11 @@ configs:
       <toolbox monitor="true">
         <label text="Add your workshop!" id="workshopsubmit" />
           <tool file="interactive/biocshiny_biocworkshopsubmit.xml" />
+        <label text="BBCC2023" id="bbcc2023" />
+          <tool file="interactive/biocworkshop_bbcc2023.xml" />
+        <label text="ABACBS 2023" id="abacbs2023" />
+          <tool file="interactive/biocworkshop_scdneyspatialabacbs2023.xml" />
+          <tool file="interactive/biocworkshop_geomxan318.xml" />
         <label text="Bioconductor RStudio" id="bioconductorrstudio" />
           <tool file="interactive/biocworkshop_biocrstudio318.xml" />
           <tool file="interactive/biocworkshop_rstudio317.xml" />
@@ -70,11 +75,6 @@ configs:
         <section name="Test" id="testingsection">
           <tool file="interactive/biocshiny_iseehub.xml" />
         </section>
-        <label text="BBCC2023" id="bbcc2023" />
-          <tool file="interactive/biocworkshop_bbcc2023.xml" />
-        <label text="ABACBS 2023" id="abacbs2023" />
-          <tool file="interactive/biocworkshop_scdneyspatialabacbs2023.xml" />
-          <tool file="interactive/biocworkshop_geomxan318.xml" />
       </toolbox>
   integrated_tool_panel.xml: |
     <?xml version='1.0'?>
@@ -94,6 +94,11 @@ configs:
         -->
         <label text="Add your workshop!" id="workshopsubmit" />
           <tool file="interactivetool_biocshiny_biocworkshopsubmit" />
+        <label text="BBCC2023" id="bbcc2023" />
+          <tool id="interactivetool_biocworkshop_bbcc2023" />
+        <label text="ABACBS 2023" id="abacbs2023" />
+          <tool id="interactivetool_biocworkshop_scdneyspatialabacbs2023" />
+          <tool id="interactivetool_biocworkshop_geomxan318" />
         <label text="Bioconductor RStudio" id="bioconductorrstudio" version="" />
           <tool id="interactivetool_biocworkshop_biocrstudio318" />
           <tool id="interactivetool_biocworkshop_rstudio317" />
@@ -160,9 +165,4 @@ configs:
         <section name="(Test) Shiny Apps" id="testingsection">
           <tool id="interactivetool_biocshiny_iseehub" />
         </section>
-        <label text="BBCC2023" id="bbcc2023" />
-          <tool id="interactivetool_biocworkshop_bbcc2023" />
-        <label text="ABACBS 2023" id="abacbs2023" />
-          <tool id="interactivetool_biocworkshop_scdneyspatialabacbs2023" />
-          <tool id="interactivetool_biocworkshop_geomxan318" />
     </toolbox>
