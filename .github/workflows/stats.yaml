@@ -1,0 +1,41 @@
+name: Stats workflow
+on:
+  repository_dispatch:
+    types: [stats-command]
+jobs:
+  generatestats:
+    name: Generate stats
+    runs-on: ubuntu-latest
+    env:
+      ISSUE_NUM: ${{ github.event.client_payload.github.payload.issue.number }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set defaults for all inputs
+        id: defs
+        run: |
+          IDINPUT=${{ github.event.client_payload.slash_command.args.named.id || 'error' }}
+          echo id=$IDINPUT >> $GITHUB_OUTPUT
+
+      - name: Install Helm
+        run: curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+      - name: save kubeconfig
+        shell: bash
+        run: mkdir -p ~/.kube && echo "${{ secrets.TEST_KUBECONFIG }}" > ~/.kube/config
+      - name: Install Kubectl
+        run: curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" && chmod +x ./kubectl && sudo mv ./kubectl /usr/local/bin/kubectl && kubectl version
+
+      - name: Get launch stats
+        id: stats
+        run: |
+          LAUNCH_NUMS=$(kubectl exec -n gxy-bioc galaxy-gxy-galaxy-postgres-0 -- bash -c "psql -d galaxy -U galaxydbuser -c \"select count(j.id) from job j where j.tool_id like '%_${{steps.defs.outputs.id}}';\"" | sed '3q;d' | tr -d ' ')
+          echo launchnums=$LAUNCH_NUMS >> $GITHUB_OUTPUT
+
+      - name: Create comment
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          token: ${{ secrets.PAT }}
+          issue-number: ${{ github.event.client_payload.github.payload.issue.number }}
+          body: |
+            _AUTO-GENERATED RESPONSE_
+            The workshop with id '${{steps.defs.outputs.id}}' has been launched a total of '${{steps.stats.outputs.launchnums}}'
