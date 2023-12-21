@@ -30,6 +30,8 @@ jobs:
         run: |
           LAUNCH_NUMS=$(kubectl exec -n gxy-bioc galaxy-gxy-galaxy-postgres-0 -- bash -c "psql -d galaxy -U galaxydbuser -c \"select count(j.id) from job j where j.tool_id like '%_${{steps.defs.outputs.id}}';\"" | sed '3q;d' | tr -d ' ')
           echo launchnums=$LAUNCH_NUMS >> $GITHUB_OUTPUT
+          UNIQUE_USERS=$(kubectl exec -n gxy-bioc galaxy-gxy-galaxy-postgres-0 -- bash -c "psql -d galaxy -U galaxydbuser -c \"select count(distinct j.user_id) from job j where j.tool_id like '%_${{steps.defs.outputs.id}}';\"" | sed '3q;d' | tr -d ' ')
+          echo uniqueusers=$UNIQUE_USERS >> $GITHUB_OUTPUT
 
       - name: Create comment
         uses: peter-evans/create-or-update-comment@v3
@@ -38,4 +40,4 @@ jobs:
           issue-number: ${{ github.event.client_payload.github.payload.issue.number }}
           body: |
             _AUTO-GENERATED RESPONSE_
-            The workshop with id '${{steps.defs.outputs.id}}' has been launched a total of '${{steps.stats.outputs.launchnums}}'
+            The workshop with id '${{steps.defs.outputs.id}}' has been launched a total of ${{steps.stats.outputs.launchnums}} times, by ${{steps.stats.outputs.uniqueusers}} unique users.
