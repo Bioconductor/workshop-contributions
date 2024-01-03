@@ -4,13 +4,14 @@ configs:
       <toolbox monitor="true">
         <label text="Add your workshop!" id="workshopsubmit" />
           <tool file="interactive/biocshiny_biocworkshopsubmit.xml" />
-        <label text="ABACBS 2023" id="abacbs2023" />
-          <tool file="interactive/biocworkshop_scdneyspatialabacbs2023.xml" />
-          <tool file="interactive/biocworkshop_geomxan318.xml" />
         <label text="Bioconductor RStudio" id="bioconductorrstudio" />
           <tool file="interactive/biocworkshop_biocrstudio318.xml" />
           <tool file="interactive/biocworkshop_rstudio317.xml" />
         <label text="Archived Events" id="archived" />
+        <section name="ABACBS 2023" id="abacbs2023" >
+          <tool file="interactive/biocworkshop_scdneyspatialabacbs2023.xml" />
+          <tool file="interactive/biocworkshop_geomxan318.xml" />
+        </section>
         <section name="BBCC2023" id="bbcc2023" >
           <tool file="interactive/biocworkshop_bbcc2023.xml" />
         </section>
@@ -95,13 +96,14 @@ configs:
         -->
         <label text="Add your workshop!" id="workshopsubmit" />
           <tool file="interactivetool_biocshiny_biocworkshopsubmit" />
-        <label text="ABACBS 2023" id="abacbs2023" />
-          <tool id="interactivetool_biocworkshop_scdneyspatialabacbs2023" />
-          <tool id="interactivetool_biocworkshop_geomxan318" />
         <label text="Bioconductor RStudio" id="bioconductorrstudio" version="" />
           <tool id="interactivetool_biocworkshop_biocrstudio318" />
           <tool id="interactivetool_biocworkshop_rstudio317" />
         <label text="Archived Events" id="archived" />
+        <section name="ABACBS 2023" id="abacbs2023" >
+          <tool id="interactivetool_biocworkshop_scdneyspatialabacbs2023" />
+          <tool id="interactivetool_biocworkshop_geomxan318" />
+        </section>
         <section name="BBCC2023" id="bbcc2023" >
           <tool id="interactivetool_biocworkshop_bbcc2023" />
         </section>
