@@ -77,6 +77,8 @@ configs:
         <section name="Test" id="testingsection">
           <tool file="interactive/biocshiny_iseehub.xml" />
         </section>
+        <label text="CBRC 2024" id="cbrc2024" />
+          <tool file="interactive/biocworkshop_cbrcvoyagermar2024.xml" />
       </toolbox>
   integrated_tool_panel.xml: |
     <?xml version='1.0'?>
@@ -169,4 +171,6 @@ configs:
         <section name="(Test) Shiny Apps" id="testingsection">
           <tool id="interactivetool_biocshiny_iseehub" />
         </section>
+        <label text="CBRC 2024" id="cbrc2024" />
+          <tool id="interactivetool_biocworkshop_cbrcvoyagermar2024" />
     </toolbox>
