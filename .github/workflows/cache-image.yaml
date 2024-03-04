@@ -1,0 +1,75 @@
+name: Cache image
+on:
+  workflow_dispatch:
+    inputs:
+      container:
+        description: Container to cache
+        required: true
+jobs:
+  deploywrappers:
+    name: Deploy DaemonSet
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Helm
+        run: curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+      - name: save kubeconfig
+        shell: bash
+        run: mkdir -p ~/.kube && echo "${{ secrets.TEST_KUBECONFIG }}" > ~/.kube/config
+      - name: Install Kubectl
+        run: curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" && chmod +x ./kubectl && sudo mv ./kubectl /usr/local/bin/kubectl && kubectl version
+      - name: Deploy DaemonSet
+        run: |
+          cat << "EOF" > ds-template.yaml
+          apiVersion: apps/v1
+          kind: DaemonSet
+          metadata:
+            name: PLACEHOLDERNAME-cache-daemonset
+            namespace: cache-gxy
+          spec:
+            selector:
+              matchLabels:
+                name: PLACEHOLDERNAME-cache
+            template:
+              metadata:
+                labels:
+                  name: PLACEHOLDERNAME-cache
+              spec:
+                affinity:
+                  nodeAffinity:
+                    requiredDuringSchedulingIgnoredDuringExecution:
+                      nodeSelectorTerms:
+                        - matchExpressions:
+                            - key: kubernetes.io/hostname
+                              operator: In
+                              values:
+                                [PLACEHOLDERNODES]
+                containers:
+                - name: PLACEHOLDERNAME-cache
+                  image: PLACEHOLDERCONTAINER
+                  resources:
+                    limits:
+                      cpu: 10m
+                      memory: 10Mi
+                    requests:
+                      cpu: 5m
+                      memory: 5Mi
+                  command:
+                      - /bin/sh
+                  args:
+                      - "-c"
+                      - "sleep 604800"
+                terminationGracePeriodSeconds: 1
+          EOF
+          
+          cat << "EOF" > /tmp/create-ds.sh
+          NAME=$(echo "$1" | sed "s/[^[:alnum:]-]//g")
+          cp ds-template.yaml "$NAME-ds-template.yaml"
+          sed -i "s#PLACEHOLDERNAME#$NAME#g" $NAME-ds-template.yaml
+          sed -i "s#PLACEHOLDERCONTAINER#$1#g" $NAME-ds-template.yaml
+          sed -i "s#PLACEHOLDERNODES#$(kubectl get nodes -o custom-columns='NAME:.metadata.name' --no-headers | grep 'cluster-' | awk '{printf "\"%s\",", $1}' | sed 's/,$//')#g" $NAME-ds-template.yaml
+          kubectl apply -f $NAME-ds-template.yaml
+          EOF
+
+          bash /tmp/create-ds.sh '${{inputs.container}}'
