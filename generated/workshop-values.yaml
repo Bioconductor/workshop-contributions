@@ -11,7 +11,7 @@ extraFileMappings:
       <tool id="interactivetool_biocworkshop_cdnmws1" tool_type="interactive" name="Introduction to single-cell RNA-seq analysis" version="0.1">
           <description>This tutorial aims to provide a solid foundation in using Bioconductor tools for single-cell RNA-seq analysis by walking through various steps of typical workflows using example datasets</description>
           <requirements>
-              <container type="docker">ghcr.io/bioconductor/bioconductor:devel</container>
+              <container type="docker">ghcr.io/vjcitn/cdnmscrna:latest</container>
           </requirements>
           <entry_points>
               <entry_point name="cdnmws1" requires_domain="True">
