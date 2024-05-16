@@ -79,6 +79,8 @@ configs:
         <section name="Test" id="testingsection">
           <tool file="interactive/biocshiny_iseehub.xml" />
         </section>
+        <label text="cdnmws" id="cdnmws" />
+          <tool file="interactive/biocworkshop_cdnmws1.xml" />
       </toolbox>
   integrated_tool_panel.xml: |
     <?xml version='1.0'?>
@@ -173,4 +175,6 @@ configs:
         <section name="(Test) Shiny Apps" id="testingsection">
           <tool id="interactivetool_biocshiny_iseehub" />
         </section>
+        <label text="cdnmws" id="cdnmws" />
+          <tool id="interactivetool_biocworkshop_cdnmws1" />
     </toolbox>
