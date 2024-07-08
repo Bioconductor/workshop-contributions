@@ -9,7 +9,7 @@ extraFileMappings:
     tpl: false
     content: |
       <tool id="interactivetool_biocworkshop_biocrstudio319" tool_type="interactive" name="RStudio Bioc 3.19" version="0.1">
-          <description>Bioconductor 3.19 with R 4.4.0</description>
+          <description>Bioconductor 3.19 with R 4.4.1</description>
           <requirements>
               <container type="docker">ghcr.io/bioconductor/bioconductor:3.19</container>
           </requirements>
