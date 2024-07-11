@@ -83,7 +83,10 @@ configs:
         <label text="cdnmws" id="cdnmws" />
           <tool file="interactive/biocworkshop_cdnmws1.xml" />
         <label text="BioC2024" id="bioc2024" />
+          <tool file="interactive/biocworkshop_bioc2024tidyworkshop.xml" />
           <tool file="interactive/biocworkshop_phantasusbioc2024.xml" />
+        <label text="EuroBioC2024" id="eurobioc2024" />
+          <tool file="interactive/biocworkshop_eurobioc2024isee.xml" />
       </toolbox>
   integrated_tool_panel.xml: |
     <?xml version='1.0'?>
@@ -182,5 +185,8 @@ configs:
         <label text="cdnmws" id="cdnmws" />
           <tool id="interactivetool_biocworkshop_cdnmws1" />
         <label text="BioC2024" id="bioc2024" />
+          <tool id="interactivetool_biocworkshop_bioc2024tidyworkshop" />
           <tool id="interactivetool_biocworkshop_phantasusbioc2024" />
+        <label text="EuroBioC2024" id="eurobioc2024" />
+          <tool id="interactivetool_biocworkshop_eurobioc2024isee" />
     </toolbox>
