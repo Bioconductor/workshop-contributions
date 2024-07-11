@@ -1,4 +1,3 @@
-extraFileMappings:
   /galaxy/server/tools/interactive/biocworkshop_phantasusbioc2024.xml:
     useSecret: false
     applyToJob: true

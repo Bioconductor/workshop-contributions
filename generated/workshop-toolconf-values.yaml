@@ -82,6 +82,8 @@ configs:
         </section>
         <label text="cdnmws" id="cdnmws" />
           <tool file="interactive/biocworkshop_cdnmws1.xml" />
+        <label text="BioC2024" id="bioc2024" />
+          <tool file="interactive/biocworkshop_phantasusbioc2024.xml" />
       </toolbox>
   integrated_tool_panel.xml: |
     <?xml version='1.0'?>
@@ -179,4 +181,6 @@ configs:
         </section>
         <label text="cdnmws" id="cdnmws" />
           <tool id="interactivetool_biocworkshop_cdnmws1" />
+        <label text="BioC2024" id="bioc2024" />
+          <tool id="interactivetool_biocworkshop_phantasusbioc2024" />
     </toolbox>
