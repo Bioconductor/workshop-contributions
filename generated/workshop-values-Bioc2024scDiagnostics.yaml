@@ -1,4 +1,3 @@
-extraFileMappings:
   /galaxy/server/tools/interactive/biocworkshop_Bioc2024scDiagnostics.xml:
     useSecret: false
     applyToJob: true
