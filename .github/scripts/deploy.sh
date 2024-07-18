@@ -23,7 +23,7 @@ done
 
 NAMESPACE="gxybioc"
 GXYRELEASE="gxy"
-CHARTVER="4.10.3"
+CHARTVER="5.14.3"
 
 
 cat << "EOF" > generated/workshop-values.yaml
@@ -59,6 +59,6 @@ cat generated/workshop-toolconf-values.yaml
 
 cat generated/workshop-values.yaml
 
-helm repo add bioc https://github.com/Bioconductor/helm-charts/raw/devel
+helm repo add bioc https://github.com/cloudve/helm-charts/raw/master
 helm repo update
 helm upgrade --wait --timeout 600s --install --create-namespace -n $NAMESPACE $GXYRELEASE bioc/galaxy --version $CHARTVER --reuse-values -f generated/workshop-toolconf-values.yaml -f generated/workshop-values.yaml
