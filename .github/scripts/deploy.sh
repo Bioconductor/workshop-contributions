@@ -21,7 +21,7 @@ while getopts ":i:s:" opt; do
 done
 
 
-NAMESPACE="gxy-bioc"
+NAMESPACE="gxybioc"
 GXYRELEASE="gxy"
 CHARTVER="4.10.3"
 

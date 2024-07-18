@@ -28,9 +28,9 @@ jobs:
       - name: Get launch stats
         id: stats
         run: |
-          LAUNCH_NUMS=$(kubectl exec -n gxy-bioc galaxy-gxy-galaxy-postgres-0 -- bash -c "psql -d galaxy -U galaxydbuser -c \"select count(j.id) from job j where j.tool_id like '%_${{steps.defs.outputs.id}}';\"" | sed '3q;d' | tr -d ' ')
+          LAUNCH_NUMS=$(kubectl exec -n gxybioc galaxy-gxy-galaxy-postgres-0 -- bash -c "psql -d galaxy -U galaxydbuser -c \"select count(j.id) from job j where j.tool_id like '%_${{steps.defs.outputs.id}}';\"" | sed '3q;d' | tr -d ' ')
           echo launchnums=$LAUNCH_NUMS >> $GITHUB_OUTPUT
-          UNIQUE_USERS=$(kubectl exec -n gxy-bioc galaxy-gxy-galaxy-postgres-0 -- bash -c "psql -d galaxy -U galaxydbuser -c \"select count(distinct j.user_id) from job j where j.tool_id like '%_${{steps.defs.outputs.id}}';\"" | sed '3q;d' | tr -d ' ')
+          UNIQUE_USERS=$(kubectl exec -n gxybioc galaxy-gxy-galaxy-postgres-0 -- bash -c "psql -d galaxy -U galaxydbuser -c \"select count(distinct j.user_id) from job j where j.tool_id like '%_${{steps.defs.outputs.id}}';\"" | sed '3q;d' | tr -d ' ')
           echo uniqueusers=$UNIQUE_USERS >> $GITHUB_OUTPUT
 
       - name: Create comment
