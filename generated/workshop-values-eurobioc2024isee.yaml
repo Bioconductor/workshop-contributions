@@ -10,7 +10,7 @@
       <tool id="interactivetool_biocworkshop_eurobioc2024isee" tool_type="interactive" name="Package demo: iSEE" version="0.1">
           <description>Interactive SummarizedExperiment Explorer</description>
           <requirements>
-              <container type="docker">ghcr.io/isee/iseedemoeurobioc2024:latest</container>
+              <container type="docker">ghcr.io/bioconductor/workshop-contributions:devel-f62cdbec</container>
           </requirements>
           <entry_points>
               <entry_point name="eurobioc2024isee" requires_domain="True">
