@@ -8,7 +8,7 @@
     tpl: false
     content: |
       <tool id="interactivetool_biocworkshop_bioc2024diffmeth" tool_type="interactive" name="Package Demo: NanoMethViz" version="0.1">
-          <description>Long-read methylation data analysis with NanoMethViz and Bioconductor</description>
+          <description></description>
           <requirements>
               <container type="docker">ghcr.io/shians/differential_methylation_workshop:latest</container>
           </requirements>
