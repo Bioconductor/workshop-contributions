@@ -10,7 +10,7 @@
       <tool id="interactivetool_biocworkshop_bioc2024bamSliceR" tool_type="interactive" name="Package Demo: bamSliceR" version="0.1">
           <description>A standardized pipeline for extracting, annotating, and analyzing genomic variants across large controlled-access repositories</description>
           <requirements>
-              <container type="docker">ghcr.io/bioconductor/bioconductor:3.18</container>
+              <container type="docker">docker.io/bioconductor/workshop-contributions:devel-3431a869</container>
           </requirements>
           <entry_points>
               <entry_point name="bioc2024bamSliceR" requires_domain="True">

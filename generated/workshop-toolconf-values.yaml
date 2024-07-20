@@ -83,6 +83,7 @@ configs:
         <label text="cdnmws" id="cdnmws" />
           <tool file="interactive/biocworkshop_cdnmws1.xml" />
         <label text="BioC2024" id="bioc2024" />
+          <tool file="interactive/biocworkshop_bioc2024diffmeth.xml" />
           <tool file="interactive/biocworkshop_scdiagnosticsbioc2024.xml" />
           <tool file="interactive/biocworkshop_flamesbioc2024.xml" />
           <tool file="interactive/biocworkshop_vjcontobioc2024.xml" />
@@ -190,6 +191,7 @@ configs:
         <label text="cdnmws" id="cdnmws" />
           <tool id="interactivetool_biocworkshop_cdnmws1" />
         <label text="BioC2024" id="bioc2024" />
+          <tool id="interactivetool_biocworkshop_bioc2024diffmeth" />
           <tool id="interactivetool_biocworkshop_scdiagnosticsbioc2024" />
           <tool id="interactivetool_biocworkshop_flamesbioc2024" />
           <tool id="interactivetool_biocworkshop_vjcontobioc2024" />
