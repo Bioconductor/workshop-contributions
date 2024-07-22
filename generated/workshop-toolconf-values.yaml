@@ -11,7 +11,7 @@ configs:
         <label text="CBRC 2024" id="cbrc2024" />
           <tool file="interactive/biocworkshop_cbrcvoyagermar2024.xml" />
         <label text="Archived Events" id="archived" />
-        <section name="cdnmws" id="cdnmws" >
+        <section name="CDNMWS" id="cdnmws" >
           <tool file="interactive/biocworkshop_cdnmws1.xml" />
         </section>
         <section name="ABACBS 2023" id="abacbs2023" >
@@ -120,7 +120,7 @@ configs:
         <label text="CBRC 2024" id="cbrc2024" />
           <tool id="interactivetool_biocworkshop_cbrcvoyagermar2024" />
         <label text="Archived Events" id="archived" />
-        <section name="cdnmws" id="cdnmws" >
+        <section name="CDNMWS" id="cdnmws" >
           <tool id="interactivetool_biocworkshop_cdnmws1" />
         </section>
         <section name="ABACBS 2023" id="abacbs2023" >
