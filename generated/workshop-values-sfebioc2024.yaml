@@ -1,4 +1,3 @@
-extraFileMappings:
   /galaxy/server/tools/interactive/biocworkshop_sfebioc2024.xml:
     useSecret: false
     applyToJob: true

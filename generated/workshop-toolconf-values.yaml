@@ -11,7 +11,7 @@ configs:
         <label text="CBRC 2024" id="cbrc2024" />
           <tool file="interactive/biocworkshop_cbrcvoyagermar2024.xml" />
         <label text="Archived Events" id="archived" />
-        <section name="CDNMWS" id="cdnmws" >
+        <section name="cdnmws" id="cdnmws" >
           <tool file="interactive/biocworkshop_cdnmws1.xml" />
         </section>
         <section name="ABACBS 2023" id="abacbs2023" >
@@ -84,6 +84,7 @@ configs:
           <tool file="interactive/biocshiny_iseehub.xml" />
         </section>
         <label text="BioC2024" id="bioc2024" />
+          <tool file="interactive/biocworkshop_sfebioc2024.xml" />
           <tool file="interactive/biocworkshop_bioc2024diffmeth.xml" />
           <tool file="interactive/biocworkshop_scdiagnosticsbioc2024.xml" />
           <tool file="interactive/biocworkshop_flamesbioc2024.xml" />
@@ -120,7 +121,7 @@ configs:
         <label text="CBRC 2024" id="cbrc2024" />
           <tool id="interactivetool_biocworkshop_cbrcvoyagermar2024" />
         <label text="Archived Events" id="archived" />
-        <section name="CDNMWS" id="cdnmws" >
+        <section name="cdnmws" id="cdnmws" >
           <tool id="interactivetool_biocworkshop_cdnmws1" />
         </section>
         <section name="ABACBS 2023" id="abacbs2023" >
@@ -193,6 +194,7 @@ configs:
           <tool id="interactivetool_biocshiny_iseehub" />
         </section>
         <label text="BioC2024" id="bioc2024" />
+          <tool id="interactivetool_biocworkshop_sfebioc2024" />
           <tool id="interactivetool_biocworkshop_bioc2024diffmeth" />
           <tool id="interactivetool_biocworkshop_scdiagnosticsbioc2024" />
           <tool id="interactivetool_biocworkshop_flamesbioc2024" />
