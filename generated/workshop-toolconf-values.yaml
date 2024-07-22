@@ -11,6 +11,9 @@ configs:
         <label text="CBRC 2024" id="cbrc2024" />
           <tool file="interactive/biocworkshop_cbrcvoyagermar2024.xml" />
         <label text="Archived Events" id="archived" />
+        <section name="cdnmws" id="cdnmws" >
+          <tool file="interactive/biocworkshop_cdnmws1.xml" />
+        </section>
         <section name="ABACBS 2023" id="abacbs2023" >
           <tool file="interactive/biocworkshop_scdneyspatialabacbs2023.xml" />
           <tool file="interactive/biocworkshop_geomxan318.xml" />
@@ -80,8 +83,6 @@ configs:
         <section name="Test" id="testingsection">
           <tool file="interactive/biocshiny_iseehub.xml" />
         </section>
-        <label text="cdnmws" id="cdnmws" />
-          <tool file="interactive/biocworkshop_cdnmws1.xml" />
         <label text="BioC2024" id="bioc2024" />
           <tool file="interactive/biocworkshop_bioc2024diffmeth.xml" />
           <tool file="interactive/biocworkshop_scdiagnosticsbioc2024.xml" />
@@ -119,6 +120,9 @@ configs:
         <label text="CBRC 2024" id="cbrc2024" />
           <tool id="interactivetool_biocworkshop_cbrcvoyagermar2024" />
         <label text="Archived Events" id="archived" />
+        <section name="cdnmws" id="cdnmws" >
+          <tool id="interactivetool_biocworkshop_cdnmws1" />
+        </section>
         <section name="ABACBS 2023" id="abacbs2023" >
           <tool id="interactivetool_biocworkshop_scdneyspatialabacbs2023" />
           <tool id="interactivetool_biocworkshop_geomxan318" />
@@ -188,8 +192,6 @@ configs:
         <section name="(Test) Shiny Apps" id="testingsection">
           <tool id="interactivetool_biocshiny_iseehub" />
         </section>
-        <label text="cdnmws" id="cdnmws" />
-          <tool id="interactivetool_biocworkshop_cdnmws1" />
         <label text="BioC2024" id="bioc2024" />
           <tool id="interactivetool_biocworkshop_bioc2024diffmeth" />
           <tool id="interactivetool_biocworkshop_scdiagnosticsbioc2024" />
