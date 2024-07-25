@@ -39,4 +39,4 @@ jobs:
           issue-number: ${{ github.event.client_payload.github.payload.issue.number }}
           body: |
             _AUTO-GENERATED RESPONSE_
-            '${{steps.stats.outputs.text}}'
+            ${{steps.stats.outputs.text}}
