@@ -14,6 +14,11 @@ jobs:
           config: >
             [
               {
+                "command": "eventstats",
+                "permission": "none",
+                "issue_type": "issue"
+              },
+              {
                 "command": "stats",
                 "permission": "none",
                 "issue_type": "issue"

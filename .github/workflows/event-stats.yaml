@@ -1,0 +1,42 @@
+name: Event stats workflow
+on:
+  repository_dispatch:
+    types: [eventstats-command]
+jobs:
+  generatestats:
+    name: Generate stats
+    runs-on: ubuntu-latest
+    env:
+      ISSUE_NUM: ${{ github.event.client_payload.github.payload.issue.number }}
+      NAMESPACE: gxybioc
+      RELEASE: gxy
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set defaults for all inputs
+        id: defs
+        run: |
+          EVENTINPUT=${{ github.event.client_payload.slash_command.args.named.event || 'error' }}
+          echo event=$EVENTINPUT >> $GITHUB_OUTPUT
+
+      - name: save kubeconfig
+        shell: bash
+        run: mkdir -p ~/.kube && echo "${{ secrets.TEST_KUBECONFIG }}" > ~/.kube/config
+      - name: Install Kubectl
+        run: curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" && chmod +x ./kubectl && sudo mv ./kubectl /usr/local/bin/kubectl && kubectl version
+
+      - name: Get launch stats
+        id: stats
+        run: |
+          echo 'text<<EOF' >> $GITHUB_OUTPUT
+          bash .github/scripts/event_stats.sh $NAMESPACE $RELEASE ${{steps.defs.outputs.event}} >> $GITHUB_OUTPUT
+          echo 'EOF' >> $GITHUB_OUTPUT
+
+      - name: Create comment
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          token: ${{ secrets.PAT }}
+          issue-number: ${{ github.event.client_payload.github.payload.issue.number }}
+          body: |
+            _AUTO-GENERATED RESPONSE_
+            '${{steps.stats.outputs.text}}'
