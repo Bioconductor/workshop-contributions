@@ -18,7 +18,8 @@ jobs:
         run: |
           EVENTINPUT=${{ github.event.client_payload.slash_command.args.named.event || 'error' }}
           echo event=$EVENTINPUT >> $GITHUB_OUTPUT
-
+      - name: Install Helm
+        run: curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
       - name: save kubeconfig
         shell: bash
         run: mkdir -p ~/.kube && echo "${{ secrets.TEST_KUBECONFIG }}" > ~/.kube/config
