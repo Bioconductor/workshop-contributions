@@ -13,7 +13,7 @@ configs:
           <tool file="interactive/biocworkshop_eurobioc2024miademo.xml" />
           <tool file="interactive/biocworkshop_eurobioc2024isee.xml" />
         <label text="Archived Events" id="archived" />
-        <section name="BioC2024" id="bioc2024" />
+        <section name="BioC2024" id="bioc2024">
           <tool file="interactive/biocworkshop_bioc2024makepkg.xml" />
           <tool file="interactive/biocworkshop_bioc2024tidyworkshop.xml" />
           <tool file="interactive/biocworkshop_sfebioc2024.xml" />
@@ -130,7 +130,7 @@ configs:
           <tool id="interactivetool_biocworkshop_eurobioc2024miademo" />
           <tool id="interactivetool_biocworkshop_eurobioc2024isee" />
         <label text="Archived Events" id="archived" />
-        <section name="BioC2024" id="bioc2024" />
+        <section name="BioC2024" id="bioc2024">
           <tool id="interactivetool_biocworkshop_bioc2024makepkg" />
           <tool id="interactivetool_biocworkshop_bioc2024tidyworkshop" />
           <tool id="interactivetool_biocworkshop_sfebioc2024" />
