@@ -9,12 +9,15 @@ configs:
           <tool file="interactive/biocworkshop_biocrstudio319.xml" />
           <tool file="interactive/biocworkshop_biocrstudio318.xml" />
           <tool file="interactive/biocworkshop_rstudio317.xml" />
-        <label text="BioC2024 Workshops" id="bioc2024workshops" />
+        <label text="EuroBioC2024" id="eurobioc2024" />
+          <tool file="interactive/biocworkshop_eurobioc2024miademo.xml" />
+          <tool file="interactive/biocworkshop_eurobioc2024isee.xml" />
+        <label text="Archived Events" id="archived" />
+        <section name="BioC2024" id="bioc2024" />
           <tool file="interactive/biocworkshop_bioc2024makepkg.xml" />
           <tool file="interactive/biocworkshop_bioc2024tidyworkshop.xml" />
           <tool file="interactive/biocworkshop_sfebioc2024.xml" />
           <tool file="interactive/biocworkshop_jupyterbioc2024.xml" />
-        <label text="BioC2024 Package Demos" id="bioc2024demos" />
           <tool file="interactive/biocworkshop_banksybioc2024.xml" />
           <tool file="interactive/biocworkshop_phantasusbioc2024.xml" />
           <tool file="interactive/biocworkshop_bioc2024diffmeth.xml" />
@@ -23,7 +26,7 @@ configs:
           <tool file="interactive/biocworkshop_flamesbioc2024.xml" />
           <tool file="interactive/biocworkshop_scdiagnosticsbioc2024.xml" />
           <tool file="interactive/biocworkshop_bamslicerbioc2024.xml" />
-        <label text="Archived Events" id="archived" />
+        </section>
         <section name="CBRC 2024" id="cbrc2024" >
           <tool file="interactive/biocworkshop_cbrcvoyagermar2024.xml" />
         </section>
@@ -99,9 +102,6 @@ configs:
         <section name="CDNMWS" id="cdnmws" >
           <tool file="interactive/biocworkshop_cdnmws1.xml" />
         </section>
-        <label text="EuroBioC2024" id="eurobioc2024" />
-          <tool file="interactive/biocworkshop_eurobioc2024miademo.xml" />
-          <tool file="interactive/biocworkshop_eurobioc2024isee.xml" />
       </toolbox>
   integrated_tool_panel.xml: |
     <?xml version='1.0'?>
@@ -126,12 +126,15 @@ configs:
           <tool id="interactivetool_biocworkshop_biocrstudio319" />
           <tool id="interactivetool_biocworkshop_biocrstudio318" />
           <tool id="interactivetool_biocworkshop_rstudio317" />
-        <label text="BioC2024 Workshops" id="bioc2024workshops" />
+        <label text="EuroBioC2024" id="eurobioc2024" />
+          <tool id="interactivetool_biocworkshop_eurobioc2024miademo" />
+          <tool id="interactivetool_biocworkshop_eurobioc2024isee" />
+        <label text="Archived Events" id="archived" />
+        <section name="BioC2024" id="bioc2024" />
           <tool id="interactivetool_biocworkshop_bioc2024makepkg" />
           <tool id="interactivetool_biocworkshop_bioc2024tidyworkshop" />
           <tool id="interactivetool_biocworkshop_sfebioc2024" />
           <tool id="interactivetool_biocworkshop_jupyterbioc2024" />
-        <label text="BioC2024 Package Demos" id="bioc2024demos" />
           <tool id="interactivetool_biocworkshop_banksybioc2024" />
           <tool id="interactivetool_biocworkshop_phantasusbioc2024" />
           <tool id="interactivetool_biocworkshop_bioc2024diffmeth" />
@@ -140,7 +143,7 @@ configs:
           <tool id="interactivetool_biocworkshop_flamesbioc2024" />
           <tool id="interactivetool_biocworkshop_scdiagnosticsbioc2024" />
           <tool id="interactivetool_biocworkshop_bamslicerbioc2024" />
-        <label text="Archived Events" id="archived" />
+        </section>
         <section name="CBRC 2024" id="cbrc2024" >
           <tool id="interactivetool_biocworkshop_cbrcvoyagermar2024" />
         </section>
@@ -216,7 +219,4 @@ configs:
         <section name="CDNMWS" id="cdnmws" >
           <tool id="interactivetool_biocworkshop_cdnmws1" />
         </section>
-        <label text="EuroBioC2024" id="eurobioc2024" />
-          <tool id="interactivetool_biocworkshop_eurobioc2024miademo" />
-          <tool id="interactivetool_biocworkshop_eurobioc2024isee" />
     </toolbox>
