@@ -2,9 +2,10 @@ name: Cache image
 on:
   workflow_dispatch:
     inputs:
-      container:
-        description: Container to cache
+      containers:
+        description: Container(s) to cache (comma-separated)
         required: true
+
 jobs:
   deploywrappers:
     name: Deploy DaemonSet
@@ -41,10 +42,9 @@ jobs:
                     requiredDuringSchedulingIgnoredDuringExecution:
                       nodeSelectorTerms:
                         - matchExpressions:
-                            - key: kubernetes.io/hostname
+                            - key: bioconductor.org/type
                               operator: In
-                              values:
-                                [PLACEHOLDERNODES]
+                              values: ["worker"]
                 containers:
                 - name: PLACEHOLDERNAME-cache
                   image: PLACEHOLDERCONTAINER
@@ -64,12 +64,15 @@ jobs:
           EOF
           
           cat << "EOF" > /tmp/create-ds.sh
-          NAME=$(echo "$1" | sed "s/[^[:alnum:]-]//g")
-          cp ds-template.yaml "$NAME-ds-template.yaml"
-          sed -i "s#PLACEHOLDERNAME#$NAME#g" $NAME-ds-template.yaml
-          sed -i "s#PLACEHOLDERCONTAINER#$1#g" $NAME-ds-template.yaml
-          sed -i "s#PLACEHOLDERNODES#$(kubectl get nodes -o custom-columns='NAME:.metadata.name' --no-headers | grep 'cluster-' | awk '{printf "\"%s\",", $1}' | sed 's/,$//')#g" $NAME-ds-template.yaml
-          kubectl apply -f $NAME-ds-template.yaml
+          IFS=',' read -ra CONTAINERS <<< "$1"
+          for CONTAINER in "${CONTAINERS[@]}"; do
+            NAME=$(echo "$CONTAINER" | sed "s/[^[:alnum:]-]//g")
+            cp ds-template.yaml "$NAME-ds-template.yaml"
+            sed -i "s#PLACEHOLDERNAME#$NAME#g" $NAME-ds-template.yaml
+            sed -i "s#PLACEHOLDERCONTAINER#$CONTAINER#g" $NAME-ds-template.yaml
+            sed -i "s#PLACEHOLDERNODES#$(kubectl get nodes -o custom-columns='NAME:.metadata.name' --no-headers | grep 'cluster-' | awk '{printf "\"%s\",", $1}' | sed 's/,$//')#g" $NAME-ds-template.yaml
+            kubectl apply -f $NAME-ds-template.yaml
+          done
           EOF
 
-          bash /tmp/create-ds.sh '${{inputs.container}}'
+          bash /tmp/create-ds.sh '${{inputs.containers}}'
