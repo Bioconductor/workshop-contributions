@@ -11,6 +11,7 @@ configs:
           <tool file="interactive/biocworkshop_biocrstudio318.xml" />
           <tool file="interactive/biocworkshop_rstudio317.xml" />
         <label text="BioCAsia2024" id="biocasia2024" />
+          <tool file="interactive/biocworkshop_biocasia2024flames.xml" />
           <tool file="interactive/biocworkshop_biocasia2024spatial.xml" />
           <tool file="interactive/biocworkshop_biocasia2024diffmeth.xml" />
         <label text="Archived Events" id="archived" />
@@ -133,6 +134,7 @@ configs:
           <tool id="interactivetool_biocworkshop_biocrstudio318" />
           <tool id="interactivetool_biocworkshop_rstudio317" />
         <label text="BioCAsia2024" id="biocasia2024" />
+          <tool id="interactivetool_biocworkshop_biocasia2024flames" />
           <tool id="interactivetool_biocworkshop_biocasia2024spatial" />
           <tool id="interactivetool_biocworkshop_biocasia2024diffmeth" />
         <label text="Archived Events" id="archived" />
