@@ -6,6 +6,7 @@ configs:
           <tool file="interactive/biocshiny_biocworkshopsubmit.xml" />
           <tool file="interactive/biocshiny_bioccertificates.xml" />
         <label text="Bioconductor RStudio" id="bioconductorrstudio" />
+          <tool file="interactive/biocworkshop_biocrstudio320.xml" />
           <tool file="interactive/biocworkshop_biocrstudio319.xml" />
           <tool file="interactive/biocworkshop_biocrstudio318.xml" />
           <tool file="interactive/biocworkshop_rstudio317.xml" />
@@ -127,6 +128,7 @@ configs:
           <tool file="interactivetool_biocshiny_biocworkshopsubmit" />
           <tool file="interactivetool_biocshiny_bioccertificates" />
         <label text="Bioconductor RStudio" id="bioconductorrstudio" version="" />
+          <tool id="interactivetool_biocworkshop_biocrstudio320" />
           <tool id="interactivetool_biocworkshop_biocrstudio319" />
           <tool id="interactivetool_biocworkshop_biocrstudio318" />
           <tool id="interactivetool_biocworkshop_rstudio317" />

@@ -1,4 +1,3 @@
-extraFileMappings:
   /galaxy/server/tools/interactive/biocworkshop_biocrstudio320.xml:
     useSecret: false
     applyToJob: true
