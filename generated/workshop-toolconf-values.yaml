@@ -102,6 +102,8 @@ configs:
         <section name="CDNMWS" id="cdnmws" >
           <tool file="interactive/biocworkshop_cdnmws1.xml" />
         </section>
+        <label text="BioCAsia2024" id="biocasia2024" />
+          <tool file="interactive/biocworkshop_biocasia2024diffmeth.xml" />
       </toolbox>
   integrated_tool_panel.xml: |
     <?xml version='1.0'?>
@@ -219,4 +221,6 @@ configs:
         <section name="CDNMWS" id="cdnmws" >
           <tool id="interactivetool_biocworkshop_cdnmws1" />
         </section>
+        <label text="BioCAsia2024" id="biocasia2024" />
+          <tool id="interactivetool_biocworkshop_biocasia2024diffmeth" />
     </toolbox>

@@ -1,4 +1,3 @@
-extraFileMappings:
   /galaxy/server/tools/interactive/biocworkshop_biocasia2024diffmeth.xml:
     useSecret: false
     applyToJob: true
