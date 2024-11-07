@@ -10,7 +10,7 @@
       <tool id="interactivetool_biocworkshop_biocasia2024scdney" tool_type="interactive" name="Unlocking single cell spatial omics analyses" version="0.1">
           <description> with spicyWorkflow</description>
           <requirements>
-              <container type="docker">ghcr.io/sydneybiox/scdneyspatial_biocasia2024:latest</container>
+              <container type="docker">ghcr.io/almahmoud/scdneyspatial_biocasia2024:latest</container>
           </requirements>
           <entry_points>
               <entry_point name="biocasia2024scdney" requires_domain="True">
