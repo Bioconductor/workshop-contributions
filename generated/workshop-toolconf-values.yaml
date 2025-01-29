@@ -10,13 +10,14 @@ configs:
           <tool file="interactive/biocworkshop_biocrstudio319.xml" />
           <tool file="interactive/biocworkshop_biocrstudio318.xml" />
           <tool file="interactive/biocworkshop_rstudio317.xml" />
-        <label text="BioCAsia2024" id="biocasia2024" />
+        <label text="Archived Events" id="archived" />
+        <section name="BioCAsia2024" id="biocasia2024" >
           <tool file="interactive/biocworkshop_biocasia2024wsir.xml" />
           <tool file="interactive/biocworkshop_biocasia2024scdney.xml" />
           <tool file="interactive/biocworkshop_biocasia2024flames.xml" />
           <tool file="interactive/biocworkshop_biocasia2024spatial.xml" />
           <tool file="interactive/biocworkshop_biocasia2024diffmeth.xml" />
-        <label text="Archived Events" id="archived" />
+        </section>
         <section name="EuroBioC2024" id="eurobioc2024">
           <tool file="interactive/biocworkshop_eurobioc2024miademo.xml" />
           <tool file="interactive/biocworkshop_eurobioc2024isee.xml" />
@@ -135,13 +136,14 @@ configs:
           <tool id="interactivetool_biocworkshop_biocrstudio319" />
           <tool id="interactivetool_biocworkshop_biocrstudio318" />
           <tool id="interactivetool_biocworkshop_rstudio317" />
-        <label text="BioCAsia2024" id="biocasia2024" />
+        <label text="Archived Events" id="archived" />
+        <section name="BioCAsia2024" id="biocasia2024" >
           <tool id="interactivetool_biocworkshop_biocasia2024wsir" />
           <tool id="interactivetool_biocworkshop_biocasia2024scdney" />
           <tool id="interactivetool_biocworkshop_biocasia2024flames" />
           <tool id="interactivetool_biocworkshop_biocasia2024spatial" />
           <tool id="interactivetool_biocworkshop_biocasia2024diffmeth" />
-        <label text="Archived Events" id="archived" />
+        </section>
         <section name="EuroBioC2024" id="eurobioc2024">
           <tool id="interactivetool_biocworkshop_eurobioc2024miademo" />
           <tool id="interactivetool_biocworkshop_eurobioc2024isee" />
