@@ -112,6 +112,8 @@ configs:
         <section name="CDNMWS" id="cdnmws" >
           <tool file="interactive/biocworkshop_cdnmws1.xml" />
         </section>
+        <label text="GBCC2025" id="gbcc2025" />
+          <tool file="interactive/biocworkshop_gbcc2025spatialworkshop.xml" />
       </toolbox>
   integrated_tool_panel.xml: |
     <?xml version='1.0'?>
@@ -239,4 +241,6 @@ configs:
         <section name="CDNMWS" id="cdnmws" >
           <tool id="interactivetool_biocworkshop_cdnmws1" />
         </section>
+        <label text="GBCC2025" id="gbcc2025" />
+          <tool id="interactivetool_biocworkshop_gbcc2025spatialworkshop" />
     </toolbox>
