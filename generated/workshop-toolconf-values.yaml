@@ -12,6 +12,7 @@ configs:
           <tool file="interactive/biocworkshop_biocrstudio318.xml" />
           <tool file="interactive/biocworkshop_rstudio317.xml" />
         <label text="GBCC2025" id="gbcc2025" />
+          <tool file="interactive/biocworkshop_gbcc2025omatutorial.xml" />
           <tool file="interactive/biocworkshop_gbcc2025inference.xml" />
           <tool file="interactive/biocworkshop_gbcc2025spatialworkshop.xml" />
         <label text="Archived Events" id="archived" />
@@ -142,6 +143,7 @@ configs:
           <tool id="interactivetool_biocworkshop_biocrstudio318" />
           <tool id="interactivetool_biocworkshop_rstudio317" />
         <label text="GBCC2025" id="gbcc2025" />
+          <tool id="interactivetool_biocworkshop_gbcc2025omatutorial" />
           <tool id="interactivetool_biocworkshop_gbcc2025inference" />
           <tool id="interactivetool_biocworkshop_gbcc2025spatialworkshop" />
         <label text="Archived Events" id="archived" />

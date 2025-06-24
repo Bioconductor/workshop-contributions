@@ -1,4 +1,3 @@
-extraFileMappings:
   /galaxy/server/tools/interactive/biocworkshop_gbcc2025omatutorial.xml:
     useSecret: false
     applyToJob: true
