@@ -1,4 +1,3 @@
-extraFileMappings:
   /galaxy/server/tools/interactive/biocworkshop_gbcc2025inference.xml:
     useSecret: false
     applyToJob: true
