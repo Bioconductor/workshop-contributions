@@ -11,11 +11,12 @@ configs:
           <tool file="interactive/biocworkshop_biocrstudio319.xml" />
           <tool file="interactive/biocworkshop_biocrstudio318.xml" />
           <tool file="interactive/biocworkshop_rstudio317.xml" />
-        <label text="GBCC2025" id="gbcc2025" />
+        <label text="Archived Events" id="archived" />
+        <section name="GBCC2025" id="gbcc2025" >
           <tool file="interactive/biocworkshop_gbcc2025omatutorial.xml" />
           <tool file="interactive/biocworkshop_gbcc2025inference.xml" />
           <tool file="interactive/biocworkshop_gbcc2025spatialworkshop.xml" />
-        <label text="Archived Events" id="archived" />
+        </section>
         <section name="BioCAsia2024" id="biocasia2024" >
           <tool file="interactive/biocworkshop_biocasia2024wsir.xml" />
           <tool file="interactive/biocworkshop_biocasia2024scdney.xml" />
@@ -142,11 +143,12 @@ configs:
           <tool id="interactivetool_biocworkshop_biocrstudio319" />
           <tool id="interactivetool_biocworkshop_biocrstudio318" />
           <tool id="interactivetool_biocworkshop_rstudio317" />
-        <label text="GBCC2025" id="gbcc2025" />
+        <label text="Archived Events" id="archived" />
+        <section name="GBCC2025" id="gbcc2025" >
           <tool id="interactivetool_biocworkshop_gbcc2025omatutorial" />
           <tool id="interactivetool_biocworkshop_gbcc2025inference" />
           <tool id="interactivetool_biocworkshop_gbcc2025spatialworkshop" />
-        <label text="Archived Events" id="archived" />
+        </section>
         <section name="BioCAsia2024" id="biocasia2024" >
           <tool id="interactivetool_biocworkshop_biocasia2024wsir" />
           <tool id="interactivetool_biocworkshop_biocasia2024scdney" />
