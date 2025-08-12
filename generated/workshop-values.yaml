@@ -11,7 +11,7 @@ extraFileMappings:
       <tool id="interactivetool_biocworkshop_mig2025spatial" tool_type="interactive" name="Introduction to imaging-based spatial transcriptomics analysis" version="0.1">
           <description>This workflow package shows how a basic analysis of spatial transcriptomics datasets is performed to gain biological insight.</description>
           <requirements>
-              <container type="docker">ghcr.io/bioconductor/workshop-contributions:devel-e132dfd9</container>
+              <container type="docker">ghcr.io/bioconductor/workshop-contributions:devel-8fceb82f</container>
           </requirements>
           <entry_points>
               <entry_point name="mig2025spatial" requires_domain="True">
