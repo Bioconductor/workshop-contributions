@@ -117,6 +117,8 @@ configs:
         <section name="CDNMWS" id="cdnmws" >
           <tool file="interactive/biocworkshop_cdnmws1.xml" />
         </section>
+        <label text="MIG2025" id="mig2025" />
+          <tool file="interactive/biocworkshop_mig2025spatial.xml" />
       </toolbox>
   integrated_tool_panel.xml: |
     <?xml version='1.0'?>
@@ -249,4 +251,6 @@ configs:
         <section name="CDNMWS" id="cdnmws" >
           <tool id="interactivetool_biocworkshop_cdnmws1" />
         </section>
+        <label text="MIG2025" id="mig2025" />
+          <tool id="interactivetool_biocworkshop_mig2025spatial" />
     </toolbox>

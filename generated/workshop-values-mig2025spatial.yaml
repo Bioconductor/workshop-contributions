@@ -1,4 +1,3 @@
-extraFileMappings:
   /galaxy/server/tools/interactive/biocworkshop_mig2025spatial.xml:
     useSecret: false
     applyToJob: true
