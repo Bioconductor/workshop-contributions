@@ -11,6 +11,8 @@ configs:
           <tool file="interactive/biocworkshop_biocrstudio319.xml" />
           <tool file="interactive/biocworkshop_biocrstudio318.xml" />
           <tool file="interactive/biocworkshop_rstudio317.xml" />
+        <label text="MIG2025" id="mig2025" />
+          <tool file="interactive/biocworkshop_mig2025spatial.xml" />
         <label text="Archived Events" id="archived" />
         <section name="GBCC2025" id="gbcc2025" >
           <tool file="interactive/biocworkshop_gbcc2025omatutorial.xml" />
@@ -117,8 +119,6 @@ configs:
         <section name="CDNMWS" id="cdnmws" >
           <tool file="interactive/biocworkshop_cdnmws1.xml" />
         </section>
-        <label text="MIG2025" id="mig2025" />
-          <tool file="interactive/biocworkshop_mig2025spatial.xml" />
       </toolbox>
   integrated_tool_panel.xml: |
     <?xml version='1.0'?>
@@ -145,6 +145,8 @@ configs:
           <tool id="interactivetool_biocworkshop_biocrstudio319" />
           <tool id="interactivetool_biocworkshop_biocrstudio318" />
           <tool id="interactivetool_biocworkshop_rstudio317" />
+        <label text="MIG2025" id="mig2025" />
+          <tool id="interactivetool_biocworkshop_mig2025spatial" />
         <label text="Archived Events" id="archived" />
         <section name="GBCC2025" id="gbcc2025" >
           <tool id="interactivetool_biocworkshop_gbcc2025omatutorial" />
@@ -251,6 +253,4 @@ configs:
         <section name="CDNMWS" id="cdnmws" >
           <tool id="interactivetool_biocworkshop_cdnmws1" />
         </section>
-        <label text="MIG2025" id="mig2025" />
-          <tool id="interactivetool_biocworkshop_mig2025spatial" />
     </toolbox>
