@@ -11,9 +11,10 @@ configs:
           <tool file="interactive/biocworkshop_biocrstudio319.xml" />
           <tool file="interactive/biocworkshop_biocrstudio318.xml" />
           <tool file="interactive/biocworkshop_rstudio317.xml" />
-        <label text="MIG2025" id="mig2025" />
-          <tool file="interactive/biocworkshop_mig2025spatial.xml" />
         <label text="Archived Events" id="archived" />
+        <section name="MIG2025" id="mig2025" >
+          <tool file="interactive/biocworkshop_mig2025spatial.xml" />
+        </section>
 
         </section>
         <section name="GBCC2025" id="gbcc2025" >
@@ -152,9 +153,10 @@ configs:
           <tool id="interactivetool_biocworkshop_biocrstudio319" />
           <tool id="interactivetool_biocworkshop_biocrstudio318" />
           <tool id="interactivetool_biocworkshop_rstudio317" />
-        <label text="MIG2025" id="mig2025" />
-          <tool id="interactivetool_biocworkshop_mig2025spatial" />
         <label text="Archived Events" id="archived" />
+        <section name="MIG2025" id="mig2025" >
+          <tool id="interactivetool_biocworkshop_mig2025spatial" />
+        </section>
 
         </section>
         <section name="GBCC2025" id="gbcc2025" >
