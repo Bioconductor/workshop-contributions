@@ -14,6 +14,8 @@ configs:
         <label text="MIG2025" id="mig2025" />
           <tool file="interactive/biocworkshop_mig2025spatial.xml" />
         <label text="Archived Events" id="archived" />
+
+        </section>
         <section name="GBCC2025" id="gbcc2025" >
           <tool file="interactive/biocworkshop_gbcc2025omatutorial.xml" />
           <tool file="interactive/biocworkshop_gbcc2025inference.xml" />
@@ -153,6 +155,8 @@ configs:
         <label text="MIG2025" id="mig2025" />
           <tool id="interactivetool_biocworkshop_mig2025spatial" />
         <label text="Archived Events" id="archived" />
+
+        </section>
         <section name="GBCC2025" id="gbcc2025" >
           <tool id="interactivetool_biocworkshop_gbcc2025omatutorial" />
           <tool id="interactivetool_biocworkshop_gbcc2025inference" />
