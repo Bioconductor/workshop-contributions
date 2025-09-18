@@ -13,7 +13,6 @@ configs:
           <tool file="interactive/biocworkshop_rstudio317.xml" />
         <label text="EuroBioc2025" id="eurobioc2025" />
           <tool file="interactive/biocworkshop_eurobioc2025ostanew.xml" />
-          <tool file="interactive/biocworkshop_eurobioc2025osta.xml" />
           <tool file="interactive/biocworkshop_eurobioc2025isee.xml" />
           <tool file="interactive/biocworkshop_eurobioc2025msqrob2.xml" />
           <tool file="interactive/biocworkshop_eurobioc2025omatutorial.xml" />
@@ -154,7 +153,6 @@ configs:
           <tool id="interactivetool_biocworkshop_rstudio317" />
         <label text="EuroBioc2025" id="eurobioc2025" />
           <tool id="interactivetool_biocworkshop_eurobioc2025ostanew" />
-          <tool id="interactivetool_biocworkshop_eurobioc2025osta" />
           <tool id="interactivetool_biocworkshop_eurobioc2025isee" />
           <tool id="interactivetool_biocworkshop_eurobioc2025msqrob2" />
           <tool id="interactivetool_biocworkshop_eurobioc2025omatutorial" />
