@@ -18,6 +18,8 @@ configs:
           <tool file="interactive/biocworkshop_eurobioc2025msqrob2.xml" />
           <tool file="interactive/biocworkshop_eurobioc2025omatutorial.xml" />
         <label text="Archived Events" id="archived" />
+
+        </section>
         <section name="MIG2025" id="mig2025" >
           <tool file="interactive/biocworkshop_mig2025spatial.xml" />
         </section>
@@ -159,6 +161,8 @@ configs:
           <tool id="interactivetool_biocworkshop_eurobioc2025msqrob2" />
           <tool id="interactivetool_biocworkshop_eurobioc2025omatutorial" />
         <label text="Archived Events" id="archived" />
+
+        </section>
         <section name="MIG2025" id="mig2025" >
           <tool id="interactivetool_biocworkshop_mig2025spatial" />
         </section>
