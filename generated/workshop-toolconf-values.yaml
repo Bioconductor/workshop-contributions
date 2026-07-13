@@ -129,6 +129,8 @@ configs:
         <section name="CDNMWS" id="cdnmws" >
           <tool file="interactive/biocworkshop_cdnmws1.xml" />
         </section>
+        <label text="Curated Workshops" id="curatedworkshops" />
+          <tool file="interactive/biocworkshop_curatedmetabonaut.xml" />
       </toolbox>
   integrated_tool_panel.xml: |
     <?xml version='1.0'?>
@@ -273,4 +275,6 @@ configs:
         <section name="CDNMWS" id="cdnmws" >
           <tool id="interactivetool_biocworkshop_cdnmws1" />
         </section>
+        <label text="Curated Workshops" id="curatedworkshops" />
+          <tool id="interactivetool_biocworkshop_curatedmetabonaut" />
     </toolbox>
