@@ -13,6 +13,8 @@ configs:
           <tool file="interactive/biocworkshop_biocrstudio319.xml" />
           <tool file="interactive/biocworkshop_biocrstudio318.xml" />
           <tool file="interactive/biocworkshop_rstudio317.xml" />
+        <label text="Curated Workshops" id="curatedworkshops" />
+          <tool file="interactive/biocworkshop_curatedmetabonaut.xml" />
         <label text="Archived Events" id="archived" />
         <section name="EuroBioc2025" id="eurobioc2025">
           <tool file="interactive/biocworkshop_eurobioc2025workshopdemo.xml" />
@@ -129,8 +131,6 @@ configs:
         <section name="CDNMWS" id="cdnmws" >
           <tool file="interactive/biocworkshop_cdnmws1.xml" />
         </section>
-        <label text="Curated Workshops" id="curatedworkshops" />
-          <tool file="interactive/biocworkshop_curatedmetabonaut.xml" />
       </toolbox>
   integrated_tool_panel.xml: |
     <?xml version='1.0'?>
@@ -159,6 +159,8 @@ configs:
           <tool id="interactivetool_biocworkshop_biocrstudio319" />
           <tool id="interactivetool_biocworkshop_biocrstudio318" />
           <tool id="interactivetool_biocworkshop_rstudio317" />
+        <label text="Curated Workshops" id="curatedworkshops" />
+          <tool id="interactivetool_biocworkshop_curatedmetabonaut" />
         <label text="Archived Events" id="archived" />
         <section name="EuroBioc2025" id="eurobioc2025">
           <tool id="interactivetool_biocworkshop_eurobioc2025workshopdemo" />
@@ -275,6 +277,4 @@ configs:
         <section name="CDNMWS" id="cdnmws" >
           <tool id="interactivetool_biocworkshop_cdnmws1" />
         </section>
-        <label text="Curated Workshops" id="curatedworkshops" />
-          <tool id="interactivetool_biocworkshop_curatedmetabonaut" />
     </toolbox>
